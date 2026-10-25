@@ -1,8 +1,0 @@
-Sat 24 Oct 2026 09:17:22 PM CST
-Linux ubuntu 5.10.104-tegra #1 SMP PREEMPT Sun Mar 19 07:55:28 PDT 2023 aarch64 aarch64 aarch64 GNU/Linux
-aarch64
-g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
-cmake version 3.16.3
-ROS_DISTRO=foxy
-AMENT_PREFIX_PATH=/home/unitree/cyclonedds_ws/install/rmw_cyclonedds_cpp:/opt/ros/foxy
-CYCLONEDDS_URI=/home/unitree/cyclonedds_ws/cyclonedds.xml

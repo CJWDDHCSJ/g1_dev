@@ -1,9 +1,0 @@
-code/g1_tts_test.cpp
-code/g1_tts_test.cpp.before_asr_filter_fix.bak
-config/CMakeLists.txt
-logs/dialogue.txt
-logs/environment.txt
-MANIFEST.txt
-sdk_headers/g1_audio_api.hpp
-sdk_headers/g1_audio_client.hpp
-sdk_headers/String_.hpp
