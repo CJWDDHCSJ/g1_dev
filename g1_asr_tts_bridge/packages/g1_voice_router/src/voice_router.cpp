@@ -1,0 +1,95 @@
+#include <memory>
+#include <string>
+
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+class G1VoiceRouter : public rclcpp::Node
+{
+public:
+  G1VoiceRouter()
+  : Node("g1_voice_router")
+  {
+    // 订阅 ASR 桥接节点输出的纯文本。
+    subscription_ =
+      this->create_subscription<std_msgs::msg::String>(
+        "/g1/asr_text",
+        10,
+        [this](const std_msgs::msg::String::SharedPtr msg) {
+          handle_asr_text(msg->data);
+        });
+
+    // 将生成的回复发送到 TTS 输入话题。
+    publisher_ =
+      this->create_publisher<std_msgs::msg::String>(
+        "/g1/tts", 10);
+
+    RCLCPP_INFO(
+      this->get_logger(),
+      "Voice router started: /g1/asr_text -> /g1/tts");
+  }
+
+private:
+  void handle_asr_text(const std::string & text)
+  {
+    if (text.empty()) {
+      RCLCPP_WARN(
+        this->get_logger(),
+        "Received empty ASR text");
+      return;
+    }
+
+    // 不做去重：每条收到的消息都会独立处理。
+    RCLCPP_INFO(
+      this->get_logger(),
+      "Received ASR text: %s",
+      text.c_str());
+
+    std::string reply;
+
+    // 第一版使用简单关键词规则，暂不接入大模型。
+    if (text.find("介绍") != std::string::npos ||
+        text.find("你是谁") != std::string::npos ||
+        text.find("叫什么") != std::string::npos) {
+
+      reply =
+        "你好，我是宇树G1人形机器人。"
+        "现在我已经可以听懂简单的语音，并进行语音播报。";
+
+    } else if (text.find("你好") != std::string::npos ||
+               text.find("您好") != std::string::npos ||
+               text.find("嗨") != std::string::npos) {
+
+      reply = "你好，我是G1，很高兴和你交流。";
+
+    } else {
+
+      reply =
+        "你是什么傻逼，也配跟我说话";
+    }
+
+    std_msgs::msg::String output;
+    output.data = reply;
+
+    publisher_->publish(output);
+
+    RCLCPP_INFO(
+      this->get_logger(),
+      "Published reply to /g1/tts: %s",
+      reply.c_str());
+  }
+
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+};
+
+int main(int argc, char ** argv)
+{
+  rclcpp::init(argc, argv);
+
+  rclcpp::spin(
+    std::make_shared<G1VoiceRouter>());
+
+  rclcpp::shutdown();
+  return 0;
+}
