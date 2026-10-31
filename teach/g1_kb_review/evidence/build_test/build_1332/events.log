@@ -1,0 +1,364 @@
+[0.000000] (-) TimerEvent: {}
+[0.000228] (-) JobUnselected: {'identifier': 'g1_asr_bridge'}
+[0.000491] (-) JobUnselected: {'identifier': 'unitree_ros2_example'}
+[0.001030] (g1_voice_router) JobQueued: {'identifier': 'g1_voice_router', 'dependencies': OrderedDict()}
+[0.001288] (g1_voice_router) JobStarted: {'identifier': 'g1_voice_router'}
+[0.019710] (g1_voice_router) JobProgress: {'identifier': 'g1_voice_router', 'progress': 'cmake'}
+[0.021131] (g1_voice_router) JobProgress: {'identifier': 'g1_voice_router', 'progress': 'build'}
+[0.022634] (g1_voice_router) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/unitree/unitree_ros2/example/build/g1_voice_router', '--', '-j4', '-l4'], 'cwd': '/home/unitree/unitree_ros2/example/build/g1_voice_router', 'env': OrderedDict([('USER', 'unitree'), ('SSH_CLIENT', '192.168.123.99 39630 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/unitree'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces>\n                            <NetworkInterface name="eth0" priority="default" multicast="default" />\n                        </Interfaces></General></Domain></CycloneDDS>'), ('OLDPWD', '/home/unitree'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install:/home/unitree/unitree_ros2/cyclonedds_ws/install:/home/unitree/lidar_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'unitree'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('XDG_SESSION_ID', '55'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('AMENT_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('PWD', '/home/unitree/unitree_ros2/example/build/g1_voice_router'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.123.99 39630 192.168.123.164 22'), ('PYTHONPATH', '/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble')]), 'shell': False}
+[0.099416] (-) TimerEvent: {}
+[0.103605] (g1_voice_router) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target intent_recognizer_test\n'}
+[0.121576] (g1_voice_router) StdoutLine: {'line': b'[ 10%] Building CXX object CMakeFiles/knowledge_base.dir/src/knowledge_base.cpp.o\n'}
+[0.123524] (g1_voice_router) StdoutLine: {'line': b'[ 40%] Built target intent_recognizer_test\n'}
+[0.199729] (-) TimerEvent: {}
+[0.300133] (-) TimerEvent: {}
+[0.400519] (-) TimerEvent: {}
+[0.500910] (-) TimerEvent: {}
+[0.601302] (-) TimerEvent: {}
+[0.701702] (-) TimerEvent: {}
+[0.802112] (-) TimerEvent: {}
+[0.902511] (-) TimerEvent: {}
+[1.002900] (-) TimerEvent: {}
+[1.103287] (-) TimerEvent: {}
+[1.203677] (-) TimerEvent: {}
+[1.304105] (-) TimerEvent: {}
+[1.404502] (-) TimerEvent: {}
+[1.504896] (-) TimerEvent: {}
+[1.605292] (-) TimerEvent: {}
+[1.705682] (-) TimerEvent: {}
+[1.806084] (-) TimerEvent: {}
+[1.906476] (-) TimerEvent: {}
+[2.006859] (-) TimerEvent: {}
+[2.107242] (-) TimerEvent: {}
+[2.207643] (-) TimerEvent: {}
+[2.308079] (-) TimerEvent: {}
+[2.408537] (-) TimerEvent: {}
+[2.508998] (-) TimerEvent: {}
+[2.609443] (-) TimerEvent: {}
+[2.709828] (-) TimerEvent: {}
+[2.810208] (-) TimerEvent: {}
+[2.910652] (-) TimerEvent: {}
+[3.011034] (-) TimerEvent: {}
+[3.111491] (-) TimerEvent: {}
+[3.211899] (-) TimerEvent: {}
+[3.312345] (-) TimerEvent: {}
+[3.412733] (-) TimerEvent: {}
+[3.513258] (-) TimerEvent: {}
+[3.613679] (-) TimerEvent: {}
+[3.714049] (-) TimerEvent: {}
+[3.814420] (-) TimerEvent: {}
+[3.914818] (-) TimerEvent: {}
+[4.015176] (-) TimerEvent: {}
+[4.115593] (-) TimerEvent: {}
+[4.216023] (-) TimerEvent: {}
+[4.316437] (-) TimerEvent: {}
+[4.416799] (-) TimerEvent: {}
+[4.517187] (-) TimerEvent: {}
+[4.617633] (-) TimerEvent: {}
+[4.718004] (-) TimerEvent: {}
+[4.818368] (-) TimerEvent: {}
+[4.918747] (-) TimerEvent: {}
+[5.019153] (-) TimerEvent: {}
+[5.119511] (-) TimerEvent: {}
+[5.219910] (-) TimerEvent: {}
+[5.320323] (-) TimerEvent: {}
+[5.420705] (-) TimerEvent: {}
+[5.521075] (-) TimerEvent: {}
+[5.621514] (-) TimerEvent: {}
+[5.656994] (g1_voice_router) StdoutLine: {'line': b'[ 50%] Linking CXX static library libknowledge_base.a\n'}
+[5.721702] (-) TimerEvent: {}
+[5.761476] (g1_voice_router) StdoutLine: {'line': b'[ 50%] Built target knowledge_base\n'}
+[5.794760] (g1_voice_router) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target voice_router\n'}
+[5.805874] (g1_voice_router) StdoutLine: {'line': b'[ 60%] Building CXX object CMakeFiles/knowledge_base_test.dir/test/knowledge_base_test.cpp.o\n'}
+[5.821825] (-) TimerEvent: {}
+[5.822171] (g1_voice_router) StdoutLine: {'line': b'[ 70%] Building CXX object CMakeFiles/voice_router.dir/src/voice_router.cpp.o\n'}
+[5.922011] (-) TimerEvent: {}
+[6.022422] (-) TimerEvent: {}
+[6.122831] (-) TimerEvent: {}
+[6.223230] (-) TimerEvent: {}
+[6.323629] (-) TimerEvent: {}
+[6.424022] (-) TimerEvent: {}
+[6.524470] (-) TimerEvent: {}
+[6.624884] (-) TimerEvent: {}
+[6.725365] (-) TimerEvent: {}
+[6.825772] (-) TimerEvent: {}
+[6.926195] (-) TimerEvent: {}
+[7.026605] (-) TimerEvent: {}
+[7.126978] (-) TimerEvent: {}
+[7.227358] (-) TimerEvent: {}
+[7.327734] (-) TimerEvent: {}
+[7.428155] (-) TimerEvent: {}
+[7.528539] (-) TimerEvent: {}
+[7.628935] (-) TimerEvent: {}
+[7.729359] (-) TimerEvent: {}
+[7.829781] (-) TimerEvent: {}
+[7.930202] (-) TimerEvent: {}
+[8.030637] (-) TimerEvent: {}
+[8.131074] (-) TimerEvent: {}
+[8.231486] (-) TimerEvent: {}
+[8.332034] (-) TimerEvent: {}
+[8.432475] (-) TimerEvent: {}
+[8.532883] (-) TimerEvent: {}
+[8.633290] (-) TimerEvent: {}
+[8.733693] (-) TimerEvent: {}
+[8.834094] (-) TimerEvent: {}
+[8.934492] (-) TimerEvent: {}
+[9.034894] (-) TimerEvent: {}
+[9.135273] (-) TimerEvent: {}
+[9.235649] (-) TimerEvent: {}
+[9.336013] (-) TimerEvent: {}
+[9.436444] (-) TimerEvent: {}
+[9.449960] (g1_voice_router) StdoutLine: {'line': b'[ 80%] Linking CXX executable knowledge_base_test\n'}
+[9.536623] (-) TimerEvent: {}
+[9.637109] (-) TimerEvent: {}
+[9.714303] (g1_voice_router) StdoutLine: {'line': b'[ 80%] Built target knowledge_base_test\n'}
+[9.737278] (-) TimerEvent: {}
+[9.837657] (-) TimerEvent: {}
+[9.938036] (-) TimerEvent: {}
+[10.038420] (-) TimerEvent: {}
+[10.138754] (-) TimerEvent: {}
+[10.239027] (-) TimerEvent: {}
+[10.339388] (-) TimerEvent: {}
+[10.439747] (-) TimerEvent: {}
+[10.540172] (-) TimerEvent: {}
+[10.640516] (-) TimerEvent: {}
+[10.740872] (-) TimerEvent: {}
+[10.841266] (-) TimerEvent: {}
+[10.941657] (-) TimerEvent: {}
+[11.042039] (-) TimerEvent: {}
+[11.142425] (-) TimerEvent: {}
+[11.242805] (-) TimerEvent: {}
+[11.343185] (-) TimerEvent: {}
+[11.443563] (-) TimerEvent: {}
+[11.544002] (-) TimerEvent: {}
+[11.644407] (-) TimerEvent: {}
+[11.744854] (-) TimerEvent: {}
+[11.845259] (-) TimerEvent: {}
+[11.945715] (-) TimerEvent: {}
+[12.046168] (-) TimerEvent: {}
+[12.146573] (-) TimerEvent: {}
+[12.246964] (-) TimerEvent: {}
+[12.347350] (-) TimerEvent: {}
+[12.447745] (-) TimerEvent: {}
+[12.548166] (-) TimerEvent: {}
+[12.648570] (-) TimerEvent: {}
+[12.748965] (-) TimerEvent: {}
+[12.849359] (-) TimerEvent: {}
+[12.949748] (-) TimerEvent: {}
+[13.050135] (-) TimerEvent: {}
+[13.150520] (-) TimerEvent: {}
+[13.250901] (-) TimerEvent: {}
+[13.351291] (-) TimerEvent: {}
+[13.451685] (-) TimerEvent: {}
+[13.552097] (-) TimerEvent: {}
+[13.652497] (-) TimerEvent: {}
+[13.752882] (-) TimerEvent: {}
+[13.853275] (-) TimerEvent: {}
+[13.953662] (-) TimerEvent: {}
+[14.054053] (-) TimerEvent: {}
+[14.154445] (-) TimerEvent: {}
+[14.254810] (-) TimerEvent: {}
+[14.355208] (-) TimerEvent: {}
+[14.455612] (-) TimerEvent: {}
+[14.555994] (-) TimerEvent: {}
+[14.656392] (-) TimerEvent: {}
+[14.756790] (-) TimerEvent: {}
+[14.857167] (-) TimerEvent: {}
+[14.957525] (-) TimerEvent: {}
+[15.057898] (-) TimerEvent: {}
+[15.158268] (-) TimerEvent: {}
+[15.258633] (-) TimerEvent: {}
+[15.359012] (-) TimerEvent: {}
+[15.459401] (-) TimerEvent: {}
+[15.559777] (-) TimerEvent: {}
+[15.660186] (-) TimerEvent: {}
+[15.760586] (-) TimerEvent: {}
+[15.860997] (-) TimerEvent: {}
+[15.961377] (-) TimerEvent: {}
+[16.061751] (-) TimerEvent: {}
+[16.162144] (-) TimerEvent: {}
+[16.262483] (-) TimerEvent: {}
+[16.362806] (-) TimerEvent: {}
+[16.463193] (-) TimerEvent: {}
+[16.563580] (-) TimerEvent: {}
+[16.663984] (-) TimerEvent: {}
+[16.764370] (-) TimerEvent: {}
+[16.864741] (-) TimerEvent: {}
+[16.965105] (-) TimerEvent: {}
+[17.065465] (-) TimerEvent: {}
+[17.165842] (-) TimerEvent: {}
+[17.266217] (-) TimerEvent: {}
+[17.366596] (-) TimerEvent: {}
+[17.466977] (-) TimerEvent: {}
+[17.567350] (-) TimerEvent: {}
+[17.667734] (-) TimerEvent: {}
+[17.768151] (-) TimerEvent: {}
+[17.868534] (-) TimerEvent: {}
+[17.968897] (-) TimerEvent: {}
+[18.069251] (-) TimerEvent: {}
+[18.169608] (-) TimerEvent: {}
+[18.270001] (-) TimerEvent: {}
+[18.370390] (-) TimerEvent: {}
+[18.470772] (-) TimerEvent: {}
+[18.571161] (-) TimerEvent: {}
+[18.671550] (-) TimerEvent: {}
+[18.771962] (-) TimerEvent: {}
+[18.872363] (-) TimerEvent: {}
+[18.972741] (-) TimerEvent: {}
+[19.073121] (-) TimerEvent: {}
+[19.173508] (-) TimerEvent: {}
+[19.273899] (-) TimerEvent: {}
+[19.374300] (-) TimerEvent: {}
+[19.474695] (-) TimerEvent: {}
+[19.575067] (-) TimerEvent: {}
+[19.675448] (-) TimerEvent: {}
+[19.775884] (-) TimerEvent: {}
+[19.876290] (-) TimerEvent: {}
+[19.976686] (-) TimerEvent: {}
+[20.077050] (-) TimerEvent: {}
+[20.177420] (-) TimerEvent: {}
+[20.277836] (-) TimerEvent: {}
+[20.378246] (-) TimerEvent: {}
+[20.478634] (-) TimerEvent: {}
+[20.579036] (-) TimerEvent: {}
+[20.679428] (-) TimerEvent: {}
+[20.779855] (-) TimerEvent: {}
+[20.880259] (-) TimerEvent: {}
+[20.980640] (-) TimerEvent: {}
+[21.081025] (-) TimerEvent: {}
+[21.181432] (-) TimerEvent: {}
+[21.281839] (-) TimerEvent: {}
+[21.382198] (-) TimerEvent: {}
+[21.482556] (-) TimerEvent: {}
+[21.582917] (-) TimerEvent: {}
+[21.683291] (-) TimerEvent: {}
+[21.783679] (-) TimerEvent: {}
+[21.884087] (-) TimerEvent: {}
+[21.984447] (-) TimerEvent: {}
+[22.084833] (-) TimerEvent: {}
+[22.185208] (-) TimerEvent: {}
+[22.285636] (-) TimerEvent: {}
+[22.385996] (-) TimerEvent: {}
+[22.486353] (-) TimerEvent: {}
+[22.586719] (-) TimerEvent: {}
+[22.687086] (-) TimerEvent: {}
+[22.787458] (-) TimerEvent: {}
+[22.887846] (-) TimerEvent: {}
+[22.988270] (-) TimerEvent: {}
+[23.088629] (-) TimerEvent: {}
+[23.189049] (-) TimerEvent: {}
+[23.289414] (-) TimerEvent: {}
+[23.389770] (-) TimerEvent: {}
+[23.490187] (-) TimerEvent: {}
+[23.590609] (-) TimerEvent: {}
+[23.690972] (-) TimerEvent: {}
+[23.791351] (-) TimerEvent: {}
+[23.891724] (-) TimerEvent: {}
+[23.992101] (-) TimerEvent: {}
+[24.092496] (-) TimerEvent: {}
+[24.192842] (-) TimerEvent: {}
+[24.293198] (-) TimerEvent: {}
+[24.393616] (-) TimerEvent: {}
+[24.494022] (-) TimerEvent: {}
+[24.594368] (-) TimerEvent: {}
+[24.694768] (-) TimerEvent: {}
+[24.795186] (-) TimerEvent: {}
+[24.895545] (-) TimerEvent: {}
+[24.995978] (-) TimerEvent: {}
+[25.096355] (-) TimerEvent: {}
+[25.196708] (-) TimerEvent: {}
+[25.297062] (-) TimerEvent: {}
+[25.397425] (-) TimerEvent: {}
+[25.497779] (-) TimerEvent: {}
+[25.598137] (-) TimerEvent: {}
+[25.698497] (-) TimerEvent: {}
+[25.798860] (-) TimerEvent: {}
+[25.899237] (-) TimerEvent: {}
+[25.999600] (-) TimerEvent: {}
+[26.099979] (-) TimerEvent: {}
+[26.200309] (-) TimerEvent: {}
+[26.300670] (-) TimerEvent: {}
+[26.401130] (-) TimerEvent: {}
+[26.501517] (-) TimerEvent: {}
+[26.601921] (-) TimerEvent: {}
+[26.702274] (-) TimerEvent: {}
+[26.802651] (-) TimerEvent: {}
+[26.903009] (-) TimerEvent: {}
+[27.003410] (-) TimerEvent: {}
+[27.103725] (-) TimerEvent: {}
+[27.204103] (-) TimerEvent: {}
+[27.304494] (-) TimerEvent: {}
+[27.404863] (-) TimerEvent: {}
+[27.505216] (-) TimerEvent: {}
+[27.605572] (-) TimerEvent: {}
+[27.705973] (-) TimerEvent: {}
+[27.806326] (-) TimerEvent: {}
+[27.906745] (-) TimerEvent: {}
+[28.007145] (-) TimerEvent: {}
+[28.107472] (-) TimerEvent: {}
+[28.207777] (-) TimerEvent: {}
+[28.308196] (-) TimerEvent: {}
+[28.408540] (-) TimerEvent: {}
+[28.508890] (-) TimerEvent: {}
+[28.609291] (-) TimerEvent: {}
+[28.709640] (-) TimerEvent: {}
+[28.810006] (-) TimerEvent: {}
+[28.910438] (-) TimerEvent: {}
+[29.010798] (-) TimerEvent: {}
+[29.111207] (-) TimerEvent: {}
+[29.211564] (-) TimerEvent: {}
+[29.311987] (-) TimerEvent: {}
+[29.412421] (-) TimerEvent: {}
+[29.512832] (-) TimerEvent: {}
+[29.613234] (-) TimerEvent: {}
+[29.713588] (-) TimerEvent: {}
+[29.813996] (-) TimerEvent: {}
+[29.914369] (-) TimerEvent: {}
+[30.014732] (-) TimerEvent: {}
+[30.115145] (-) TimerEvent: {}
+[30.215532] (-) TimerEvent: {}
+[30.315964] (-) TimerEvent: {}
+[30.416314] (-) TimerEvent: {}
+[30.516705] (-) TimerEvent: {}
+[30.617113] (-) TimerEvent: {}
+[30.717513] (-) TimerEvent: {}
+[30.747121] (g1_voice_router) StdoutLine: {'line': b'[ 90%] Linking CXX executable voice_router\n'}
+[30.817690] (-) TimerEvent: {}
+[30.918113] (-) TimerEvent: {}
+[31.018537] (-) TimerEvent: {}
+[31.118967] (-) TimerEvent: {}
+[31.219325] (-) TimerEvent: {}
+[31.319628] (-) TimerEvent: {}
+[31.419936] (-) TimerEvent: {}
+[31.520243] (-) TimerEvent: {}
+[31.620592] (-) TimerEvent: {}
+[31.720966] (-) TimerEvent: {}
+[31.821322] (-) TimerEvent: {}
+[31.921692] (-) TimerEvent: {}
+[31.940276] (g1_voice_router) StdoutLine: {'line': b'[100%] Built target voice_router\n'}
+[31.965489] (g1_voice_router) CommandEnded: {'returncode': 0}
+[31.967751] (g1_voice_router) JobProgress: {'identifier': 'g1_voice_router', 'progress': 'install'}
+[31.985829] (g1_voice_router) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/unitree/unitree_ros2/example/build/g1_voice_router'], 'cwd': '/home/unitree/unitree_ros2/example/build/g1_voice_router', 'env': OrderedDict([('USER', 'unitree'), ('SSH_CLIENT', '192.168.123.99 39630 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/unitree'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces>\n                            <NetworkInterface name="eth0" priority="default" multicast="default" />\n                        </Interfaces></General></Domain></CycloneDDS>'), ('OLDPWD', '/home/unitree'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install:/home/unitree/unitree_ros2/cyclonedds_ws/install:/home/unitree/lidar_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'unitree'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('XDG_SESSION_ID', '55'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('AMENT_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('PWD', '/home/unitree/unitree_ros2/example/build/g1_voice_router'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.123.99 39630 192.168.123.164 22'), ('PYTHONPATH', '/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble')]), 'shell': False}
+[32.003662] (g1_voice_router) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[32.004677] (g1_voice_router) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[32.005372] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router\n'}
+[32.005702] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json\n'}
+[32.006203] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/package_run_dependencies/g1_voice_router\n'}
+[32.006536] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/parent_prefix_path/g1_voice_router\n'}
+[32.006947] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.sh\n'}
+[32.007268] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.dsv\n'}
+[32.007572] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.sh\n'}
+[32.007982] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.dsv\n'}
+[32.008286] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.bash\n'}
+[32.008567] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.sh\n'}
+[32.008967] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.zsh\n'}
+[32.009233] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.dsv\n'}
+[32.009462] (g1_voice_router) StdoutLine: {'line': b'-- Symlinking: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.dsv\n'}
+[32.021794] (-) TimerEvent: {}
+[32.026296] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/packages/g1_voice_router\n'}
+[32.026878] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig.cmake\n'}
+[32.027118] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig-version.cmake\n'}
+[32.027256] (g1_voice_router) StdoutLine: {'line': b'-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.xml\n'}
+[32.030531] (g1_voice_router) CommandEnded: {'returncode': 0}
+[32.082726] (g1_voice_router) JobEnded: {'identifier': 'g1_voice_router', 'rc': 0}
+[32.084236] (-) EventReactorShutdown: {}

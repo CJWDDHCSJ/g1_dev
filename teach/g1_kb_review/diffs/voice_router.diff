@@ -1,0 +1,104 @@
+--- backup/voice_router.cpp
++++ current/voice_router.cpp
+@@ -1,5 +1,6 @@
+ #include <curl/curl.h>
+ #include <algorithm>
++#include <ament_index_cpp/get_package_share_directory.hpp>
+ #include <nlohmann/json.hpp>
+ 
+ #include <cctype>
+@@ -14,6 +15,7 @@
+ #include <utility>
+ 
+ #include "g1_voice_router/intent_recognizer.hpp"
++#include "g1_voice_router/knowledge_base.hpp"
+ #include "rclcpp/rclcpp.hpp"
+ #include "std_msgs/msg/string.hpp"
+ 
+@@ -43,6 +45,43 @@
+       timeout_seconds_ = 60;
+     }
+ 
++    std::string default_knowledge_file;
++
++    try {
++      default_knowledge_file =
++        ament_index_cpp::get_package_share_directory(
++          "g1_voice_router") +
++        "/config/lab_knowledge.json";
++    } catch (const std::exception & error) {
++      RCLCPP_ERROR(
++        get_logger(),
++        "Failed to locate g1_voice_router share directory: %s",
++        error.what());
++    }
++
++    knowledge_file_ = declare_parameter<std::string>(
++      "knowledge_file",
++      default_knowledge_file);
++
++    std::string knowledge_error;
++
++    if (!knowledge_base_.load(knowledge_file_, knowledge_error)) {
++      RCLCPP_ERROR(
++        get_logger(),
++        "KnowledgeBase load failed: %s",
++        knowledge_error.c_str());
++    } else {
++      RCLCPP_INFO(
++        get_logger(),
++        "KnowledgeBase loaded: %s "
++        "(FAQ=%zu, directions=%zu, projects=%zu, equipment=%zu)",
++        knowledge_file_.c_str(),
++        knowledge_base_.faq_count(),
++        knowledge_base_.direction_count(),
++        knowledge_base_.project_count(),
++        knowledge_base_.equipment_count());
++    }
++
+     system_prompt_ = declare_parameter<std::string>(
+       "system_prompt",
+       "你是运行在宇树G1人形机器人中的中文语音助手。"
+@@ -265,6 +304,31 @@
+     
+ 
+     // --------------------------------------------------------
++    // LAB_INTRO：本地知识库
++    // 有资料时直接回答；资料缺失时返回安全兜底。
++    // 不进入 Ollama 消息队列。
++    // --------------------------------------------------------
++
++    if (intent_result.intent ==
++        g1_voice_router::Intent::LAB_INTRO)
++    {
++      const auto result = knowledge_base_.query(text);
++
++      publish_reply(result.answer);
++
++      RCLCPP_INFO(
++        get_logger(),
++        "LAB_INTRO local knowledge base completed: "
++        "found=%s category=%s matched_id=%s",
++        result.found ? "true" : "false",
++        result.category.c_str(),
++        result.matched_id.c_str());
++
++      return;
++    }
++
++
++    // --------------------------------------------------------
+     // ROBOT_INTRO：机器人自我介绍
+     // 本地固定回答，不调用 Ollama
+     // --------------------------------------------------------
+@@ -563,6 +627,10 @@
+ 
+   std::deque<Json> history_;
+ 
++  std::string knowledge_file_;
++
++  g1_voice_router::KnowledgeBase knowledge_base_;
++
+   g1_voice_router::IntentRecognizer intent_recognizer_;
+ 
+   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr

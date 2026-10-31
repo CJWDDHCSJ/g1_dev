@@ -1,0 +1,30 @@
+[INFO] [1793459465.806614837] [p0fix_probe]: KnowledgeBase loaded: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json (FAQ=21, directions=3, projects=1, equipment=1)
+[INFO] [1793459465.808884491] [p0fix_probe]: G1 voice router started
+[INFO] [1793459465.808958350] [p0fix_probe]: Ollama URL: http://192.168.123.99:11434/api/chat
+[INFO] [1793459465.808993072] [p0fix_probe]: Model: qwen3-vl:4b-instruct
+[INFO] [1793459465.809018514] [p0fix_probe]: Listening on /g1/asr_text, publishing to /g1/tts
+[INFO] [1793459475.393201998] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 重点实验室什么时候成立
+[INFO] [1793459475.393806894] [p0fix_probe]: Reply published to /g1/tts (200 bytes)
+[INFO] [1793459475.393868881] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=labs matched_id=faq_embodied_established match_type=exact_question match_score=1000
+[INFO] [1793459478.111058249] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 开放平台是什么
+[INFO] [1793459478.116854038] [p0fix_probe]: Reply published to /g1/tts (216 bytes)
+[INFO] [1793459478.116945723] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=labs matched_id=faq_platform match_type=entity_intent_question match_score=217
+[INFO] [1793459480.752400474] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 脑机中心有多少人
+[INFO] [1793459480.758606812] [p0fix_probe]: Reply published to /g1/tts (162 bytes)
+[INFO] [1793459480.758707522] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=false category=fallback matched_id= match_type=fallback_quantity_unverified match_score=0
+[INFO] [1793459483.813982019] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 实验室有哪些设备
+[INFO] [1793459483.814760044] [p0fix_probe]: Reply published to /g1/tts (180 bytes)
+[INFO] [1793459483.814872498] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=equipment matched_id=faq_equipment match_type=exact_question match_score=1000
+[INFO] [1793459487.657969332] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 实验室主要研究什么设备
+[INFO] [1793459487.659137681] [p0fix_probe]: Reply published to /g1/tts (264 bytes)
+[INFO] [1793459487.659326939] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=clarification matched_id= match_type=clarification match_score=0
+[INFO] [1793459490.300900535] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 刘宏是谁
+[INFO] [1793459490.307240833] [p0fix_probe]: Reply published to /g1/tts (315 bytes)
+[INFO] [1793459490.307365735] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=people matched_id=faq_liu match_type=entity_intent_question match_score=312
+[INFO] [1793459492.952734601] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 你们实验室主要研究什么
+[INFO] [1793459492.959642448] [p0fix_probe]: Reply published to /g1/tts (348 bytes)
+[INFO] [1793459492.959765783] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=research_directions matched_id=research_directions match_type=category_keyword match_score=10
+[INFO] [1793459496.695949891] [p0fix_probe]: Intent recognized: LAB_INTRO | text: 重点实验室什么时候获批
+[INFO] [1793459496.696786126] [p0fix_probe]: Reply published to /g1/tts (176 bytes)
+[INFO] [1793459496.696872082] [p0fix_probe]: LAB_INTRO local knowledge base completed: found=true category=labs matched_id=faq_embodied_approval match_type=exact_question match_score=1000
+[INFO] [1793459498.033371970] [rclcpp]: signal_handler(SIGINT/SIGTERM)

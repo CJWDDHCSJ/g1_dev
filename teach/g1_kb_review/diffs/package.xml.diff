@@ -1,0 +1,10 @@
+--- backup/package.xml
++++ current/package.xml
+@@ -10,6 +10,7 @@
+   <buildtool_depend>ament_cmake</buildtool_depend>
+   <depend>rclcpp</depend>
+   <depend>std_msgs</depend>
++  <depend>ament_index_cpp</depend>
+   <depend>libcurl-dev</depend>
+ 
+   <export>

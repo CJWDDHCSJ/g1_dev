@@ -1,0 +1,102 @@
+UpdateCTestConfiguration  from :/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+Parse Config file:/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+   Site: ubuntu
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261031-1333 - Experimental
+UpdateCTestConfiguration  from :/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+Parse Config file:/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+Test project /home/unitree/unitree_ros2/example/build/g1_voice_router
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: knowledge_base_test
+
+1: Test command: /home/unitree/unitree_ros2/example/build/g1_voice_router/knowledge_base_test "/home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json"
+1: Test timeout computed to be: 10000000
+1: ========== KnowledgeBase Test ==========
+1: Knowledge file: /home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json
+1: [PASS] normal JSON load
+1: [PASS] loaded flag is true
+1: [PASS] FAQ count is 20
+1: [PASS] research direction count is 3
+1: [PASS] project count is 1
+1: [PASS] equipment count is 1
+1: [PASS] introduction query
+1: [PASS] introduction query with greeting prefix
+1: [PASS] FAQ question embedded in a longer sentence
+1: [PASS] research directions query
+1: [PASS] BCI directions FAQ
+1: [PASS] embodied lab research FAQ
+1: [PASS] project query
+1: [PASS] equipment query
+1: [PASS] FAQ exact leader hit
+1: [PASS] Chinese synonym expression
+1: [PASS] SERES co-building FAQ
+1: [PASS] two labs are distinguished
+1: [PASS] location query
+1: [PASS] college teams FAQ
+1: [PASS] college awards FAQ
+1: [PASS] unverified equipment count is not invented
+1: [PASS] unknown team size falls back
+1: [PASS] no-match question falls back
+1: [PASS] empty input falls back
+1: [PASS] answers contain no source URL
+1: [PASS] missing file is rejected
+1: [PASS] query after failed load uses fallback
+1: [PASS] malformed fixture written
+1: [PASS] malformed JSON is rejected
+1: [PASS] unsupported fixture written
+1: [PASS] unsupported schema is rejected
+1: [PASS] empty-fields fixture written
+1: [PASS] empty fields load
+1: [PASS] empty introduction is not spoken
+1: [PASS] empty location is not spoken
+1: [PASS] empty path is rejected
+1: =========================================
+1: Passed: 37
+1: Failed: 0
+1/2 Test #1: knowledge_base_test ..............   Passed    0.02 sec
+test 2
+    Start 2: intent_recognizer_test
+
+2: Test command: /home/unitree/unitree_ros2/example/build/g1_voice_router/intent_recognizer_test
+2: Test timeout computed to be: 10000000
+2: ========== Intent Recognizer Test ==========
+2: [PASS] 你好 -> GREETING
+2: [PASS] 您好！ -> GREETING
+2: [PASS] GOOD MORNING -> GENERAL_QA
+2: [PASS] 你好，介绍一下你们实验室 -> LAB_INTRO
+2: [PASS] 你们实验室研究什么？ -> LAB_INTRO
+2: [PASS] 介绍一下你自己 -> ROBOT_INTRO
+2: [PASS] 你能做什么 -> ROBOT_INTRO
+2: [PASS] 给我们展示一下 -> DEMO_ACTION
+2: [PASS] 挥挥手 -> DEMO_ACTION
+2: [PASS] 你现在状态怎么样 -> ROBOT_STATUS
+2: [PASS] 当前运行模式是什么？ -> ROBOT_STATUS
+2: [PASS] 谢谢 -> GOODBYE
+2: [PASS] 再见！ -> GOODBYE
+2: [PASS] 学院有什么在研项目 -> LAB_INTRO
+2: [PASS] 脑机中心负责人是谁 -> LAB_INTRO
+2: [PASS] 学院有哪些科研团队 -> LAB_INTRO
+2: [PASS] 学院学生拿过什么奖 -> LAB_INTRO
+2: [PASS] 学院什么时候成立 -> LAB_INTRO
+2: [PASS] 学院地址在哪里 -> LAB_INTRO
+2: [PASS] 具身智能开放平台是什么 -> LAB_INTRO
+2: [PASS] 肖汉光教授是谁 -> LAB_INTRO
+2: [PASS] 有机器狗吗 -> LAB_INTRO
+2: [PASS] 学院有哪些专业 -> GENERAL_QA
+2: [PASS] 机器狗多少钱 -> GENERAL_QA
+2: [PASS] 宇树机器人多少钱？ -> GENERAL_QA
+2: ============================================
+2: Passed: 25
+2: Failed: 0
+2/2 Test #2: intent_recognizer_test ...........   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.03 sec

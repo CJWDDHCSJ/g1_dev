@@ -1,0 +1,31 @@
+[INFO] [1793453415.867687069] [g1_voice_router]: KnowledgeBase loaded: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json (FAQ=20, directions=3, projects=1, equipment=1)
+[INFO] [1793453415.869887503] [g1_voice_router]: G1 voice router started
+[INFO] [1793453415.869994421] [g1_voice_router]: Ollama URL: http://192.168.123.99:11434/api/chat
+[INFO] [1793453415.870026102] [g1_voice_router]: Model: qwen3-vl:4b-instruct
+[INFO] [1793453415.870050007] [g1_voice_router]: Listening on /g1/asr_text, publishing to /g1/tts
+[INFO] [1793453424.888315141] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 学院有什么在研项目
+[INFO] [1793453424.888818111] [g1_voice_router]: Reply published to /g1/tts (319 bytes)
+[INFO] [1793453424.888903588] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=projects matched_id=faq_project
+[INFO] [1793453429.651185556] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 脑机中心负责人是谁
+[INFO] [1793453429.651565928] [g1_voice_router]: Reply published to /g1/tts (168 bytes)
+[INFO] [1793453429.651657005] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=people matched_id=faq_bci_leaders
+[INFO] [1793453434.399840320] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 学院有哪些科研团队
+[INFO] [1793453434.400357819] [g1_voice_router]: Reply published to /g1/tts (192 bytes)
+[INFO] [1793453434.400448672] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=college matched_id=faq_teams
+[INFO] [1793453439.159338144] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 学院学生拿过什么奖
+[INFO] [1793453439.159885084] [g1_voice_router]: Reply published to /g1/tts (181 bytes)
+[INFO] [1793453439.159970433] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=college matched_id=faq_awards
+[INFO] [1793453443.915818563] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 学院地址在哪里
+[INFO] [1793453443.916773972] [g1_voice_router]: Reply published to /g1/tts (162 bytes)
+[INFO] [1793453443.916851928] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=location matched_id=faq_location
+[INFO] [1793453448.668795151] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 具身智能开放平台是什么
+[INFO] [1793453448.669260136] [g1_voice_router]: Reply published to /g1/tts (216 bytes)
+[INFO] [1793453448.669427504] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=labs matched_id=faq_platform
+[INFO] [1793453453.496698452] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 肖汉光教授是谁
+[INFO] [1793453453.497189805] [g1_voice_router]: Reply published to /g1/tts (303 bytes)
+[INFO] [1793453453.497275026] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=people matched_id=faq_xiao
+[INFO] [1793453458.328202099] [g1_voice_router]: Intent recognized: GENERAL_QA | text: 宇树机器人多少钱
+[INFO] [1793453458.328415326] [g1_voice_router]: ASR text queued for Ollama; pending=1
+[INFO] [1793453458.328529732] [g1_voice_router]: Querying Ollama model: qwen3-vl:4b-instruct
+[INFO] [1793453458.991344417] [g1_voice_router]: Reply published to /g1/tts (166 bytes)
+[INFO] [1793453548.749781665] [rclcpp]: signal_handler(SIGINT/SIGTERM)

@@ -1,0 +1,94 @@
+cmake_minimum_required(VERSION 3.8)
+project(g1_voice_router)
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(ament_index_cpp REQUIRED)
+find_package(CURL REQUIRED)
+find_package(Threads REQUIRED)
+
+add_library(knowledge_base STATIC
+  src/knowledge_base.cpp
+)
+
+target_compile_features(knowledge_base PUBLIC cxx_std_17)
+
+# 复用工作区现有的 nlohmann/json.hpp。
+target_include_directories(knowledge_base PUBLIC
+  "${CMAKE_CURRENT_SOURCE_DIR}/include"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../src/include"
+)
+
+add_executable(voice_router
+  src/voice_router.cpp
+  src/intent_recognizer.cpp
+)
+
+target_compile_features(voice_router PUBLIC cxx_std_17)
+
+target_include_directories(voice_router PRIVATE
+  "${CMAKE_CURRENT_SOURCE_DIR}/include"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../src/include"
+)
+
+ament_target_dependencies(voice_router
+  rclcpp
+  std_msgs
+  ament_index_cpp
+)
+
+target_link_libraries(voice_router
+  knowledge_base
+  CURL::libcurl
+  Threads::Threads
+)
+
+install(
+  TARGETS voice_router
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+  FILES config/lab_knowledge.json
+  DESTINATION share/${PROJECT_NAME}/config
+)
+
+include(CTest)
+
+if(BUILD_TESTING)
+  add_executable(knowledge_base_test
+    test/knowledge_base_test.cpp
+  )
+
+  target_link_libraries(knowledge_base_test
+    knowledge_base
+  )
+
+  target_include_directories(knowledge_base_test PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/include"
+  )
+
+  add_test(
+    NAME knowledge_base_test
+    COMMAND knowledge_base_test
+      "${CMAKE_CURRENT_SOURCE_DIR}/config/lab_knowledge.json"
+  )
+
+  add_executable(intent_recognizer_test
+    test/intent_recognizer_test.cpp
+    src/intent_recognizer.cpp
+  )
+
+  target_include_directories(intent_recognizer_test PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+  )
+
+  add_test(
+    NAME intent_recognizer_test
+    COMMAND intent_recognizer_test
+  )
+endif()
+
+ament_package()

@@ -1,0 +1,76 @@
+=== ACTION EXEC INSTALL ===
+/home/unitree/lidar_ws/install/g1_action_executor
+/home/unitree/lidar_ws/install/g1_action_executor/include
+/home/unitree/lidar_ws/install/g1_action_executor/include/g1_action_executor
+/home/unitree/lidar_ws/install/g1_action_executor/include/g1_action_executor/arm_action_executor.hpp
+/home/unitree/lidar_ws/install/g1_action_executor/lib
+/home/unitree/lidar_ws/install/g1_action_executor/lib/g1_action_executor
+/home/unitree/lidar_ws/install/g1_action_executor/lib/g1_action_executor/g1_action_executor_node
+/home/unitree/lidar_ws/install/g1_action_executor/share
+/home/unitree/lidar_ws/install/g1_action_executor/share/ament_index
+/home/unitree/lidar_ws/install/g1_action_executor/share/ament_index/resource_index
+/home/unitree/lidar_ws/install/g1_action_executor/share/colcon-core
+/home/unitree/lidar_ws/install/g1_action_executor/share/colcon-core/packages
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/cmake
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/environment
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/hook
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/local_setup.bash
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/local_setup.dsv
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/local_setup.sh
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/local_setup.zsh
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/package.bash
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/package.dsv
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/package.ps1
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/package.sh
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/package.xml
+/home/unitree/lidar_ws/install/g1_action_executor/share/g1_action_executor/package.zsh
+=== ACTION EXEC PKG XML ===
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>g1_action_executor</name>
+  <version>0.1.0</version>
+  <description>
+    ROS 2 C++ arm action executor for Unitree G1-EDU.
+  </description>
+
+  <maintainer email="unitree@todo.todo">unitree</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>unitree_api</depend>
+  <depend>unitree_hg</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+=== SOURCE SEARCH ===
+/home/unitree/lidar_ws/src/g1_action_executor/backup_before_settle_20261031_062701/arm_action_executor.cpp
+/home/unitree/lidar_ws/src/g1_action_executor/backup_20261031_061557/arm_action_executor.cpp
+/home/unitree/lidar_ws/src/g1_action_executor/src/arm_action_executor.cpp
+=== ROS2 EXAMPLE SRC TREE ===
+/home/unitree/unitree_ros2/example/src/src/g1/dex3/g1_dex3_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/high_level/g1_arm_sdk_dds_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/high_level/loco_client_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/g1_tts_node.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/test.wav
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/g1_tts_test.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/g1_tts_node.before_pause.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/g1_audio_client_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/g1_tts_node.cpp.bak
+/home/unitree/unitree_ros2/example/src/src/g1/audio_client/g1_tts_node.working.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/lowlevel/gamepad.hpp
+/home/unitree/unitree_ros2/example/src/src/g1/lowlevel/g1_dual_arm_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/lowlevel/g1_ankle_swing_example.cpp
+/home/unitree/unitree_ros2/example/src/src/g1/lowlevel/behavior_lib/motion.seq
+=== ASR SRC ===
+/home/unitree/unitree_ros2/example/g1_asr_bridge/CMakeLists.txt
+/home/unitree/unitree_ros2/example/g1_asr_bridge/package.xml
+/home/unitree/unitree_ros2/example/g1_asr_bridge/src/asr_json_bridge.cpp

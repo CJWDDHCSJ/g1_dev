@@ -1,0 +1,20 @@
+--- backup/intent_recognizer_test.cpp
++++ current/intent_recognizer_test.cpp
+@@ -30,6 +30,17 @@
+         {"当前运行模式是什么？", Intent::ROBOT_STATUS},
+         {"谢谢", Intent::GOODBYE},
+         {"再见！", Intent::GOODBYE},
++        {"学院有什么在研项目", Intent::LAB_INTRO},
++        {"脑机中心负责人是谁", Intent::LAB_INTRO},
++        {"学院有哪些科研团队", Intent::LAB_INTRO},
++        {"学院学生拿过什么奖", Intent::LAB_INTRO},
++        {"学院什么时候成立", Intent::LAB_INTRO},
++        {"学院地址在哪里", Intent::LAB_INTRO},
++        {"具身智能开放平台是什么", Intent::LAB_INTRO},
++        {"肖汉光教授是谁", Intent::LAB_INTRO},
++        {"有机器狗吗", Intent::LAB_INTRO},
++        {"学院有哪些专业", Intent::GENERAL_QA},
++        {"机器狗多少钱", Intent::GENERAL_QA},
+         {"宇树机器人多少钱？", Intent::GENERAL_QA}
+     };
+ 

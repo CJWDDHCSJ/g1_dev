@@ -1,0 +1,32 @@
+[INFO] [1793453196.563038488] [g1_voice_router]: KnowledgeBase loaded: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json (FAQ=20, directions=3, projects=1, equipment=1)
+[INFO] [1793453196.565362929] [g1_voice_router]: G1 voice router started
+[INFO] [1793453196.565460118] [g1_voice_router]: Ollama URL: http://192.168.123.99:11434/api/chat
+[INFO] [1793453196.565492440] [g1_voice_router]: Model: qwen3-vl:4b-instruct
+[INFO] [1793453196.565514585] [g1_voice_router]: Listening on /g1/asr_text, publishing to /g1/tts
+[INFO] [1793453212.632992749] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 你好介绍一下你们实验室
+[INFO] [1793453212.633819128] [g1_voice_router]: Reply published to /g1/tts (412 bytes)
+[INFO] [1793453212.633906557] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=introduction matched_id=faq_intro
+[INFO] [1793453223.798186370] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 你们实验室主要研究什么
+[INFO] [1793453223.799418498] [g1_voice_router]: Reply published to /g1/tts (348 bytes)
+[INFO] [1793453223.799495110] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=research_directions matched_id=research_directions
+[INFO] [1793453235.351300191] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 实验室有多少人
+[INFO] [1793453235.352582082] [g1_voice_router]: Reply published to /g1/tts (162 bytes)
+[INFO] [1793453235.352677831] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=false category=fallback matched_id=
+[INFO] [1793453247.008299606] [g1_voice_router]: Intent recognized: ROBOT_INTRO | text: 介绍一下你自己
+[INFO] [1793453247.008708651] [g1_voice_router]: Reply published to /g1/tts (245 bytes)
+[INFO] [1793453247.008785711] [g1_voice_router]: ROBOT_INTRO local handling completed
+[INFO] [1793453251.758836771] [g1_voice_router]: Intent recognized: GOODBYE | text: 谢谢
+[INFO] [1793453251.759142899] [g1_voice_router]: Reply published to /g1/tts (75 bytes)
+[INFO] [1793453251.759215511] [g1_voice_router]: GOODBYE local handling completed
+[INFO] [1793453264.173680548] [g1_voice_router]: Intent recognized: GENERAL_QA | text: 宇树机器人多少钱
+[INFO] [1793453264.173893583] [g1_voice_router]: ASR text queued for Ollama; pending=1
+[INFO] [1793453264.174011221] [g1_voice_router]: Querying Ollama model: qwen3-vl:4b-instruct
+[INFO] [1793453267.885430233] [g1_voice_router]: Reply published to /g1/tts (166 bytes)
+[INFO] [1793453333.184703672] [g1_voice_router]: Intent recognized: GENERAL_QA | text: 学院有什么在研项目
+[INFO] [1793453333.184929028] [g1_voice_router]: ASR text queued for Ollama; pending=1
+[INFO] [1793453333.185016264] [g1_voice_router]: Querying Ollama model: qwen3-vl:4b-instruct
+[INFO] [1793453333.649801293] [g1_voice_router]: Reply published to /g1/tts (159 bytes)
+[INFO] [1793453338.380896872] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 实验室有哪些设备
+[INFO] [1793453338.381392738] [g1_voice_router]: Reply published to /g1/tts (180 bytes)
+[INFO] [1793453338.381486791] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=equipment matched_id=faq_equipment
+[INFO] [1793453396.523510830] [rclcpp]: signal_handler(SIGINT/SIGTERM)

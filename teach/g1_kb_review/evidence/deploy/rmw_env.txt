@@ -1,0 +1,25 @@
+=== NODE 10753 ENV (filtered) ===
+AMENT_PREFIX_PATH=/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble
+LD_LIBRARY_PATH=/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib
+ROS_LOCALHOST_ONLY=0
+CYCLONEDDS_URI=<CycloneDDS><Domain><General><Interfaces>
+ROS_DISTRO=humble
+RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+=== NODE 10751 ENV (filtered) ===
+ROS_LOCALHOST_ONLY=0
+CYCLONEDDS_URI=<CycloneDDS><Domain><General><Interfaces>
+ROS_DISTRO=humble
+RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+=== setup.sh ===
+#!/bin/bash
+echo "Setup unitree ros2 environment"
+source /opt/ros/humble/setup.bash
+source $HOME/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces>
+                            <NetworkInterface name="eth0" priority="default" multicast="default" />
+                        </Interfaces></General></Domain></CycloneDDS>'
+=== LOADED RMW LIBS ===
+/opt/ros/humble/lib/librmw_cyclonedds_cpp.so

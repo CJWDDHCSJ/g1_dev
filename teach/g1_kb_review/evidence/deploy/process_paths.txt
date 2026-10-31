@@ -1,0 +1,70 @@
+=== VOICE ROUTER PROCESSES ===
+  10751       1 Sat Oct 31 13:33:06 2026 /usr/bin/python3 /opt/ros/humble/bin/ros2 run g1_voice_router voice_router
+  10753   10751 Sat Oct 31 13:33:07 2026 /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router
+=== PIDS ===
+10751 /usr/bin/python3 /opt/ros/humble/bin/ros2 run g1_voice_router voice_router
+10753 /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router
+12423 bash -c echo "=== VOICE ROUTER PROCESSES ==="; ps -eo pid,ppid,lstart,cmd | grep -E "voice_router|g1_tts|action_executor|asr_json" | grep -v grep; echo "=== PIDS ==="; pgrep -af voice_router; echo "=== CWD ==="; for p in $(pgrep -f "bin/voice_router"); do echo "PID $p cwd=$(readlink /proc/$p/cwd)"; done; echo "=== INSTALLED EXEC ==="; ls -la /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/; echo "=== INSTALL SHARE TREE ==="; find /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router -maxdepth 3 | sort; echo "=== WORKSPACE PACKAGES ==="; ls -la /home/unitree/unitree_ros2/example/; echo "=== OTHER INSTALL PREFIXES ==="; ls -la /home/unitree/lidar_ws/install/ 2>/dev/null | head -20
+=== CWD ===
+PID 12423 cwd=/home/unitree
+=== INSTALLED EXEC ===
+total 12
+drwxrwxr-x 2 unitree unitree 4096 Oct 27 14:03 .
+drwxrwxr-x 3 unitree unitree 4096 Oct 27 14:03 ..
+lrwxrwxrwx 1 unitree unitree   69 Oct 27 14:03 voice_router -> /home/unitree/unitree_ros2/example/build/g1_voice_router/voice_router
+=== INSTALL SHARE TREE ===
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig.cmake
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig-version.cmake
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.dsv
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.sh
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.dsv
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.sh
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/hook
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/hook/cmake_prefix_path.dsv
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/hook/cmake_prefix_path.ps1
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/hook/cmake_prefix_path.sh
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.bash
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.dsv
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.sh
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.zsh
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.bash
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.dsv
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.ps1
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.sh
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.xml
+/home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.zsh
+=== WORKSPACE PACKAGES ===
+total 36
+drwxrwxr-x  9 unitree unitree 4096 Oct 27 14:02 .
+drwxrwxr-x  9 unitree unitree 4096 Oct 28 14:17 ..
+drwxrwxr-x  5 unitree unitree 4096 Oct 27 14:02 build
+drwxrwxr-x  2 unitree unitree 4096 Oct 28 06:44 config
+drwxrwxr-x  3 unitree unitree 4096 Oct 27 13:53 g1_asr_bridge
+drwxrwxr-x  6 unitree unitree 4096 Oct 31 13:23 g1_voice_router
+drwxrwxr-x  5 unitree unitree 4096 Oct 27 14:03 install
+drwxrwxr-x 42 unitree unitree 4096 Oct 31 13:43 log
+drwxrwxr-x  4 unitree unitree 4096 Oct 27 14:24 src
+=== OTHER INSTALL PREFIXES ===
+total 96
+drwxrwxr-x 5 unitree unitree  4096 Oct 31 07:06 .
+drwxrwxr-x 7 unitree unitree  4096 Oct 29 07:28 ..
+-rw-rw-r-- 1 unitree unitree     0 Oct 29 06:27 COLCON_IGNORE
+-rw-rw-r-- 1 unitree unitree     9 Oct 29 06:27 .colcon_install_layout
+drwxrwxr-x 5 unitree unitree  4096 Oct 30 15:54 g1_action_executor
+drwxrwxr-x 5 unitree unitree  4096 Oct 31 07:06 g1_sports_show
+drwxrwxr-x 4 unitree unitree  4096 Oct 29 06:27 lidar_check
+-rw-rw-r-- 1 unitree unitree  3760 Oct 31 07:06 local_setup.bash
+-rw-rw-r-- 1 unitree unitree  2045 Oct 31 07:06 local_setup.ps1
+-rw-rw-r-- 1 unitree unitree  4334 Oct 31 07:06 local_setup.sh
+-rw-rw-r-- 1 unitree unitree 14818 Oct 31 07:06 _local_setup_util_ps1.py
+-rw-rw-r-- 1 unitree unitree 14872 Oct 31 07:06 _local_setup_util_sh.py
+-rw-rw-r-- 1 unitree unitree  4155 Oct 31 07:06 local_setup.zsh
+-rw-rw-r-- 1 unitree unitree  1379 Oct 31 07:06 setup.bash
+-rw-rw-r-- 1 unitree unitree  1279 Oct 31 07:06 setup.ps1
+-rw-rw-r-- 1 unitree unitree  2153 Oct 31 07:06 setup.sh
+-rw-rw-r-- 1 unitree unitree  1365 Oct 31 07:06 setup.zsh

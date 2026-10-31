@@ -1,0 +1,17 @@
+=== DATE ===
+2026-10-31T13:44:01+00:00
+=== ROS_DISTRO ===
+humble
+=== RMW ===
+
+=== ROS_DOMAIN_ID ===
+<unset>
+=== ros2 ===
+/opt/ros/humble/bin/ros2
+usage: ros2 [-h] [--use-python-default-buffering]
+            Call `ros2 <command> -h` for more detailed usage. ...
+=== CYCLONE ===
+<unset>
+=== SETUP FILES ===
+-rw-rw-r-- 1 unitree unitree 1600 Oct 31 13:33 /home/unitree/unitree_ros2/example/install/setup.bash
+-rwxrwxr-x 1 unitree unitree  424 Oct 28 14:17 /home/unitree/unitree_ros2/setup.sh

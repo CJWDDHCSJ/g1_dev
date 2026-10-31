@@ -1,0 +1,104 @@
+[0.043s] Invoking command in '/home/unitree/unitree_ros2/example/build/g1_voice_router': CMAKE_PREFIX_PATH=/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[0.056s] UpdateCTestConfiguration  from :/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+[0.056s] Parse Config file:/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+[0.057s]    Site: ubuntu
+[0.057s]    Build name: (empty)
+[0.057s]  Add coverage exclude regular expressions.
+[0.057s] Create new tag: 20261031-1333 - Experimental
+[0.058s] UpdateCTestConfiguration  from :/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+[0.058s] Parse Config file:/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini
+[0.058s] Test project /home/unitree/unitree_ros2/example/build/g1_voice_router
+[0.058s] Constructing a list of tests
+[0.058s] Done constructing a list of tests
+[0.058s] Updating test list for fixtures
+[0.058s] Added 0 tests to meet fixture requirements
+[0.059s] Checking test dependency graph...
+[0.059s] Checking test dependency graph end
+[0.059s] test 1
+[0.059s]     Start 1: knowledge_base_test
+[0.059s] 
+[0.059s] 1: Test command: /home/unitree/unitree_ros2/example/build/g1_voice_router/knowledge_base_test "/home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json"
+[0.059s] 1: Test timeout computed to be: 10000000
+[0.076s] 1: ========== KnowledgeBase Test ==========
+[0.077s] 1: Knowledge file: /home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json
+[0.077s] 1: [PASS] normal JSON load
+[0.077s] 1: [PASS] loaded flag is true
+[0.077s] 1: [PASS] FAQ count is 20
+[0.077s] 1: [PASS] research direction count is 3
+[0.078s] 1: [PASS] project count is 1
+[0.078s] 1: [PASS] equipment count is 1
+[0.078s] 1: [PASS] introduction query
+[0.078s] 1: [PASS] introduction query with greeting prefix
+[0.078s] 1: [PASS] FAQ question embedded in a longer sentence
+[0.078s] 1: [PASS] research directions query
+[0.078s] 1: [PASS] BCI directions FAQ
+[0.079s] 1: [PASS] embodied lab research FAQ
+[0.079s] 1: [PASS] project query
+[0.079s] 1: [PASS] equipment query
+[0.079s] 1: [PASS] FAQ exact leader hit
+[0.079s] 1: [PASS] Chinese synonym expression
+[0.079s] 1: [PASS] SERES co-building FAQ
+[0.079s] 1: [PASS] two labs are distinguished
+[0.080s] 1: [PASS] location query
+[0.080s] 1: [PASS] college teams FAQ
+[0.080s] 1: [PASS] college awards FAQ
+[0.080s] 1: [PASS] unverified equipment count is not invented
+[0.081s] 1: [PASS] unknown team size falls back
+[0.081s] 1: [PASS] no-match question falls back
+[0.081s] 1: [PASS] empty input falls back
+[0.081s] 1: [PASS] answers contain no source URL
+[0.082s] 1: [PASS] missing file is rejected
+[0.082s] 1: [PASS] query after failed load uses fallback
+[0.082s] 1: [PASS] malformed fixture written
+[0.082s] 1: [PASS] malformed JSON is rejected
+[0.083s] 1: [PASS] unsupported fixture written
+[0.083s] 1: [PASS] unsupported schema is rejected
+[0.083s] 1: [PASS] empty-fields fixture written
+[0.083s] 1: [PASS] empty fields load
+[0.083s] 1: [PASS] empty introduction is not spoken
+[0.083s] 1: [PASS] empty location is not spoken
+[0.084s] 1: [PASS] empty path is rejected
+[0.084s] 1: =========================================
+[0.084s] 1: Passed: 37
+[0.084s] 1: Failed: 0
+[0.084s] 1/2 Test #1: knowledge_base_test ..............   Passed    0.02 sec
+[0.085s] test 2
+[0.085s]     Start 2: intent_recognizer_test
+[0.085s] 
+[0.085s] 2: Test command: /home/unitree/unitree_ros2/example/build/g1_voice_router/intent_recognizer_test
+[0.085s] 2: Test timeout computed to be: 10000000
+[0.086s] 2: ========== Intent Recognizer Test ==========
+[0.086s] 2: [PASS] 你好 -> GREETING
+[0.086s] 2: [PASS] 您好！ -> GREETING
+[0.087s] 2: [PASS] GOOD MORNING -> GENERAL_QA
+[0.088s] 2: [PASS] 你好，介绍一下你们实验室 -> LAB_INTRO
+[0.088s] 2: [PASS] 你们实验室研究什么？ -> LAB_INTRO
+[0.088s] 2: [PASS] 介绍一下你自己 -> ROBOT_INTRO
+[0.089s] 2: [PASS] 你能做什么 -> ROBOT_INTRO
+[0.089s] 2: [PASS] 给我们展示一下 -> DEMO_ACTION
+[0.089s] 2: [PASS] 挥挥手 -> DEMO_ACTION
+[0.089s] 2: [PASS] 你现在状态怎么样 -> ROBOT_STATUS
+[0.089s] 2: [PASS] 当前运行模式是什么？ -> ROBOT_STATUS
+[0.090s] 2: [PASS] 谢谢 -> GOODBYE
+[0.090s] 2: [PASS] 再见！ -> GOODBYE
+[0.090s] 2: [PASS] 学院有什么在研项目 -> LAB_INTRO
+[0.090s] 2: [PASS] 脑机中心负责人是谁 -> LAB_INTRO
+[0.091s] 2: [PASS] 学院有哪些科研团队 -> LAB_INTRO
+[0.091s] 2: [PASS] 学院学生拿过什么奖 -> LAB_INTRO
+[0.091s] 2: [PASS] 学院什么时候成立 -> LAB_INTRO
+[0.091s] 2: [PASS] 学院地址在哪里 -> LAB_INTRO
+[0.091s] 2: [PASS] 具身智能开放平台是什么 -> LAB_INTRO
+[0.092s] 2: [PASS] 肖汉光教授是谁 -> LAB_INTRO
+[0.092s] 2: [PASS] 有机器狗吗 -> LAB_INTRO
+[0.092s] 2: [PASS] 学院有哪些专业 -> GENERAL_QA
+[0.092s] 2: [PASS] 机器狗多少钱 -> GENERAL_QA
+[0.092s] 2: [PASS] 宇树机器人多少钱？ -> GENERAL_QA
+[0.092s] 2: ============================================
+[0.093s] 2: Passed: 25
+[0.093s] 2: Failed: 0
+[0.093s] 2/2 Test #2: intent_recognizer_test ...........   Passed    0.00 sec
+[0.093s] 
+[0.094s] 100% tests passed, 0 tests failed out of 2
+[0.094s] 
+[0.094s] Total Test time (real) =   0.03 sec
+[0.095s] Invoked command in '/home/unitree/unitree_ros2/example/build/g1_voice_router' returned '0': CMAKE_PREFIX_PATH=/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process

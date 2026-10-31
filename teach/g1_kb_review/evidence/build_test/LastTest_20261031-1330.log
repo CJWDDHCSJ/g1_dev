@@ -1,0 +1,104 @@
+Start testing: Oct 31 13:30 UTC
+----------------------------------------------------------
+1/2 Testing: knowledge_base_test
+1/2 Test: knowledge_base_test
+Command: "/home/unitree/unitree_ros2/example/build/g1_voice_router/knowledge_base_test" "/home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json"
+Directory: /home/unitree/unitree_ros2/example/build/g1_voice_router
+"knowledge_base_test" start time: Oct 31 13:30 UTC
+Output:
+----------------------------------------------------------
+========== KnowledgeBase Test ==========
+Knowledge file: /home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json
+[PASS] normal JSON load
+[PASS] loaded flag is true
+[PASS] FAQ count is 20
+[PASS] research direction count is 3
+[PASS] project count is 1
+[PASS] equipment count is 1
+[PASS] introduction query
+[PASS] introduction query with greeting prefix
+[PASS] FAQ question embedded in a longer sentence
+[PASS] research directions query
+[PASS] BCI directions FAQ
+[PASS] embodied lab research FAQ
+[PASS] project query
+[PASS] equipment query
+[PASS] FAQ exact leader hit
+[PASS] Chinese synonym expression
+[PASS] SERES co-building FAQ
+[PASS] two labs are distinguished
+[PASS] location query
+[PASS] college teams FAQ
+[PASS] college awards FAQ
+[PASS] unverified equipment count is not invented
+[PASS] unknown team size falls back
+[PASS] no-match question falls back
+[PASS] empty input falls back
+[PASS] answers contain no source URL
+[PASS] missing file is rejected
+[PASS] query after failed load uses fallback
+[PASS] malformed fixture written
+[PASS] malformed JSON is rejected
+[PASS] unsupported fixture written
+[PASS] unsupported schema is rejected
+[PASS] empty-fields fixture written
+[PASS] empty fields load
+[PASS] empty introduction is not spoken
+[PASS] empty location is not spoken
+[PASS] empty path is rejected
+=========================================
+Passed: 37
+Failed: 0
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"knowledge_base_test" end time: Oct 31 13:30 UTC
+"knowledge_base_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: intent_recognizer_test
+2/2 Test: intent_recognizer_test
+Command: "/home/unitree/unitree_ros2/example/build/g1_voice_router/intent_recognizer_test"
+Directory: /home/unitree/unitree_ros2/example/build/g1_voice_router
+"intent_recognizer_test" start time: Oct 31 13:30 UTC
+Output:
+----------------------------------------------------------
+========== Intent Recognizer Test ==========
+[PASS] 你好 -> GREETING
+[PASS] 您好！ -> GREETING
+[PASS] GOOD MORNING -> GENERAL_QA
+[PASS] 你好，介绍一下你们实验室 -> LAB_INTRO
+[PASS] 你们实验室研究什么？ -> LAB_INTRO
+[PASS] 介绍一下你自己 -> ROBOT_INTRO
+[PASS] 你能做什么 -> ROBOT_INTRO
+[PASS] 给我们展示一下 -> DEMO_ACTION
+[PASS] 挥挥手 -> DEMO_ACTION
+[PASS] 你现在状态怎么样 -> ROBOT_STATUS
+[PASS] 当前运行模式是什么？ -> ROBOT_STATUS
+[PASS] 谢谢 -> GOODBYE
+[PASS] 再见！ -> GOODBYE
+[PASS] 学院有什么在研项目 -> LAB_INTRO
+[PASS] 脑机中心负责人是谁 -> LAB_INTRO
+[PASS] 学院有哪些科研团队 -> LAB_INTRO
+[PASS] 学院学生拿过什么奖 -> LAB_INTRO
+[PASS] 学院什么时候成立 -> LAB_INTRO
+[PASS] 学院地址在哪里 -> LAB_INTRO
+[PASS] 具身智能开放平台是什么 -> LAB_INTRO
+[PASS] 肖汉光教授是谁 -> LAB_INTRO
+[PASS] 有机器狗吗 -> LAB_INTRO
+[PASS] 学院有哪些专业 -> GENERAL_QA
+[PASS] 机器狗多少钱 -> GENERAL_QA
+[PASS] 宇树机器人多少钱？ -> GENERAL_QA
+============================================
+Passed: 25
+Failed: 0
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"intent_recognizer_test" end time: Oct 31 13:30 UTC
+"intent_recognizer_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 31 13:30 UTC

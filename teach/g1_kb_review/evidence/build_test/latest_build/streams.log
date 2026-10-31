@@ -1,0 +1,35 @@
+[0.023s] Invoking command in '/home/unitree/unitree_ros2/example/build/g1_voice_router': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/unitree/unitree_ros2/example/build/g1_voice_router -- -j4 -l4
+[0.103s] Consolidate compiler generated dependencies of target intent_recognizer_test
+[0.120s] [ 10%] Building CXX object CMakeFiles/knowledge_base.dir/src/knowledge_base.cpp.o
+[0.122s] [ 40%] Built target intent_recognizer_test
+[5.656s] [ 50%] Linking CXX static library libknowledge_base.a
+[5.760s] [ 50%] Built target knowledge_base
+[5.794s] Consolidate compiler generated dependencies of target voice_router
+[5.805s] [ 60%] Building CXX object CMakeFiles/knowledge_base_test.dir/test/knowledge_base_test.cpp.o
+[5.821s] [ 70%] Building CXX object CMakeFiles/voice_router.dir/src/voice_router.cpp.o
+[9.449s] [ 80%] Linking CXX executable knowledge_base_test
+[9.713s] [ 80%] Built target knowledge_base_test
+[30.746s] [ 90%] Linking CXX executable voice_router
+[31.939s] [100%] Built target voice_router
+[31.965s] Invoked command in '/home/unitree/unitree_ros2/example/build/g1_voice_router' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/unitree/unitree_ros2/example/build/g1_voice_router -- -j4 -l4
+[31.985s] Invoking command in '/home/unitree/unitree_ros2/example/build/g1_voice_router': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/unitree/unitree_ros2/example/build/g1_voice_router
+[32.003s] -- Install configuration: ""
+[32.003s] -- Execute custom install script
+[32.004s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router
+[32.004s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json
+[32.005s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/package_run_dependencies/g1_voice_router
+[32.005s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/parent_prefix_path/g1_voice_router
+[32.006s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.sh
+[32.006s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.dsv
+[32.006s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.sh
+[32.007s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.dsv
+[32.007s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.bash
+[32.007s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.sh
+[32.008s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.zsh
+[32.008s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.dsv
+[32.008s] -- Symlinking: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.dsv
+[32.025s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/packages/g1_voice_router
+[32.025s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig.cmake
+[32.026s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig-version.cmake
+[32.026s] -- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.xml
+[32.030s] Invoked command in '/home/unitree/unitree_ros2/example/build/g1_voice_router' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/unitree/unitree_ros2/example/build/g1_voice_router

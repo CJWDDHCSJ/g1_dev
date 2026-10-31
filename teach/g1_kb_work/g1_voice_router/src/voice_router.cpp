@@ -1,0 +1,691 @@
+#include <curl/curl.h>
+#include <algorithm>
+#include <ament_index_cpp/get_package_share_directory.hpp>
+#include <nlohmann/json.hpp>
+
+#include <cctype>
+#include <condition_variable>
+#include <cstddef>
+#include <deque>
+#include <iterator>
+#include <memory>
+#include <mutex>
+#include <string>
+#include <thread>
+#include <utility>
+
+#include "g1_voice_router/intent_recognizer.hpp"
+#include "g1_voice_router/knowledge_base.hpp"
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+using Json = nlohmann::json;
+
+class G1VoiceRouter : public rclcpp::Node
+{
+public:
+  G1VoiceRouter()
+  : Node("g1_voice_router")
+  {
+    ollama_url_ = declare_parameter<std::string>(
+      "ollama_url",
+      "http://192.168.123.99:11434/api/chat");
+
+    model_name_ = declare_parameter<std::string>(
+      "model",
+      "qwen3-vl:4b-instruct");
+
+    timeout_seconds_ = declare_parameter<int>(
+      "request_timeout_seconds", 60);
+
+    if (timeout_seconds_ < 5 || timeout_seconds_ > 300) {
+      RCLCPP_WARN(
+        get_logger(),
+        "Invalid request timeout; using 60 seconds");
+      timeout_seconds_ = 60;
+    }
+
+    std::string default_knowledge_file;
+
+    try {
+      default_knowledge_file =
+        ament_index_cpp::get_package_share_directory(
+          "g1_voice_router") +
+        "/config/lab_knowledge.json";
+    } catch (const std::exception & error) {
+      RCLCPP_ERROR(
+        get_logger(),
+        "Failed to locate g1_voice_router share directory: %s",
+        error.what());
+    }
+
+    knowledge_file_ = declare_parameter<std::string>(
+      "knowledge_file",
+      default_knowledge_file);
+
+    std::string knowledge_error;
+
+    if (!knowledge_base_.load(knowledge_file_, knowledge_error)) {
+      RCLCPP_ERROR(
+        get_logger(),
+        "KnowledgeBase load failed: %s",
+        knowledge_error.c_str());
+    } else {
+      RCLCPP_INFO(
+        get_logger(),
+        "KnowledgeBase loaded: %s "
+        "(FAQ=%zu, directions=%zu, projects=%zu, equipment=%zu)",
+        knowledge_file_.c_str(),
+        knowledge_base_.faq_count(),
+        knowledge_base_.direction_count(),
+        knowledge_base_.project_count(),
+        knowledge_base_.equipment_count());
+    }
+
+    system_prompt_ = declare_parameter<std::string>(
+      "system_prompt",
+      "你是运行在宇树G1人形机器人中的中文语音助手。"
+      "用户输入通常来自语音识别，可能存在少量错字。"
+      "请使用简体中文，回答自然、简洁，适合直接语音播报，"
+      "通常回答一到三句话。不要使用Markdown、表格或代码块。"
+      "不要编造机器人实时状态；没有传感器数据时要诚实说明。");
+
+    // 保留最近的对话上下文，第一条始终是系统提示词。
+    history_.push_back(Json{
+      {"role", "system"},
+      {"content", system_prompt_}
+    });
+
+    // 输出仍然使用已通过测试的 TTS 接口。
+    publisher_ =
+      create_publisher<std_msgs::msg::String>(
+        "/g1/tts", 10);
+
+    // 发布固定白名单动作请求给 g1_action_executor。
+    action_publisher_ =
+      create_publisher<std_msgs::msg::String>(
+        "/g1/action_request", 10);
+
+
+    // 输入仍然使用已通过测试的 ASR 桥接接口。
+    subscription_ =
+      create_subscription<std_msgs::msg::String>(
+        "/g1/asr_text",
+        10,
+        [this](const std_msgs::msg::String::SharedPtr msg) {
+          enqueue_user_text(msg->data);
+        });
+
+    // 先建立订阅和发布接口，再启动工作线程。
+    worker_ = std::thread(
+      &G1VoiceRouter::worker_loop, this);
+
+    RCLCPP_INFO(
+      get_logger(),
+      "G1 voice router started");
+
+    RCLCPP_INFO(
+      get_logger(),
+      "Ollama URL: %s",
+      ollama_url_.c_str());
+
+    RCLCPP_INFO(
+      get_logger(),
+      "Model: %s",
+      model_name_.c_str());
+
+    RCLCPP_INFO(
+      get_logger(),
+      "Listening on /g1/asr_text, publishing to /g1/tts");
+  }
+
+  ~G1VoiceRouter() override
+  {
+    stop_worker();
+  }
+
+  // 退出时停止接收新任务，并等待正在进行的请求结束。
+  void stop_worker()
+  {
+    {
+      std::lock_guard<std::mutex> lock(queue_mutex_);
+      stopping_ = true;
+      queue_.clear();
+    }
+
+    queue_cv_.notify_all();
+
+    if (worker_.joinable()) {
+      worker_.join();
+    }
+  }
+
+private:
+  static std::size_t write_callback(
+    char * data,
+    std::size_t size,
+    std::size_t count,
+    void * user_data)
+  {
+    const std::size_t bytes = size * count;
+
+    auto * response =
+      static_cast<std::string *>(user_data);
+
+    response->append(data, bytes);
+    return bytes;
+  }
+
+  static std::string trim(std::string text)
+  {
+    const auto not_space = [](unsigned char c) {
+      return std::isspace(c) == 0;
+    };
+
+    const auto first = std::find_if(
+      text.begin(), text.end(), not_space);
+
+    const auto last = std::find_if(
+      text.rbegin(), text.rend(), not_space).base();
+
+    if (first >= last) {
+      return {};
+    }
+
+    return std::string(first, last);
+  }
+
+
+  static std::string normalize_intent_text(std::string text)
+  {
+    text = trim(std::move(text));
+  
+    static const std::string punctuation[] = {
+      "。", "！", "？", "，", "、", "；", "：",
+      ".", ",", "!", "?", ";", ":",
+      "\"", "'", "“", "”", " ",
+      "\t", "\r", "\n"
+    };
+  
+    for (const auto & mark : punctuation) {
+      std::size_t pos = 0;
+      while ((pos = text.find(mark, pos)) != std::string::npos) {
+        text.erase(pos, mark.size());
+      }
+    }
+  
+    std::transform(
+      text.begin(), text.end(), text.begin(),
+      [](unsigned char c) {
+        return static_cast<char>(std::tolower(c));
+      });
+  
+    return text;
+  }
+  
+  static bool match_greeting_reply(
+    const std::string & raw_text,
+    std::string & reply)
+  {
+    const std::string text = normalize_intent_text(raw_text);
+  
+    if (text == "你好" ||
+        text == "您好" ||
+        text == "你好啊" ||
+        text == "嗨" ||
+        text == "嗨嗨" ||
+        text == "哈喽" ||
+        text == "hello" ||
+        text == "hi") {
+      reply = "你好！很高兴见到你。";
+      return true;
+    }
+  
+    if (text == "早上好" || text == "早安" || text == "上午好") {
+      reply = "早上好！今天也一起加油。";
+      return true;
+    }
+  
+    if (text == "下午好") {
+      reply = "下午好！很高兴见到你。";
+      return true;
+    }
+  
+    if (text == "晚上好") {
+      reply = "晚上好！今天辛苦了。";
+      return true;
+    }
+  
+    return false;
+  }
+  
+
+  void enqueue_user_text(const std::string & raw_text)
+  {
+    const std::string text = trim(raw_text);
+
+    if (text.empty()) {
+      RCLCPP_WARN(
+        get_logger(),
+        "Received empty ASR text; ignored");
+      return;
+    }
+
+    const auto intent_result =
+      intent_recognizer_.recognize(text);
+
+    RCLCPP_INFO(
+      get_logger(),
+      "Intent recognized: %s | text: %s",
+      g1_voice_router::IntentRecognizer::to_string(
+        intent_result.intent),
+      intent_result.normalized_text.c_str());
+
+
+
+      // 明确问候语走固定规则，不经过 Ollama。
+      // 动作请求和 TTS 回复分别发布，由两个节点并行处理。
+      std::string greeting_reply;
+    
+      if (intent_result.intent == g1_voice_router::Intent::GREETING &&
+        match_greeting_reply(text, greeting_reply)) {
+        std_msgs::msg::String action_msg;
+        action_msg.data = "wave";
+        action_publisher_->publish(action_msg);
+    
+        RCLCPP_INFO(
+          get_logger(),
+          "Greeting intent detected: [%s], published action [wave]",
+          text.c_str());
+    
+        publish_reply(greeting_reply);
+        return;
+      }
+    
+
+    // --------------------------------------------------------
+    // LAB_INTRO：本地知识库
+    // 有资料时直接回答；资料缺失时返回安全兜底。
+    // 不进入 Ollama 消息队列。
+    // --------------------------------------------------------
+
+    if (intent_result.intent ==
+        g1_voice_router::Intent::LAB_INTRO)
+    {
+      const auto result = knowledge_base_.query(text);
+
+      publish_reply(result.answer);
+
+      RCLCPP_INFO(
+        get_logger(),
+        "LAB_INTRO local knowledge base completed: "
+        "found=%s category=%s matched_id=%s "
+        "match_type=%s match_score=%d",
+        result.found ? "true" : "false",
+        result.category.c_str(),
+        result.matched_id.c_str(),
+        result.match_type.c_str(),
+        result.match_score);
+
+      return;
+    }
+
+
+    // --------------------------------------------------------
+    // ROBOT_INTRO：机器人自我介绍
+    // 本地固定回答，不调用 Ollama
+    // --------------------------------------------------------
+
+    if (intent_result.intent ==
+        g1_voice_router::Intent::ROBOT_INTRO)
+    {
+      const std::string reply =
+        "我是宇树 G1 EDU 人形机器人。"
+        "我可以通过语音识别接收你的问题，"
+        "连接外部大语言模型进行中文对话，"
+        "还可以执行挥手、举手和比心等预设手臂动作。"
+        "很高兴为你介绍我们的机器人系统。";
+
+      publish_reply(reply);
+
+      RCLCPP_INFO(
+        get_logger(),
+        "ROBOT_INTRO local handling completed");
+
+      return;
+    }
+
+
+    // --------------------------------------------------------
+    // GOODBYE：告别
+    // 本地固定回答，不调用 Ollama
+    // --------------------------------------------------------
+
+    if (intent_result.intent ==
+        g1_voice_router::Intent::GOODBYE)
+    {
+      const std::string reply =
+        "感谢你的参观！"
+        "很高兴和你交流，祝你今天愉快，再见！";
+
+      publish_reply(reply);
+
+      RCLCPP_INFO(
+        get_logger(),
+        "GOODBYE local handling completed");
+
+      return;
+    }
+
+
+    std::size_t queue_size = 0;
+
+    {
+      std::lock_guard<std::mutex> lock(queue_mutex_);
+
+      if (stopping_) {
+        return;
+      }
+
+      // 不做文本去重，每条 ASR 消息独立处理。
+      queue_.push_back(text);
+      queue_size = queue_.size();
+    }
+
+    RCLCPP_INFO(
+      get_logger(),
+      "ASR text queued for Ollama; pending=%zu",
+      queue_size);
+
+    queue_cv_.notify_one();
+  }
+
+  bool query_ollama(
+    const std::string & user_text,
+    std::string & answer)
+  {
+    Json messages = Json::array();
+
+    for (const auto & message : history_) {
+      messages.push_back(message);
+    }
+
+    messages.push_back(Json{
+      {"role", "user"},
+      {"content", user_text}
+    });
+
+    const Json request_json = {
+      {"model", model_name_},
+      {"messages", messages},
+      {"stream", false},
+      {"options", {
+        {"temperature", 0.2},
+        {"num_predict", 160}
+      }}
+    };
+
+    const std::string request_body = request_json.dump();
+    std::string response_body;
+
+    CURL * curl = curl_easy_init();
+
+    if (curl == nullptr) {
+      RCLCPP_ERROR(
+        get_logger(),
+        "Failed to create CURL request");
+      return false;
+    }
+
+    curl_slist * headers = nullptr;
+    headers = curl_slist_append(
+      headers, "Content-Type: application/json");
+
+    if (headers == nullptr) {
+      curl_easy_cleanup(curl);
+
+      RCLCPP_ERROR(
+        get_logger(),
+        "Failed to create HTTP headers");
+      return false;
+    }
+
+    curl_easy_setopt(
+      curl, CURLOPT_URL, ollama_url_.c_str());
+
+    curl_easy_setopt(
+      curl, CURLOPT_HTTPHEADER, headers);
+
+    curl_easy_setopt(
+      curl, CURLOPT_POST, 1L);
+
+    curl_easy_setopt(
+      curl, CURLOPT_POSTFIELDS, request_body.c_str());
+
+    curl_easy_setopt(
+      curl, CURLOPT_POSTFIELDSIZE,
+      static_cast<long>(request_body.size()));
+
+    curl_easy_setopt(
+      curl, CURLOPT_WRITEFUNCTION,
+      &G1VoiceRouter::write_callback);
+
+    curl_easy_setopt(
+      curl, CURLOPT_WRITEDATA, &response_body);
+
+    curl_easy_setopt(
+      curl, CURLOPT_CONNECTTIMEOUT_MS, 3000L);
+
+    curl_easy_setopt(
+      curl, CURLOPT_TIMEOUT_MS,
+      static_cast<long>(timeout_seconds_) * 1000L);
+
+    // 在后台线程中执行同步 HTTP 请求。
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1L);
+
+    const CURLcode result = curl_easy_perform(curl);
+
+    long http_status = 0;
+    curl_easy_getinfo(
+      curl, CURLINFO_RESPONSE_CODE, &http_status);
+
+    curl_slist_free_all(headers);
+    curl_easy_cleanup(curl);
+
+    if (result != CURLE_OK) {
+      RCLCPP_ERROR(
+        get_logger(),
+        "Ollama HTTP request failed: %s",
+        curl_easy_strerror(result));
+      return false;
+    }
+
+    if (http_status < 200 || http_status >= 300) {
+      const std::string detail =
+        response_body.substr(0, 300);
+
+      RCLCPP_ERROR(
+        get_logger(),
+        "Ollama HTTP status %ld; response: %s",
+        http_status, detail.c_str());
+      return false;
+    }
+
+    try {
+      const Json response =
+        Json::parse(response_body);
+
+      if (!response.contains("message") ||
+          !response["message"].is_object() ||
+          !response["message"].contains("content") ||
+          !response["message"]["content"].is_string()) {
+        RCLCPP_ERROR(
+          get_logger(),
+          "Ollama response has no message.content field");
+        return false;
+      }
+
+      answer = trim(
+        response["message"]["content"].get<std::string>());
+
+      if (answer.empty()) {
+        RCLCPP_ERROR(
+          get_logger(),
+          "Ollama returned an empty answer");
+        return false;
+      }
+
+      // 只有请求成功时才保存这轮对话。
+      history_.push_back(Json{
+        {"role", "user"},
+        {"content", user_text}
+      });
+
+      history_.push_back(Json{
+        {"role", "assistant"},
+        {"content", answer}
+      });
+
+      // 保留系统提示词和最近最多六轮对话。
+      while (history_.size() > 13) {
+        history_.erase(std::next(history_.begin()));
+        history_.erase(std::next(history_.begin()));
+      }
+
+      return true;
+    } catch (const Json::exception & error) {
+      RCLCPP_ERROR(
+        get_logger(),
+        "Failed to parse Ollama JSON: %s",
+        error.what());
+      return false;
+    }
+  }
+
+  void publish_reply(const std::string & reply)
+  {
+    if (!rclcpp::ok()) {
+      return;
+    }
+
+    std_msgs::msg::String output;
+    output.data = reply;
+
+    publisher_->publish(output);
+
+    RCLCPP_INFO(
+      get_logger(),
+      "Reply published to /g1/tts (%zu bytes)",
+      reply.size());
+  }
+
+  void worker_loop()
+  {
+    while (true) {
+      std::string user_text;
+
+      {
+        std::unique_lock<std::mutex> lock(queue_mutex_);
+
+        queue_cv_.wait(lock, [this]() {
+          return stopping_ || !queue_.empty();
+        });
+
+        if (stopping_) {
+          return;
+        }
+
+        user_text = std::move(queue_.front());
+        queue_.pop_front();
+      }
+
+      RCLCPP_INFO(
+        get_logger(),
+        "Querying Ollama model: %s",
+        model_name_.c_str());
+
+      std::string reply;
+
+      if (!query_ollama(user_text, reply)) {
+        if (!rclcpp::ok()) {
+          continue;
+        }
+
+        // 网络、模型或 API 出错时给出可听到的提示。
+        reply = "抱歉，我暂时无法连接到对话模型。";
+
+        RCLCPP_WARN(
+          get_logger(),
+          "Using fallback reply after Ollama failure");
+      }
+
+      publish_reply(reply);
+    }
+  }
+
+  std::string ollama_url_;
+  std::string model_name_;
+  std::string system_prompt_;
+  int timeout_seconds_{60};
+
+  std::deque<Json> history_;
+
+  std::string knowledge_file_;
+
+  g1_voice_router::KnowledgeBase knowledge_base_;
+
+  g1_voice_router::IntentRecognizer intent_recognizer_;
+
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr
+    subscription_;
+
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr
+    publisher_;
+
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr
+    action_publisher_;
+
+  std::mutex queue_mutex_;
+  std::condition_variable queue_cv_;
+  std::deque<std::string> queue_;
+  bool stopping_{false};
+  std::thread worker_;
+};
+
+int main(int argc, char ** argv)
+{
+  rclcpp::init(argc, argv);
+
+  const CURLcode curl_status =
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+
+  if (curl_status != CURLE_OK) {
+    RCLCPP_ERROR(
+      rclcpp::get_logger("g1_voice_router"),
+      "curl_global_init failed");
+
+    rclcpp::shutdown();
+    return 1;
+  }
+
+  try {
+    auto node = std::make_shared<G1VoiceRouter>();
+
+    rclcpp::spin(node);
+
+    node->stop_worker();
+    node.reset();
+  } catch (const std::exception & error) {
+    RCLCPP_ERROR(
+      rclcpp::get_logger("g1_voice_router"),
+      "Fatal error: %s",
+      error.what());
+  }
+
+  if (rclcpp::ok()) {
+    rclcpp::shutdown();
+  }
+
+  curl_global_cleanup();
+  return 0;
+}

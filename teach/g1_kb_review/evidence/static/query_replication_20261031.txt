@@ -1,0 +1,222 @@
+STATIC REPLICATION OF knowledge_base.cpp query()
+JSON: remote_snapshot/g1_voice_router/config/lab_knowledge.json
+NOTE: local static analysis, not runtime; no ROS node involved.
+NOTE: score=0 for exact/contained FAQ matches is expected; those paths bypass match_score.
+
+INPUT: 重点实验室什么时候成立
+  note: WRONG: answers college founding
+  normalized: 重点实验室什么时候成立
+  path: FAQ keyword score
+  -> category=college matched_id=faq_college_established answer_bytes=99 keyword_score=7
+  answer: 重庆理工大学两江人工智能学院成立于2018年6月9日，办学地点在两江校区。
+
+INPUT: 重点实验室主任是谁
+  note: WRONG: answers lab naming, no director
+  normalized: 重点实验室主任是谁
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_embodied_name answer_bytes=216 keyword_score=6
+  answer: 公开可查的有两个机构：一个是人形机器人具身智能感知与自主学习重庆市重点实验室，另一个是学院的具身智能开放平台。没有只叫具身智能实验室的官方机构。
+
+INPUT: 介绍一下你们的实验室
+  note: fallback due to 的
+  normalized: 介绍一下你们的实验室
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 学院在哪里
+  note: fallback; intent keyword exists but FAQ question mismatch
+  normalized: 学院在哪里
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 学院在哪
+  note: fallback
+  normalized: 学院在哪
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 实验室在哪
+  note: fallback
+  normalized: 实验室在哪
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 学院的地址
+  note: fallback due to 的
+  normalized: 学院的地址
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 展示一下具身智能平台
+  note: LAB_INTRO before DEMO_ACTION; action not triggered
+  normalized: 展示一下具身智能平台
+  path: FAQ keyword score
+  -> category=research_directions matched_id=faq_embodied_research answer_bytes=306 keyword_score=5
+  answer: 这个市级重点实验室主要研究三块：复杂场景下具身智能感知的抗干扰多模态融合学习；开放场景下人机环境交互的域泛化和抗知识遗忘持续学习；动态场景下技能可迁移的自主学习。应用方向主要是汽车
+
+INPUT: 给我们展示一下重点实验室
+  note: LAB_INTRO before DEMO_ACTION; action not triggered
+  normalized: 给我们展示一下重点实验室
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_embodied_name answer_bytes=216 keyword_score=6
+  answer: 公开可查的有两个机构：一个是人形机器人具身智能感知与自主学习重庆市重点实验室，另一个是学院的具身智能开放平台。没有只叫具身智能实验室的官方机构。
+
+INPUT: 实验室当前状态怎么样
+  note: LAB_INTRO before ROBOT_STATUS; status not triggered
+  normalized: 实验室当前状态怎么样
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 实验室运行正常吗
+  note: LAB_INTRO before ROBOT_STATUS; status not triggered
+  normalized: 实验室运行正常吗
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 脑机中心有多少人
+  note: WRONG: describes center, no headcount
+  normalized: 脑机中心有多少人
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_bci_what answer_bytes=263 keyword_score=5
+  answer: 官方名称是脑机交互智能研究中心，2025年12月30日成立，定位是高起点、大交叉、国际化、产业化。它公开的研究方向有神经信号感知、脑网络组应用、脑病智能诊疗、脑机自然交互和类脑智能
+
+INPUT: 开放平台是什么
+  note: WRONG: lab naming instead of platform
+  normalized: 开放平台是什么
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_embodied_name answer_bytes=216 keyword_score=5
+  answer: 公开可查的有两个机构：一个是人形机器人具身智能感知与自主学习重庆市重点实验室，另一个是学院的具身智能开放平台。没有只叫具身智能实验室的官方机构。
+
+INPUT: 开放平台是做什么的
+  note: WRONG: lab naming instead of platform
+  normalized: 开放平台是做什么的
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_embodied_name answer_bytes=216 keyword_score=5
+  answer: 公开可查的有两个机构：一个是人形机器人具身智能感知与自主学习重庆市重点实验室，另一个是学院的具身智能开放平台。没有只叫具身智能实验室的官方机构。
+
+INPUT: 肖汉光是谁
+  note: fallback; single 3-char keyword below threshold
+  normalized: 肖汉光是谁
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 刘宏是谁
+  note: fallback; single 3-char keyword below threshold
+  normalized: 刘宏是谁
+  path: fallback
+  -> category=fallback matched_id= answer_bytes=162 keyword_score=0
+  answer: 这个信息目前没有公开资料，我不能确认。您可以问我实验室的研究方向、重点实验室、具身智能开放平台或者学院地址。
+
+INPUT: 重点实验室的主任是谁
+  note: likely fallback/name; 的 variant
+  normalized: 重点实验室的主任是谁
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_embodied_name answer_bytes=216 keyword_score=6
+  answer: 公开可查的有两个机构：一个是人形机器人具身智能感知与自主学习重庆市重点实验室，另一个是学院的具身智能开放平台。没有只叫具身智能实验室的官方机构。
+
+INPUT: 重点实验室是哪年成立的
+  note: likely college/approval; date ambiguity
+  normalized: 重点实验室是哪年成立的
+  path: FAQ keyword score
+  -> category=labs matched_id=faq_embodied_name answer_bytes=216 keyword_score=6
+  answer: 公开可查的有两个机构：一个是人形机器人具身智能感知与自主学习重庆市重点实验室，另一个是学院的具身智能开放平台。没有只叫具身智能实验室的官方机构。
+
+INPUT: 学院什么时候成立
+  note: correct
+  normalized: 学院什么时候成立
+  path: FAQ exact question
+  -> category=college matched_id=faq_college_established answer_bytes=99 keyword_score=0
+  answer: 重庆理工大学两江人工智能学院成立于2018年6月9日，办学地点在两江校区。
+
+INPUT: 重点实验室什么时候获批
+  note: correct
+  normalized: 重点实验室什么时候获批
+  path: FAQ exact question
+  -> category=labs matched_id=faq_embodied_approval answer_bytes=176 keyword_score=0
+  answer: 人形机器人具身智能感知与自主学习重庆市重点实验室在2025年7月获批。依托单位是重庆理工大学，共建单位是赛力斯汽车有限公司。
+
+INPUT: 实验室在哪里
+  note: correct
+  normalized: 实验室在哪里
+  path: FAQ exact question
+  -> category=location matched_id=faq_location answer_bytes=162 keyword_score=0
+  answer: 学院位于重庆市渝北区龙兴镇普福大道459号，重庆理工大学两江校区。实验室的具体房间和参观路线，公开资料没有说明。
+
+INPUT: 学院地址在哪里
+  note: correct
+  normalized: 学院地址在哪里
+  path: FAQ keyword score
+  -> category=location matched_id=faq_location answer_bytes=162 keyword_score=7
+  answer: 学院位于重庆市渝北区龙兴镇普福大道459号，重庆理工大学两江校区。实验室的具体房间和参观路线，公开资料没有说明。
+
+INPUT: 实验室有几台机器人
+  note: correct safe answer
+  normalized: 实验室有几台机器人
+  path: FAQ exact question
+  -> category=equipment matched_id=faq_equipment answer_bytes=180 keyword_score=0
+  answer: 公开资料只披露，具身智能开放平台使用智能机器人、特种无人车、智能机器狗等载体。具体品牌、型号和数量没有公开，我不能确认。
+
+INPUT: 脑机中心负责人是谁
+  note: correct
+  normalized: 脑机中心负责人是谁
+  path: FAQ exact question
+  -> category=people matched_id=faq_bci_leaders answer_bytes=168 keyword_score=0
+  answer: 脑机交互智能研究中心的学术委员会主任是蒋田仔研究员，中心主任是刘宏教授，执行主任是肖汉光教授，副主任是朱秘老师。
+
+INPUT: 学院有什么在研项目
+  note: correct
+  normalized: 学院有什么在研项目
+  path: FAQ exact question
+  -> category=projects matched_id=faq_project answer_bytes=319 keyword_score=0
+  answer: 公开的教师主页显示，肖汉光教授主持重庆市工信领域揭榜挂帅项目，题目是面向汽车智能制造应用场景的具身智能机器人开发，周期从2025年4月到2028年3月，公开经费是500万元。按公开
+
+INPUT: 实验室有哪些设备
+  note: correct
+  normalized: 实验室有哪些设备
+  path: FAQ exact question
+  -> category=equipment matched_id=faq_equipment answer_bytes=180 keyword_score=0
+  answer: 公开资料只披露，具身智能开放平台使用智能机器人、特种无人车、智能机器狗等载体。具体品牌、型号和数量没有公开，我不能确认。
+
+INPUT: 你好介绍一下你们实验室
+  note: correct (current JSON)
+  normalized: 你好介绍一下你们实验室
+  path: FAQ question contained
+  -> category=introduction matched_id=faq_intro answer_bytes=412 keyword_score=0
+  answer: 重庆理工大学两江人工智能学院设有脑机交互智能研究中心和人形机器人具身智能感知与自主学习重庆市重点实验室，并建设具身智能开放平台。脑机交互智能研究中心于2025年12月30日成立，定
+
+INPUT: 重点实验室研究什么
+  note: correct
+  normalized: 重点实验室研究什么
+  path: FAQ exact question
+  -> category=research_directions matched_id=faq_embodied_research answer_bytes=306 keyword_score=0
+  answer: 这个市级重点实验室主要研究三块：复杂场景下具身智能感知的抗干扰多模态融合学习；开放场景下人机环境交互的域泛化和抗知识遗忘持续学习；动态场景下技能可迁移的自主学习。应用方向主要是汽车
+
+INPUT: 开放平台研究什么
+  note: correct
+  normalized: 开放平台研究什么
+  path: FAQ exact question
+  -> category=labs matched_id=faq_platform answer_bytes=216 keyword_score=0
+  answer: 具身智能开放平台围绕复杂场景高鲁棒感知、高精度定位与建图、精细操作与协同三个方向。公开资料提到，它依托智能机器人、特种无人车、智能机器狗等载体。
+
+INPUT: 具身智能开放平台是什么
+  note: correct
+  normalized: 具身智能开放平台是什么
+  path: FAQ exact question
+  -> category=labs matched_id=faq_platform answer_bytes=216 keyword_score=0
+  answer: 具身智能开放平台围绕复杂场景高鲁棒感知、高精度定位与建图、精细操作与协同三个方向。公开资料提到，它依托智能机器人、特种无人车、智能机器狗等载体。
+
+INPUT: 学院学生拿过什么奖
+  note: correct
+  normalized: 学院学生拿过什么奖
+  path: FAQ exact question
+  -> category=college matched_id=faq_awards answer_bytes=181 keyword_score=0
+  answer: 2026年8月，学院学生团队在第28届中国机器人及人工智能大赛全国总决赛中，获得国家级奖项15项，其中一等奖2项。这是学生团队的成绩。
+

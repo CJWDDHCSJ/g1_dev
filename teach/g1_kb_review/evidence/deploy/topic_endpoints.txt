@@ -1,0 +1,120 @@
+===== /g1/asr_text =====
+Type: std_msgs/msg/String
+
+Publisher count: 0
+
+Subscription count: 1
+
+Node name: g1_voice_router
+Node namespace: /
+Topic type: std_msgs/msg/String
+Endpoint type: SUBSCRIPTION
+GID: 01.10.16.93.29.2c.30.b4.e9.24.65.e9.00.00.17.04.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+===== /g1/tts =====
+Type: std_msgs/msg/String
+
+Publisher count: 1
+
+Node name: g1_voice_router
+Node namespace: /
+Topic type: std_msgs/msg/String
+Endpoint type: PUBLISHER
+GID: 01.10.16.93.29.2c.30.b4.e9.24.65.e9.00.00.15.03.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 1
+
+Node name: _ros2cli_4216
+Node namespace: /
+Topic type: std_msgs/msg/String
+Endpoint type: SUBSCRIPTION
+GID: 01.10.b9.fd.4a.9e.1c.d0.4c.46.15.40.00.00.08.04.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (5)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+===== /g1/action_request =====
+Type: std_msgs/msg/String
+
+Publisher count: 1
+
+Node name: g1_voice_router
+Node namespace: /
+Topic type: std_msgs/msg/String
+Endpoint type: PUBLISHER
+GID: 01.10.16.93.29.2c.30.b4.e9.24.65.e9.00.00.16.03.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 0
+
+===== /g1/action_result =====
+Unknown topic '/g1/action_result'
+===== /audio_msg =====
+Type: std_msgs/msg/String
+
+Publisher count: 1
+
+Node name: _CREATED_BY_BARE_DDS_APP_
+Node namespace: _CREATED_BY_BARE_DDS_APP_
+Topic type: std_msgs/msg/String
+Endpoint type: PUBLISHER
+GID: 01.10.4f.c6.b3.6e.1e.48.eb.db.f8.7d.00.00.17.03.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (1)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 2
+
+Node name: _CREATED_BY_BARE_DDS_APP_
+Node namespace: _CREATED_BY_BARE_DDS_APP_
+Topic type: std_msgs/msg/String
+Endpoint type: SUBSCRIPTION
+GID: 01.10.5d.31.c0.0a.ef.f6.b9.13.1f.8e.00.00.0a.04.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: BEST_EFFORT
+  History (Depth): KEEP_LAST (1)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Node name: _CREATED_BY_BARE_DDS_APP_
+Node namespace: _CREATED_BY_BARE_DDS_APP_
+Topic type: std_msgs/msg/String
+Endpoint type: SUBSCRIPTION
+GID: 01.10.a6.4a.a0.b6.db.c0.b6.55.1f.1c.00.00.2c.04.00.00.00.00.00.00.00.00
+QoS profile:

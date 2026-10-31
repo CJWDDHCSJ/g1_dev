@@ -1,0 +1,26 @@
+=== PKGS ===
+g1_action_executor
+g1_asr_bridge
+g1_sports_show
+g1_voice_router
+unitree_api
+unitree_go
+unitree_hg
+unitree_ros2_example
+=== PREFIX ===
+g1_voice_router          /home/unitree/unitree_ros2/example/install/g1_voice_router
+g1_asr_bridge            /home/unitree/unitree_ros2/example/install/g1_asr_bridge
+unitree_ros2_example     /home/unitree/unitree_ros2/example/install/unitree_ros2_example
+g1_action_executor       /home/unitree/lidar_ws/install/g1_action_executor
+g1_sports_show           /home/unitree/lidar_ws/install/g1_sports_show
+=== EXECUTABLES ===
+-- g1_voice_router
+g1_voice_router voice_router
+-- g1_asr_bridge
+g1_asr_bridge asr_json_bridge
+-- unitree_ros2_example
+unitree_ros2_example g1_tts_node
+-- g1_action_executor
+g1_action_executor g1_action_executor_node
+-- g1_sports_show
+g1_sports_show g1_sports_show_node

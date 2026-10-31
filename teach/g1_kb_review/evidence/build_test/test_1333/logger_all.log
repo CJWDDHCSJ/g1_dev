@@ -1,0 +1,105 @@
+[0.380s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'test', '--packages-select', 'g1_voice_router', '--event-handlers', 'console_direct+']
+[0.381s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='test', build_base='build', install_base='install', merge_install=False, test_result_base=None, retest_until_fail=0, retest_until_pass=0, abort_on_error=False, return_code_on_test_failure=False, executor='parallel', parallel_workers=4, event_handlers=['console_direct+'], ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['g1_voice_router'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], ctest_args=None, python_testing=None, pytest_args=None, pytest_with_coverage=False, unittest_args=None, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff81801990>, verb_extension=<colcon_core.verb.test.TestVerb object at 0xffff819a2740>, main=<bound method TestVerb.main of <colcon_core.verb.test.TestVerb object at 0xffff819a2740>>, mixin_verb=('test',))
+[0.751s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.751s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.751s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.752s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/unitree/unitree_ros2/example'
+[0.752s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.752s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.753s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.779s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.779s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.780s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.780s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.780s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.780s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.780s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.781s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.781s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extensions ['ignore', 'ignore_ament_install']
+[0.781s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'ignore'
+[0.781s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'ignore_ament_install'
+[0.781s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extensions ['colcon_pkg']
+[0.781s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'colcon_pkg'
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extensions ['colcon_meta']
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'colcon_meta'
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extensions ['ros']
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'ros'
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extensions ['cmake', 'python']
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'cmake'
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'python'
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extensions ['python_setup_py']
+[0.782s] Level 1:colcon.colcon_core.package_identification:_identify(config) by extension 'python_setup_py'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extension 'ignore'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extension 'ignore_ament_install'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extensions ['colcon_pkg']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extension 'colcon_pkg'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extensions ['colcon_meta']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extension 'colcon_meta'
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extensions ['ros']
+[0.783s] Level 1:colcon.colcon_core.package_identification:_identify(g1_asr_bridge) by extension 'ros'
+[0.789s] DEBUG:colcon.colcon_core.package_identification:Package 'g1_asr_bridge' with type 'ros.ament_cmake' and name 'g1_asr_bridge'
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extensions ['ignore', 'ignore_ament_install']
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extension 'ignore'
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extension 'ignore_ament_install'
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extensions ['colcon_pkg']
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extension 'colcon_pkg'
+[0.789s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extensions ['colcon_meta']
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extension 'colcon_meta'
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extensions ['ros']
+[0.790s] Level 1:colcon.colcon_core.package_identification:_identify(g1_voice_router) by extension 'ros'
+[0.791s] DEBUG:colcon.colcon_core.package_identification:Package 'g1_voice_router' with type 'ros.ament_cmake' and name 'g1_voice_router'
+[0.792s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.792s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.792s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.792s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.793s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.794s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.796s] DEBUG:colcon.colcon_core.package_identification:Package 'src' with type 'ros.ament_cmake' and name 'unitree_ros2_example'
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.796s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.801s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'g1_asr_bridge' in 'g1_asr_bridge'
+[0.801s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'unitree_ros2_example' in 'src'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'ctest_args' from command line to 'None'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'python_testing' from command line to 'None'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'pytest_args' from command line to 'None'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'pytest_with_coverage' from command line to 'False'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'unittest_args' from command line to 'None'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'retest_until_pass' from command line to '0'
+[0.802s] Level 5:colcon.colcon_core.verb:set package 'g1_voice_router' test argument 'retest_until_fail' from command line to '0'
+[0.802s] DEBUG:colcon.colcon_core.verb.test:Testing package 'g1_voice_router' with the following arguments: {'build_base': '/home/unitree/unitree_ros2/example/build/g1_voice_router', 'ctest_args': None, 'install_base': '/home/unitree/unitree_ros2/example/install/g1_voice_router', 'path': '/home/unitree/unitree_ros2/example/g1_voice_router', 'pytest_args': None, 'pytest_with_coverage': False, 'python_testing': None, 'retest_until_fail': 0, 'retest_until_pass': 0, 'test_result_base': None, 'unittest_args': None}
+[0.803s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.805s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.806s] INFO:colcon.colcon_ros.task.ament_cmake.test:Testing ROS package in '/home/unitree/unitree_ros2/example/g1_voice_router' with build type 'ament_cmake'
+[0.806s] INFO:colcon.colcon_cmake.task.cmake.test:Testing CMake package in '/home/unitree/unitree_ros2/example/g1_voice_router'
+[0.810s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.811s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.811s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.850s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/unitree/unitree_ros2/example/build/g1_voice_router': CMAKE_PREFIX_PATH=/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[0.894s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[0.894s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[0.894s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[0.894s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[0.901s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/unitree/unitree_ros2/example/build/g1_voice_router' returned '0': CMAKE_PREFIX_PATH=/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[0.903s] DEBUG:colcon.colcon_core.event_reactor:joined thread

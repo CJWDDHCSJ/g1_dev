@@ -1,0 +1,8 @@
+[INFO] [1793453587.884535782] [g1_voice_router]: KnowledgeBase loaded: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json (FAQ=20, directions=3, projects=1, equipment=1)
+[INFO] [1793453587.887184592] [g1_voice_router]: G1 voice router started
+[INFO] [1793453587.887282101] [g1_voice_router]: Ollama URL: http://192.168.123.99:11434/api/chat
+[INFO] [1793453587.887314679] [g1_voice_router]: Model: qwen3-vl:4b-instruct
+[INFO] [1793453587.887338936] [g1_voice_router]: Listening on /g1/asr_text, publishing to /g1/tts
+[INFO] [1793453604.932090663] [g1_voice_router]: Intent recognized: LAB_INTRO | text: 学院有什么在研项目
+[INFO] [1793453604.932590849] [g1_voice_router]: Reply published to /g1/tts (319 bytes)
+[INFO] [1793453604.932664740] [g1_voice_router]: LAB_INTRO local knowledge base completed: found=true category=projects matched_id=faq_project

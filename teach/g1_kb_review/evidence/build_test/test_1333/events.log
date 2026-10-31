@@ -1,0 +1,109 @@
+[0.000000] (-) TimerEvent: {}
+[0.000821] (g1_voice_router) JobQueued: {'identifier': 'g1_voice_router', 'dependencies': OrderedDict([('g1_voice_router', '/home/unitree/unitree_ros2/example/install/g1_voice_router')])}
+[0.001363] (g1_voice_router) JobStarted: {'identifier': 'g1_voice_router'}
+[0.042665] (g1_voice_router) Command: {'cmd': ['/usr/bin/ctest', '-C', 'Release', '-D', 'ExperimentalTest', '--no-compress-output', '-V', '--force-new-ctest-process'], 'cwd': '/home/unitree/unitree_ros2/example/build/g1_voice_router', 'env': OrderedDict([('USER', 'unitree'), ('SSH_CLIENT', '192.168.123.99 39630 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '0'), ('LD_LIBRARY_PATH', '/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/unitree'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces>\n                            <NetworkInterface name="eth0" priority="default" multicast="default" />\n                        </Interfaces></General></Domain></CycloneDDS>'), ('OLDPWD', '/home/unitree'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install:/home/unitree/unitree_ros2/cyclonedds_ws/install:/home/unitree/lidar_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'unitree'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('XDG_SESSION_ID', '55'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('AMENT_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('PWD', '/home/unitree/unitree_ros2/example/build/g1_voice_router'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.123.99 39630 192.168.123.164 22'), ('PYTHONPATH', '/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/unitree/unitree_ros2/example/install/g1_voice_router:/home/unitree/unitree_ros2/example/install/unitree_ros2_example:/home/unitree/unitree_ros2/example/install/g1_asr_bridge:/home/unitree/lidar_ws/install/lidar_check:/home/unitree/lidar_ws/install/g1_sports_show:/home/unitree/lidar_ws/install/g1_action_executor:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/unitree/unitree_ros2/cyclonedds_ws/install/unitree_api')]), 'shell': False}
+[0.057167] (g1_voice_router) StdoutLine: {'line': b'UpdateCTestConfiguration  from :/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini\n'}
+[0.057683] (g1_voice_router) StdoutLine: {'line': b'Parse Config file:/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini\n'}
+[0.058158] (g1_voice_router) StdoutLine: {'line': b'   Site: ubuntu\n'}
+[0.058844] (g1_voice_router) StdoutLine: {'line': b'   Build name: (empty)\n'}
+[0.059027] (g1_voice_router) StdoutLine: {'line': b' Add coverage exclude regular expressions.\n'}
+[0.059178] (g1_voice_router) StdoutLine: {'line': b'Create new tag: 20261031-1333 - Experimental\n'}
+[0.059397] (g1_voice_router) StdoutLine: {'line': b'UpdateCTestConfiguration  from :/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini\n'}
+[0.059584] (g1_voice_router) StdoutLine: {'line': b'Parse Config file:/home/unitree/unitree_ros2/example/build/g1_voice_router/CTestConfiguration.ini\n'}
+[0.059733] (g1_voice_router) StdoutLine: {'line': b'Test project /home/unitree/unitree_ros2/example/build/g1_voice_router\n'}
+[0.059869] (g1_voice_router) StdoutLine: {'line': b'Constructing a list of tests\n'}
+[0.059998] (g1_voice_router) StdoutLine: {'line': b'Done constructing a list of tests\n'}
+[0.060120] (g1_voice_router) StdoutLine: {'line': b'Updating test list for fixtures\n'}
+[0.060242] (g1_voice_router) StdoutLine: {'line': b'Added 0 tests to meet fixture requirements\n'}
+[0.060421] (g1_voice_router) StdoutLine: {'line': b'Checking test dependency graph...\n'}
+[0.060586] (g1_voice_router) StdoutLine: {'line': b'Checking test dependency graph end\n'}
+[0.060726] (g1_voice_router) StdoutLine: {'line': b'test 1\n'}
+[0.060857] (g1_voice_router) StdoutLine: {'line': b'    Start 1: knowledge_base_test\n'}
+[0.060986] (g1_voice_router) StdoutLine: {'line': b'\n'}
+[0.061112] (g1_voice_router) StdoutLine: {'line': b'1: Test command: /home/unitree/unitree_ros2/example/build/g1_voice_router/knowledge_base_test "/home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json"\n'}
+[0.061244] (g1_voice_router) StdoutLine: {'line': b'1: Test timeout computed to be: 10000000\n'}
+[0.077927] (g1_voice_router) StdoutLine: {'line': b'1: ========== KnowledgeBase Test ==========\n'}
+[0.078354] (g1_voice_router) StdoutLine: {'line': b'1: Knowledge file: /home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json\n'}
+[0.078561] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] normal JSON load\n'}
+[0.078746] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] loaded flag is true\n'}
+[0.078920] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] FAQ count is 20\n'}
+[0.079094] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] research direction count is 3\n'}
+[0.079297] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] project count is 1\n'}
+[0.079475] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] equipment count is 1\n'}
+[0.079646] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] introduction query\n'}
+[0.079816] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] introduction query with greeting prefix\n'}
+[0.079982] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] FAQ question embedded in a longer sentence\n'}
+[0.080145] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] research directions query\n'}
+[0.080290] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] BCI directions FAQ\n'}
+[0.080407] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] embodied lab research FAQ\n'}
+[0.080524] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] project query\n'}
+[0.080641] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] equipment query\n'}
+[0.080757] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] FAQ exact leader hit\n'}
+[0.080872] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] Chinese synonym expression\n'}
+[0.080988] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] SERES co-building FAQ\n'}
+[0.081112] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] two labs are distinguished\n'}
+[0.081272] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] location query\n'}
+[0.081457] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] college teams FAQ\n'}
+[0.081609] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] college awards FAQ\n'}
+[0.081737] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] unverified equipment count is not invented\n'}
+[0.081860] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] unknown team size falls back\n'}
+[0.082630] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] no-match question falls back\n'}
+[0.082869] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] empty input falls back\n'}
+[0.083068] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] answers contain no source URL\n'}
+[0.083311] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] missing file is rejected\n'}
+[0.083749] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] query after failed load uses fallback\n'}
+[0.083957] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] malformed fixture written\n'}
+[0.084147] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] malformed JSON is rejected\n'}
+[0.084330] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] unsupported fixture written\n'}
+[0.084512] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] unsupported schema is rejected\n'}
+[0.084692] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] empty-fields fixture written\n'}
+[0.084872] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] empty fields load\n'}
+[0.085051] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] empty introduction is not spoken\n'}
+[0.085232] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] empty location is not spoken\n'}
+[0.085409] (g1_voice_router) StdoutLine: {'line': b'1: [PASS] empty path is rejected\n'}
+[0.085589] (g1_voice_router) StdoutLine: {'line': b'1: =========================================\n'}
+[0.085767] (g1_voice_router) StdoutLine: {'line': b'1: Passed: 37\n'}
+[0.085953] (g1_voice_router) StdoutLine: {'line': b'1: Failed: 0\n'}
+[0.086141] (g1_voice_router) StdoutLine: {'line': b'1/2 Test #1: knowledge_base_test ..............   Passed    0.02 sec\n'}
+[0.086334] (g1_voice_router) StdoutLine: {'line': b'test 2\n'}
+[0.086526] (g1_voice_router) StdoutLine: {'line': b'    Start 2: intent_recognizer_test\n'}
+[0.086717] (g1_voice_router) StdoutLine: {'line': b'\n'}
+[0.086909] (g1_voice_router) StdoutLine: {'line': b'2: Test command: /home/unitree/unitree_ros2/example/build/g1_voice_router/intent_recognizer_test\n'}
+[0.087133] (g1_voice_router) StdoutLine: {'line': b'2: Test timeout computed to be: 10000000\n'}
+[0.087371] (g1_voice_router) StdoutLine: {'line': b'2: ========== Intent Recognizer Test ==========\n'}
+[0.087575] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe4\xbd\xa0\xe5\xa5\xbd -> GREETING\n'}
+[0.087771] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe6\x82\xa8\xe5\xa5\xbd\xef\xbc\x81 -> GREETING\n'}
+[0.088323] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] GOOD MORNING -> GENERAL_QA\n'}
+[0.089359] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe4\xbd\xa0\xe5\xa5\xbd\xef\xbc\x8c\xe4\xbb\x8b\xe7\xbb\x8d\xe4\xb8\x80\xe4\xb8\x8b\xe4\xbd\xa0\xe4\xbb\xac\xe5\xae\x9e\xe9\xaa\x8c\xe5\xae\xa4 -> LAB_INTRO\n'}
+[0.089852] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe4\xbd\xa0\xe4\xbb\xac\xe5\xae\x9e\xe9\xaa\x8c\xe5\xae\xa4\xe7\xa0\x94\xe7\xa9\xb6\xe4\xbb\x80\xe4\xb9\x88\xef\xbc\x9f -> LAB_INTRO\n'}
+[0.090180] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe4\xbb\x8b\xe7\xbb\x8d\xe4\xb8\x80\xe4\xb8\x8b\xe4\xbd\xa0\xe8\x87\xaa\xe5\xb7\xb1 -> ROBOT_INTRO\n'}
+[0.090385] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe4\xbd\xa0\xe8\x83\xbd\xe5\x81\x9a\xe4\xbb\x80\xe4\xb9\x88 -> ROBOT_INTRO\n'}
+[0.090590] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe7\xbb\x99\xe6\x88\x91\xe4\xbb\xac\xe5\xb1\x95\xe7\xa4\xba\xe4\xb8\x80\xe4\xb8\x8b -> DEMO_ACTION\n'}
+[0.090794] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe6\x8c\xa5\xe6\x8c\xa5\xe6\x89\x8b -> DEMO_ACTION\n'}
+[0.090994] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe4\xbd\xa0\xe7\x8e\xb0\xe5\x9c\xa8\xe7\x8a\xb6\xe6\x80\x81\xe6\x80\x8e\xe4\xb9\x88\xe6\xa0\xb7 -> ROBOT_STATUS\n'}
+[0.091211] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xbd\x93\xe5\x89\x8d\xe8\xbf\x90\xe8\xa1\x8c\xe6\xa8\xa1\xe5\xbc\x8f\xe6\x98\xaf\xe4\xbb\x80\xe4\xb9\x88\xef\xbc\x9f -> ROBOT_STATUS\n'}
+[0.091432] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe8\xb0\xa2\xe8\xb0\xa2 -> GOODBYE\n'}
+[0.091637] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\x86\x8d\xe8\xa7\x81\xef\xbc\x81 -> GOODBYE\n'}
+[0.091868] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xad\xa6\xe9\x99\xa2\xe6\x9c\x89\xe4\xbb\x80\xe4\xb9\x88\xe5\x9c\xa8\xe7\xa0\x94\xe9\xa1\xb9\xe7\x9b\xae -> LAB_INTRO\n'}
+[0.092070] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe8\x84\x91\xe6\x9c\xba\xe4\xb8\xad\xe5\xbf\x83\xe8\xb4\x9f\xe8\xb4\xa3\xe4\xba\xba\xe6\x98\xaf\xe8\xb0\x81 -> LAB_INTRO\n'}
+[0.092270] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xad\xa6\xe9\x99\xa2\xe6\x9c\x89\xe5\x93\xaa\xe4\xba\x9b\xe7\xa7\x91\xe7\xa0\x94\xe5\x9b\xa2\xe9\x98\x9f -> LAB_INTRO\n'}
+[0.092466] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xad\xa6\xe9\x99\xa2\xe5\xad\xa6\xe7\x94\x9f\xe6\x8b\xbf\xe8\xbf\x87\xe4\xbb\x80\xe4\xb9\x88\xe5\xa5\x96 -> LAB_INTRO\n'}
+[0.092662] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xad\xa6\xe9\x99\xa2\xe4\xbb\x80\xe4\xb9\x88\xe6\x97\xb6\xe5\x80\x99\xe6\x88\x90\xe7\xab\x8b -> LAB_INTRO\n'}
+[0.092858] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xad\xa6\xe9\x99\xa2\xe5\x9c\xb0\xe5\x9d\x80\xe5\x9c\xa8\xe5\x93\xaa\xe9\x87\x8c -> LAB_INTRO\n'}
+[0.093056] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\x85\xb7\xe8\xba\xab\xe6\x99\xba\xe8\x83\xbd\xe5\xbc\x80\xe6\x94\xbe\xe5\xb9\xb3\xe5\x8f\xb0\xe6\x98\xaf\xe4\xbb\x80\xe4\xb9\x88 -> LAB_INTRO\n'}
+[0.093254] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe8\x82\x96\xe6\xb1\x89\xe5\x85\x89\xe6\x95\x99\xe6\x8e\x88\xe6\x98\xaf\xe8\xb0\x81 -> LAB_INTRO\n'}
+[0.093449] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe6\x9c\x89\xe6\x9c\xba\xe5\x99\xa8\xe7\x8b\x97\xe5\x90\x97 -> LAB_INTRO\n'}
+[0.093643] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xad\xa6\xe9\x99\xa2\xe6\x9c\x89\xe5\x93\xaa\xe4\xba\x9b\xe4\xb8\x93\xe4\xb8\x9a -> GENERAL_QA\n'}
+[0.093838] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe6\x9c\xba\xe5\x99\xa8\xe7\x8b\x97\xe5\xa4\x9a\xe5\xb0\x91\xe9\x92\xb1 -> GENERAL_QA\n'}
+[0.094030] (g1_voice_router) StdoutLine: {'line': b'2: [PASS] \xe5\xae\x87\xe6\xa0\x91\xe6\x9c\xba\xe5\x99\xa8\xe4\xba\xba\xe5\xa4\x9a\xe5\xb0\x91\xe9\x92\xb1\xef\xbc\x9f -> GENERAL_QA\n'}
+[0.094223] (g1_voice_router) StdoutLine: {'line': b'2: ============================================\n'}
+[0.094426] (g1_voice_router) StdoutLine: {'line': b'2: Passed: 25\n'}
+[0.094638] (g1_voice_router) StdoutLine: {'line': b'2: Failed: 0\n'}
+[0.094904] (g1_voice_router) StdoutLine: {'line': b'2/2 Test #2: intent_recognizer_test ...........   Passed    0.00 sec\n'}
+[0.095124] (g1_voice_router) StdoutLine: {'line': b'\n'}
+[0.095387] (g1_voice_router) StdoutLine: {'line': b'100% tests passed, 0 tests failed out of 2\n'}
+[0.095615] (g1_voice_router) StdoutLine: {'line': b'\n'}
+[0.095834] (g1_voice_router) StdoutLine: {'line': b'Total Test time (real) =   0.03 sec\n'}
+[0.096055] (g1_voice_router) CommandEnded: {'returncode': 0}
+[0.096830] (g1_voice_router) JobEnded: {'identifier': 'g1_voice_router', 'rc': 0}
+[0.097895] (-) EventReactorShutdown: {}

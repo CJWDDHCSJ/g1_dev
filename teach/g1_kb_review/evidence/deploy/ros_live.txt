@@ -1,0 +1,170 @@
+=== DATE ===
+2026-10-31T13:43:48+00:00
+=== NODES ===
+Setup unitree ros2 environment
+/g1_voice_router
+/ros_bridge
+=== TOPICS ===
+/SymState [unitree_go/msg/SymState]
+/api/action_store/request [unitree_api/msg/Request]
+/api/action_store/response [unitree_api/msg/Response]
+/api/arm/request [unitree_api/msg/Request]
+/api/arm/response [unitree_api/msg/Response]
+/api/audiohub/request [unitree_api/msg/Request]
+/api/audiohub/response [unitree_api/msg/Response]
+/api/bashrunner/request [unitree_api/msg/Request]
+/api/bashrunner/response [unitree_api/msg/Response]
+/api/basic_demarcate/request [unitree_api/msg/Request]
+/api/basic_demarcate/response [unitree_api/msg/Response]
+/api/basic_demarcate_lease/request [unitree_api/msg/Request]
+/api/basic_demarcate_lease/response [unitree_api/msg/Response]
+/api/config/request [unitree_api/msg/Request]
+/api/config/response [unitree_api/msg/Response]
+/api/dex3_msg_controller/request [unitree_api/msg/Request]
+/api/dex3_msg_controller/response [unitree_api/msg/Response]
+/api/gesture/request [unitree_api/msg/Request]
+/api/gpt/request [unitree_api/msg/Request]
+/api/gpt/response [unitree_api/msg/Response]
+/api/loco/request [unitree_api/msg/Request]
+/api/loco/response [unitree_api/msg/Response]
+/api/motion_switcher/request [unitree_api/msg/Request]
+/api/motion_switcher/response [unitree_api/msg/Response]
+/api/rm_con/request [unitree_api/msg/Request]
+/api/robot_state/request [unitree_api/msg/Request]
+/api/robot_state/response [unitree_api/msg/Response]
+/api/robot_type_service/request [unitree_api/msg/Request]
+/api/robot_type_service/response [unitree_api/msg/Response]
+/api/slam_operate/request [unitree_api/msg/Request]
+/api/slam_operate/response [unitree_api/msg/Response]
+/api/sport/request [unitree_api/msg/Request]
+/api/sport/response [unitree_api/msg/Response]
+/api/videohub/request [unitree_api/msg/Request]
+/api/videohub/response [unitree_api/msg/Response]
+/api/voice/request [unitree_api/msg/Request]
+/api/voice/response [unitree_api/msg/Response]
+/api/vui/request [unitree_api/msg/Request]
+/api/vui/response [unitree_api/msg/Response]
+/arm/action/state [std_msgs/msg/String]
+/arm_sdk [unitree_hg/msg/LowCmd]
+/armsdk [unitree_hg/msg/LowCmd]
+/audio_msg [std_msgs/msg/String]
+/audio_msg/filter [std_msgs/msg/String]
+/audiosender [unitree_go/msg/AudioData]
+/collision_clouds [sensor_msgs/msg/PointCloud2]
+/config_change_status [unitree_go/msg/ConfigChangeStatus]
+/dex3/left/cmd [unitree_hg/msg/HandCmd]
+/dex3/left/state [unitree_hg/msg/HandState]
+/dex3/right/cmd [unitree_hg/msg/HandCmd]
+/dex3/right/state [unitree_hg/msg/HandState]
+/dog_imu_raw [sensor_msgs/msg/Imu]
+/dog_odom [nav_msgs/msg/Odometry]
+/ele_clouds [sensor_msgs/msg/PointCloud2]
+/event/action_store [std_msgs/msg/String]
+/frontvideostream [unitree_go/msg/Go2FrontVideoData]
+/g1/action_request [std_msgs/msg/String]
+/g1/asr_text [std_msgs/msg/String]
+/g1/tts [std_msgs/msg/String]
+/gesture/result [std_msgs/msg/String]
+/global_map [nav_msgs/msg/OccupancyGrid]
+/gpt_cmd [std_msgs/msg/String]
+/gpt_state [std_msgs/msg/String]
+/gptflowfeedback [std_msgs/msg/String]
+/grid_clouds [sensor_msgs/msg/PointCloud2]
+/gridmap [grid_map_msgs/msg/GridMap]
+/lf/agvbmsstate [unitree_hg/msg/AgvBmsState]
+/lf/battery_alarm [std_msgs/msg/String]
+/lf/bmsstate [unitree_hg/msg/BmsState]
+/lf/dex3/left/state [unitree_hg/msg/HandState]
+/lf/dex3/right/state [unitree_hg/msg/HandState]
+/lf/lowstate [unitree_go/msg/LowState, unitree_hg/msg/LowState]
+/lf/mainboardstate [unitree_hg/msg/MainBoardState]
+/lf/odommodestate [unitree_go/msg/SportModeState]
+/lf/secondary_imu [unitree_hg/msg/IMUState]
+/lf/sportmodestate [unitree_go/msg/SportModeState, unitree_hg/msg/SportModeState]
+/loco_sdk [unitree_hg/msg/LowState]
+/log_system_inbound [std_msgs/msg/String]
+/log_system_outbound [std_msgs/msg/String]
+/lowcmd [unitree_hg/msg/LowCmd]
+/lowstate [unitree_hg/msg/LowState]
+/lowstate_doubleimu [unitree_hg_doubleimu/msg/doubleIMUState]
+/multiplestate [std_msgs/msg/String]
+/no_warning_clouds [sensor_msgs/msg/PointCloud2]
+/odommodestate [unitree_go/msg/SportModeState]
+/parameter_events [rcl_interfaces/msg/ParameterEvent]
+/planner_map [grid_map_msgs/msg/GridMap]
+/pre_collision_clouds [sensor_msgs/msg/PointCloud2]
+/pre_safe_clouds [sensor_msgs/msg/PointCloud2]
+/public_network_status [std_msgs/msg/String]
+/rosout [rcl_interfaces/msg/Log]
+/rtc/state [std_msgs/msg/String]
+/rtc_status [std_msgs/msg/String]
+/safe_clouds [sensor_msgs/msg/PointCloud2]
+/secondary_imu [unitree_hg/msg/IMUState]
+/selftest [std_msgs/msg/String]
+/servicestate [std_msgs/msg/String]
+/servicestateactivate [std_msgs/msg/String]
+/slam_info [std_msgs/msg/String]
+/slam_key_info [std_msgs/msg/String]
+/sportmodestate [unitree_hg/msg/SportModeState]
+/unitree/slam_mapping/odom [nav_msgs/msg/Odometry]
+/unitree/slam_mapping/points [sensor_msgs/msg/PointCloud2]
+/unitree/slam_relocation/odom [nav_msgs/msg/Odometry]
+/unitree/slam_relocation/points [sensor_msgs/msg/PointCloud2]
+/unitree_slam/waypoints [std_msgs/msg/String]
+/utlidar/cloud_livox_mid360 [sensor_msgs/msg/PointCloud2]
+/utlidar/imu_livox_mid360 [sensor_msgs/msg/Imu]
+/utlidar/range_info [geometry_msgs/msg/PointStamped]
+/videohub/inner [std_msgs/msg/String]
+/warning_clouds [sensor_msgs/msg/PointCloud2]
+/webrtcreq [std_msgs/msg/String]
+/webrtcres [std_msgs/msg/String]
+/wirelesscontroller [unitree_go/msg/WirelessController]
+=== NODE INFO ===
+/g1_voice_router
+  Subscribers:
+    /g1/asr_text: std_msgs/msg/String
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+  Publishers:
+    /g1/action_request: std_msgs/msg/String
+    /g1/tts: std_msgs/msg/String
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /rosout: rcl_interfaces/msg/Log
+  Service Servers:
+    /g1_voice_router/describe_parameters: rcl_interfaces/srv/DescribeParameters
+    /g1_voice_router/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+    /g1_voice_router/get_parameters: rcl_interfaces/srv/GetParameters
+    /g1_voice_router/list_parameters: rcl_interfaces/srv/ListParameters
+    /g1_voice_router/set_parameters: rcl_interfaces/srv/SetParameters
+    /g1_voice_router/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+  Service Clients:
+
+  Action Servers:
+
+  Action Clients:
+
+=== PARAMS ===
+/g1_voice_router:
+  ros__parameters:
+    knowledge_file: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json
+    model: qwen3-vl:4b-instruct
+    ollama_url: http://192.168.123.99:11434/api/chat
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    request_timeout_seconds: 60
+    system_prompt: "\u4F60\u662F\u8FD0\u884C\u5728\u5B87\u6811G1\u4EBA\u5F62\u673A\
+      \u5668\u4EBA\u4E2D\u7684\u4E2D\u6587\u8BED\u97F3\u52A9\u624B\u3002\u7528\u6237\
+      \u8F93\u5165\u901A\u5E38\u6765\u81EA\u8BED\u97F3\u8BC6\u522B\uFF0C\u53EF\u80FD\
+      \u5B58\u5728\u5C11\u91CF\u9519\u5B57\u3002\u8BF7\u4F7F\u7528\u7B80\u4F53\u4E2D\
+      \u6587\uFF0C\u56DE\u7B54\u81EA\u7136\u3001\u7B80\u6D01\uFF0C\u9002\u5408\u76F4\
+      \u63A5\u8BED\u97F3\u64AD\u62A5\uFF0C\u901A\u5E38\u56DE\u7B54\u4E00\u5230\u4E09\
+      \u53E5\u8BDD\u3002\u4E0D\u8981\u4F7F\u7528Markdown\u3001\u8868\u683C\u6216\u4EE3\
+      \u7801\u5757\u3002\u4E0D\u8981\u7F16\u9020\u673A\u5668\u4EBA\u5B9E\u65F6\u72B6\
+      \u6001\uFF1B\u6CA1\u6709\u4F20\u611F\u5668\u6570\u636E\u65F6\u8981\u8BDA\u5B9E\
+      \u8BF4\u660E\u3002"
+    use_sim_time: false
+

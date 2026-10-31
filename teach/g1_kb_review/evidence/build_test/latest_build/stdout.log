@@ -1,0 +1,31 @@
+Consolidate compiler generated dependencies of target intent_recognizer_test
+[ 10%] Building CXX object CMakeFiles/knowledge_base.dir/src/knowledge_base.cpp.o
+[ 40%] Built target intent_recognizer_test
+[ 50%] Linking CXX static library libknowledge_base.a
+[ 50%] Built target knowledge_base
+Consolidate compiler generated dependencies of target voice_router
+[ 60%] Building CXX object CMakeFiles/knowledge_base_test.dir/test/knowledge_base_test.cpp.o
+[ 70%] Building CXX object CMakeFiles/voice_router.dir/src/voice_router.cpp.o
+[ 80%] Linking CXX executable knowledge_base_test
+[ 80%] Built target knowledge_base_test
+[ 90%] Linking CXX executable voice_router
+[100%] Built target voice_router
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/package_run_dependencies/g1_voice_router
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/parent_prefix_path/g1_voice_router
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.sh
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/environment/path.dsv
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.bash
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.sh
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.zsh
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/local_setup.dsv
+-- Symlinking: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.dsv
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/ament_index/resource_index/packages/g1_voice_router
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig.cmake
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/cmake/g1_voice_routerConfig-version.cmake
+-- Up-to-date symlink: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/package.xml

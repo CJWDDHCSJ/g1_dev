@@ -1,0 +1,146 @@
+=== CAPTURE TIME (UTC) ===
+2026-10-31T14:01:14Z
+=== HOST ===
+ubuntu
+Linux ubuntu 5.15.185-tegra #1 SMP PREEMPT Thu Jan 15 19:24:38 PST 2026 aarch64 aarch64 aarch64 GNU/Linux
+aarch64
+=== OS RELEASE ===
+PRETTY_NAME=Ubuntu 22.04.5 LTS
+VERSION_ID=22.04
+=== L4T ===
+# R36 (release), REVISION: 5.0, GCID: 43688277, BOARD: generic, EABI: aarch64, DATE: Fri Jan 16 03:50:45 UTC 2026
+# KERNEL_VARIANT: oot
+TARGET_USERSPACE_LIB_DIR=nvidia
+TARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia
+=== ROS ENV ===
+ROS_DISTRO=humble
+RMW_IMPLEMENTATION=<unset>
+ROS_DOMAIN_ID=<unset>
+ROS_LOCALHOST_ONLY=0
+=== SETUP.SH ===
+#!/bin/bash
+echo "Setup unitree ros2 environment"
+source /opt/ros/humble/setup.bash
+source $HOME/unitree_ros2/cyclonedds_ws/install/setup.bash
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces>
+                            <NetworkInterface name="eth0" priority="default" multicast="default" />
+                        </Interfaces></General></Domain></CycloneDDS>'
+=== VOICE PROCESSES ===
+  10751       1 Sat Oct 31 13:33:06 2026 /usr/bin/python3 /opt/ros/humble/bin/ros2 run g1_voice_router voice_router
+  10753   10751 Sat Oct 31 13:33:07 2026 /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router
+=== ALL RELEVANT NODE PROCESSES ===
+<none>
+=== NODES ===
+Setup unitree ros2 environment
+/g1_voice_router
+/ros_bridge
+=== TOPIC INFO ===
+--- /g1/asr_text ---
+Type: std_msgs/msg/String
+Publisher count: 0
+Subscription count: 1
+--- /g1/tts ---
+Type: std_msgs/msg/String
+Publisher count: 1
+Subscription count: 1
+--- /g1/action_request ---
+Type: std_msgs/msg/String
+Publisher count: 1
+Subscription count: 0
+--- /g1/action_result ---
+Unknown topic '/g1/action_result'
+=== PARAMS (selected) ===
+--- knowledge_file ---
+String value is: /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json
+--- model ---
+String value is: qwen3-vl:4b-instruct
+--- ollama_url ---
+String value is: http://192.168.123.99:11434/api/chat
+--- request_timeout_seconds ---
+Integer value is: 60
+=== INSTALLED PATHS ===
+total 12
+drwxrwxr-x 2 unitree unitree 4096 Oct 27 14:03 .
+drwxrwxr-x 3 unitree unitree 4096 Oct 27 14:03 ..
+lrwxrwxrwx 1 unitree unitree   69 Oct 27 14:03 voice_router -> /home/unitree/unitree_ros2/example/build/g1_voice_router/voice_router
+total 12
+drwxrwxr-x 2 unitree unitree 4096 Oct 31 13:24 .
+drwxrwxr-x 6 unitree unitree 4096 Oct 31 13:33 ..
+lrwxrwxrwx 1 unitree unitree   76 Oct 31 13:24 lab_knowledge.json -> /home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json
+/home/unitree/unitree_ros2/example/build/g1_voice_router/voice_router
+/home/unitree/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json
+=== SOURCE HASHES ===
+a7166376f6335ae346250d5b4af23e9fe9a6d624bf117420906ec46cee2feb8c  CMakeLists.txt
+22d0f4a6341c455bc83122d7983c15490a0bd96730136dab247ae5d2a42dcb39  package.xml
+cbe711e3b5c19115dc9d85fe37c701829ee3ad37203a3a4337efa5263d5acea7  config/lab_knowledge.json
+1dc19db4db18d5f3503488fe7486d5e794b5c645fc6259ee878bebb53d57a2af  include/g1_voice_router/knowledge_base.hpp
+a208e31fdf4970177438b98fb2def583b6ae459f22d9cec22387fc706ae709c5  include/g1_voice_router/intent_recognizer.hpp
+295df377a43e0eb9675bb6f6cc8cdad6f26a3fed4b74ecfbeb4e5bb62f043477  src/knowledge_base.cpp
+80d50eaaa8a75733f55bda629b5be19cf8fd9b0a921d8974e2441fda80640569  src/intent_recognizer.cpp
+fd6d29c02757eb82dba517d53d2f3f72c82d324cc56741ae917e8e42988e0148  src/voice_router.cpp
+dab2aef7156ff2cf3762f98a9d1681f38200f140ebb865482d4749c3c9c742fa  test/knowledge_base_test.cpp
+cd80b15f4542412051133e30a9a7faefc55eca7dbb20fe130778efd9c3abb3d7  test/intent_recognizer_test.cpp
+=== INSTALLED JSON HASH ===
+cbe711e3b5c19115dc9d85fe37c701829ee3ad37203a3a4337efa5263d5acea7  /home/unitree/unitree_ros2/example/install/g1_voice_router/share/g1_voice_router/config/lab_knowledge.json
+=== CMAKE INSTALL RULES ===
+11:add_library(knowledge_base STATIC
+12:  src/knowledge_base.cpp
+15:target_compile_features(knowledge_base PUBLIC cxx_std_17)
+18:target_include_directories(knowledge_base PUBLIC
+42:  knowledge_base
+47:install(
+52:install(
+60:  add_executable(knowledge_base_test
+61:    test/knowledge_base_test.cpp
+64:  target_link_libraries(knowledge_base_test
+65:    knowledge_base
+68:  target_include_directories(knowledge_base_test PRIVATE
+73:  add_test(
+74:    NAME knowledge_base_test
+75:    COMMAND knowledge_base_test
+88:  add_test(
+=== BOOT/LAUNCH EVIDENCE ===
+    PID    PPID                  STARTED CMD
+  10751       1 Sat Oct 31 13:33:06 2026 /usr/bin/python3 /opt/ros/humble/bin/ros2 run g1_voice_router voice_router
+  10753   10751 Sat Oct 31 13:33:07 2026 /home/unitree/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router
+=== END ===
+=== /g1/tts VERBOSE ===
+Type: std_msgs/msg/String
+
+Publisher count: 1
+
+Node name: g1_voice_router
+Node namespace: /
+Topic type: std_msgs/msg/String
+Endpoint type: PUBLISHER
+GID: 01.10.16.93.29.2c.30.b4.e9.24.65.e9.00.00.15.03.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (10)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 1
+
+Node name: _ros2cli_4216
+Node namespace: /
+Topic type: std_msgs/msg/String
+Endpoint type: SUBSCRIPTION
+GID: 01.10.b9.fd.4a.9e.1c.d0.4c.46.15.40.00.00.08.04.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (5)
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+=== PID 4216 ===
+    PID    PPID                  STARTED CMD
+   4216    3688 Sat Oct 31 12:32:25 2026 /usr/bin/python3 /opt/ros/humble/bin/ros2 topic echo /g1/tts
+=== END SUPPLEMENT ===
