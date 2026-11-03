@@ -1,5 +1,13 @@
 # 变更记录
 
+## 文档重构 — 2026-11-03（V1.0 内容不变）
+
+- README 重写为项目门户：架构图、三段时序、模块设计、接口表、测试证据、故障排查、限制与路线图
+- docs 重组为 architecture / development / deployment / testing / milestones / assets 六组
+- 新增 `docs/milestones/README.md` 阶段索引；阶段报告正文保持原样
+- 修正：Intent 枚举中不存在 `PRICE`（价格属 FactRiskGuard 风险类型）；V1.0 Provider 不消费 `/dog_odom`
+- 同步更新清单与文件台账（交付版 143 个文件，公开 131 + 私有 12）
+
 ## V1.0 — 2026-11-03（冻结）
 
 首个可演示稳定版本。里程碑按内部阶段编号记录，详细报告见 `docs/milestones/`。

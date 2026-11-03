@@ -2,7 +2,7 @@
 
 - 归档时间：2026-11-03
 - 归档根目录：`/home/mick/Mick_Grey/g1_dev/releases/G1-EDU-Smart-Reception-V1.0`
-- 交付版本目录文件数：**132**（含 `private_archive/` 12 个）；不含私有快照 **120**
+- 交付版本目录文件数：**144**（含 `private_archive/` 12 个）；不含私有快照 **132**
 - 运行证据：**127 个文件（约 832KB）**，统一保存在**仓库根 `evidence/`**，不重复存放于本目录
 - 总目录数：**67**（不含 `private_archive/` 子目录）
 - 交付版本目录体积：**29 MB**（其中 `private_archive/` 生产二进制约 28 MB）
