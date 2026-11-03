@@ -1,0 +1,4 @@
+6d105432e76a7ac82d1ec50eb0d799534a9ddb5784dc3d7d71fe2234ee5ec19b  /home/unitree/.config/logrotate/g1-voice-stack.conf
+1ad0eef9ec3e7aa08acf43f2ccff0aa524270aa446803b49722ae9403d22d9b4  /home/unitree/.config/systemd/user/g1-log-rotate.service
+54f37592b2e6854507af6bd10288a722ada7f203efe11d064692833f132b8285  /home/unitree/.config/systemd/user/g1-log-rotate.timer
+b3a4416f2af3b9fd9e7a31568fa02d7490cd04a95d2a9b56d5e039b36bb47466  /home/unitree/g1_systemd/monitor/check_disk.sh

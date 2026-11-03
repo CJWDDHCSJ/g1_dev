@@ -1,0 +1,5 @@
+g1-robot-state-provider pid=1379 state=active restarts=0
+g1-tts pid=1380 state=active restarts=0
+g1-voice-router pid=11283 state=active restarts=0
+g1-asr-bridge pid=1382 state=active restarts=0
+g1-action-executor pid=1383 state=active restarts=0

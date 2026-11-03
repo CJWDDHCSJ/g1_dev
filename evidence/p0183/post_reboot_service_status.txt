@@ -1,0 +1,5 @@
+g1-robot-state-provider active running MainPID=1365 NRestarts=0 ActiveEnter=Mon 2026-11-02 12:54:07 UTC
+g1-tts active running MainPID=1366 NRestarts=0 ActiveEnter=Mon 2026-11-02 12:54:07 UTC
+g1-voice-router active running MainPID=1367 NRestarts=0 ActiveEnter=Mon 2026-11-02 12:54:07 UTC
+g1-asr-bridge active running MainPID=1368 NRestarts=0 ActiveEnter=Mon 2026-11-02 12:54:07 UTC
+g1-action-executor active running MainPID=1369 NRestarts=0 ActiveEnter=Mon 2026-11-02 12:54:07 UTC

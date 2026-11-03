@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic G1 disk and log capacity check
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=6h
+Unit=g1-disk-check.service
+
+[Install]
+WantedBy=timers.target

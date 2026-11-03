@@ -1,0 +1,19 @@
+{
+  "faq": [
+    {
+      "id": "faq_example",
+      "question": "实验室主要研究方向是什么",
+      "answer": "（请填写经核实的公开资料内容）",
+      "keywords": ["研究方向", "研究"],
+      "sources": ["src_example"]
+    }
+  ],
+  "research_directions": [],
+  "projects": [],
+  "equipment": [],
+  "categories": [],
+  "labs": [],
+  "sources": [
+    {"id": "src_example", "title": "（公开来源标题）", "url": "（公开链接）"}
+  ]
+}

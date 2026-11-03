@@ -1,0 +1,6 @@
+g1-robot-state-provider pid=1379 state=active restarts=0
+g1-tts pid=1380 state=active restarts=0
+g1-voice-router pid=11283 state=active restarts=0
+g1-asr-bridge pid=1382 state=active restarts=0
+g1-action-executor pid=1383 state=active restarts=0
+6ab99de8ceb287d1fdb58b66399874c60b41734775a74a0c2745bf64223d6bb7  /proc/11283/exe

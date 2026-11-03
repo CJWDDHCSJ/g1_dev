@@ -1,0 +1,14 @@
+Mon Nov  2 01:12:17 PM UTC 2026
+=== timers ===
+NEXT                        LEFT          LAST                        PASSED   UNIT                ACTIVATES
+Mon 2026-11-02 14:12:01 UTC 59min left    Mon 2026-11-02 13:12:01 UTC 15s ago  g1-log-rotate.timer g1-log-rotate.service
+Mon 2026-11-02 19:07:14 UTC 5h 54min left Mon 2026-11-02 13:07:14 UTC 5min ago g1-disk-check.timer g1-disk-check.service
+
+2 timers listed.
+=== rotate svc ===
+Result=success
+ExecMainStatus=0
+ActiveState=inactive
+=== disk svc ===
+Result=success
+ExecMainStatus=0

@@ -1,0 +1,24 @@
+total 116
+drwxrwxr-x  3 unitree unitree  4096 Nov  2 13:11 .
+drwxr-x--- 43 unitree unitree  4096 Nov  2 13:08 ..
+-rw-rw-r--  1 unitree unitree     0 Nov  2 13:11 action_executor.log
+-rw-rw-r--  1 unitree unitree  3387 Nov  2 13:11 action_executor.log-20261102
+-rw-rw-r--  1 unitree unitree   184 Nov  2 13:11 asr_bridge.log
+-rw-rw-r--  1 unitree unitree 13255 Nov  2 13:11 asr_bridge.log-20261102
+-rw-rw-r--  1 unitree unitree     0 Nov  2 13:11 disk_check.log
+-rw-rw-r--  1 unitree unitree   138 Nov  2 13:11 disk_check.log-20261102
+-rw-rw-r--  1 unitree unitree     0 Nov  2 13:11 robot_state_provider.log
+-rw-rw-r--  1 unitree unitree  1831 Nov  2 13:11 robot_state_provider.log-20261102
+-rw-rw-r--  1 unitree unitree  1244 Nov  2 11:58 service_status.txt
+drwxrwxr-x  2 unitree unitree  4096 Nov  2 13:11 test_rotation
+-rw-rw-r--  1 unitree unitree   888 Nov  2 13:11 tts.log
+-rw-rw-r--  1 unitree unitree 41997 Nov  2 13:11 tts.log-20261102
+-rw-rw-r--  1 unitree unitree   306 Nov  2 13:11 voice_router.log
+-rw-rw-r--  1 unitree unitree 13822 Nov  2 13:11 voice_router.log-20261102
+total 1488
+drwxrwxr-x 2 unitree unitree    4096 Nov  2 13:11 .
+drwxrwxr-x 3 unitree unitree    4096 Nov  2 13:11 ..
+-rw-rw-r-- 1 unitree unitree      13 Nov  2 13:11 app.log
+-rw-rw-r-- 1 unitree unitree    1490 Nov  2 13:11 app.log-20261102-131110.gz
+-rw-rw-r-- 1 unitree unitree    1490 Nov  2 13:11 app.log-20261102-131111.gz
+-rw-rw-r-- 1 unitree unitree 1500001 Nov  2 13:11 app.log-20261102-131112

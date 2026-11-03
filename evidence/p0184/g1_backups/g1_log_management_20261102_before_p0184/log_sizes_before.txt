@@ -1,0 +1,9 @@
+total 96K
+drwxrwxr-x  2 unitree unitree 4.0K Nov  2 11:58 .
+drwxr-x--- 42 unitree unitree 4.0K Nov  2 12:06 ..
+-rw-rw-r--  1 unitree unitree 3.4K Nov  2 12:55 action_executor.log
+-rw-rw-r--  1 unitree unitree  13K Nov  2 13:00 asr_bridge.log
+-rw-rw-r--  1 unitree unitree 1.8K Nov  2 12:54 robot_state_provider.log
+-rw-rw-r--  1 unitree unitree 1.3K Nov  2 11:58 service_status.txt
+-rw-rw-r--  1 unitree unitree  39K Nov  2 13:00 tts.log
+-rw-rw-r--  1 unitree unitree  13K Nov  2 12:59 voice_router.log

@@ -1,0 +1,14 @@
+Setup unitree ros2 environment
+Finished <<< g1_voice_router [0.36s]
+
+Summary: 1 package finished [1.08s]
+Summary: 4 tests, 0 errors, 0 failures, 0 skipped
+===DIRECT===
+
+Total: 44 | passed: 44 | failed: 0
+Passed: 75
+Failed: 0
+
+Total: 119 | passed: 119 | failed: 0
+Passed: 57
+Failed: 0

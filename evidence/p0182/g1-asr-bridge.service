@@ -1,0 +1,17 @@
+[Unit]
+Description=G1 ASR bridge (/audio_msg -> /g1/asr_text)
+PartOf=g1-voice-stack.target
+After=g1-voice-router.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/home/unitree
+ExecStart=/home/unitree/g1_systemd/scripts/start_asr_bridge.sh
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=15
+StandardOutput=append:/home/unitree/g1_logs_systemd/asr_bridge.log
+StandardError=inherit

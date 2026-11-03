@@ -1,0 +1,7 @@
+/audio_client
+/g1_action_executor
+/g1_asr_bridge
+/g1_robot_state_provider
+/g1_tts_node
+/g1_voice_router
+/ros_bridge

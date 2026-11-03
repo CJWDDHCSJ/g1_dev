@@ -1,0 +1,7 @@
+[Unit]
+Description=G1 production log rotation (user-level logrotate)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/unitree
+ExecStart=/usr/sbin/logrotate -s /home/unitree/.local/state/logrotate/g1-voice-stack.status /home/unitree/.config/logrotate/g1-voice-stack.conf

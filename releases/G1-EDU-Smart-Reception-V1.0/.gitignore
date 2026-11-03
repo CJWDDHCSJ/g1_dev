@@ -1,0 +1,48 @@
+# 构建与运行产物
+build/
+install/
+log/
+*.log
+
+# 本地私有资料（生产二进制、真实配置、日志）
+private_archive/
+logs/
+tmp/
+
+# 模型与推理产物
+*.engine
+*.onnx
+*.plan
+*.pt
+*.pth
+*.safetensors
+*.gguf
+
+# 数据与录音
+*.bag
+*.db3
+*.wav
+*.mp3
+
+# 环境与密钥
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Python / 系统
+__pycache__/
+*.pyc
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
+
+# 本地备份副本
+*.bak
+*.before_*
+backup_*/

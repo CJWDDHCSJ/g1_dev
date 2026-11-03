@@ -1,0 +1,17 @@
+[Unit]
+Description=G1 arm action executor (whitelist actions, no auto trigger)
+PartOf=g1-voice-stack.target
+After=g1-asr-bridge.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/home/unitree
+ExecStart=/home/unitree/g1_systemd/scripts/start_action_executor.sh
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=15
+StandardOutput=append:/home/unitree/g1_logs_systemd/action_executor.log
+StandardError=inherit

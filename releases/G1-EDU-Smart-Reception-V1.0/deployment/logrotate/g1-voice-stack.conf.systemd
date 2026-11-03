@@ -1,0 +1,22 @@
+# G1 接待系统生产日志轮转配置（P0-18.4）
+# 状态：STAGED —— 需先安装 logrotate 才能激活（见 README_ACTIVATION.md）
+# 仅覆盖 /home/unitree/g1_logs_systemd/*.log，不触碰任何历史证据与备份。
+/home/unitree/g1_logs_systemd/*.log {
+    daily
+    maxsize 20M
+    rotate 7
+    maxage 14
+
+    missingok
+    notifempty
+
+    compress
+    delaycompress
+
+    copytruncate
+    dateext
+    dateformat -%Y%m%d
+
+    # 以 unitree 身份运行时通常无需 su；若 logrotate 报权限相关错误再启用：
+    # su unitree unitree
+}

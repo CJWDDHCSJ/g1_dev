@@ -1,353 +1,169 @@
-# Unitree G1-EDU 语音交互项目说明
+# g1_dev — G1-EDU 校园实验室智能接待系统 · 项目工作仓库
 
-> 本文依据当前对话中确认的工程目录、源码文件名和已经跑通的数据链路整理。涉及实际参数时，以
-> G1 上正在使用的源码和配置为准；不要把示例
-> IP、可执行程序名或配置项当成未核实的事实。
+本仓库是《基于 ROS 2 的 G1-EDU 校园实验室智能接待与讲解系统 V1.0》的**开发工作仓库**，包含：
 
-## 1. 项目目标与总体数据流
+- 开发期的源码工作副本与调研资料
+- 各阶段（P0-15 ~ P0-21）的交付报告与运行证据
+- 软件著作权申请材料
+- **V1.0 冻结版本（可独立交付/上传 GitHub 的子目录）**
 
-当前语音交互链路：
+> 如果你要找"可以直接发布/交付的那一份"，请直接看
+> [`releases/G1-EDU-Smart-Reception-V1.0/`](releases/G1-EDU-Smart-Reception-V1.0/README.md)。
+> 它是自包含的（源码 + 部署 + 文档 + 软著 + 清单），本仓库其余目录是开发过程资料。
 
-``` text
-G1 语音识别
-    │
-    ▼
-g1_asr_bridge
-    │ 发布识别文本
-    ▼
-ROS 2 话题：/g1/asr_text
-    │
-    ▼
-g1_voice_router
-    │ HTTP 请求
-    ▼
-Windows 主机上的 Ollama 模型服务
-    │ 模型回复
-    ▼
-ROS 2 话题：/g1/tts
-    │
-    ▼
-g1_tts_node
-    │ Unitree AudioClient::TtsMaker(...)
-    ▼
-G1 扬声器播放
+---
+
+## 1. 项目状态（V1.0）
+
+| 项目 | 状态 |
+|---|---|
+| 版本 | **V1.0，2026-11-03 冻结** |
+| 生产 Router 二进制 SHA256 | `6ab99de8ceb287d1fdb58b66399874c60b41734775a74a0c2745bf64223d6bb7` |
+| 单元测试 | **453 项**（7 个套件，G1 ARM64 `colcon` 0 failures） |
+| 真机验证 | 语音闭环、状态问答、单次 `wave`（ID 26）已通过 |
+| 生产部署 | 5 个用户级 systemd 服务，开机自恢复 |
+| 未实现 | 自主导航、人脸识别、视觉感知、G1 本地大模型 |
+
+---
+
+## 2. 目录结构
+
+```text
+g1_dev/
+├── README.md                 ← 本文件：仓库总览与导航
+├── .gitignore                ← 忽略构建产物、node_modules、私有快照
+│
+├── releases/                 ← 【交付物】冻结版本，自包含
+│   └── G1-EDU-Smart-Reception-V1.0/
+│       ├── README.md         ← GitHub 首页级说明（架构图/编译/接口/限制）
+│       ├── ros2_ws/          ← g1_voice_router、g1_asr_bridge 源码
+│       ├── action_ws/        ← g1_action_executor 源码
+│       ├── integrations/     ← TTS 节点源码与配置
+│       ├── deployment/       ← systemd（7 service + 2 timer + target）/ logrotate / 启动脚本 / 脱敏模板
+│       ├── docs/             ← 架构、部署、测试、里程碑报告
+│       ├── software_copyright/  ← 软著材料 01–10 + Mermaid 图（唯一副本）
+│       ├── manifests/        ← 文件台账、SHA256 清单、依赖说明
+│       └── private_archive/  ← 生产二进制与真实配置（禁止上传）
+│
+├── docs/                     ← 开发期文档
+│   ├── handover/             ← 项目交接文档（给新 Agent/新成员）
+│   ├── milestones/           ← 16 份阶段报告 + V1.0 版本说明（共 17 份）
+│   ├── design/               ← 节点与文件索引
+│   ├── INDEX.md              ← 文档导航
+│   └── MIGRATION_MAP.md      ← 本次目录重整的"旧路径 → 新路径"对照表
+│
+├── workspace/                ← 开发工作区（非交付物）
+│   ├── g1_voice_router/      ← 本地开发副本（含测试与知识库配置）
+│   ├── lab_research/         ← 实验室资料调研原始笔记
+│   ├── g1_kb_review/         ← 知识库评审材料（快照、diff、附录）
+│   ├── local_include/        ← 本地编译用的头文件（nlohmann/json 等）
+│   └── legacy_source/        ← 早期源码快照（G1_voice_Project）
+│
+├── research/                 ← 设备与 SDK 调研
+│   ├── robot-inventory/      ← 机器人系统/ROS2/SDK/接口清单
+│   ├── unitree_sdk_explainer/← SDK 讲解材料
+│   └── conclusion/           ← 调研汇总站点（已构建产物 dist/，依赖 node_modules 已移除）
+│
+├── evidence/                 ← 运行证据（按阶段，唯一副本；release 内不再重复）
+│   ├── p015/ p016/ p017/ p0171/ p0172/
+│   ├── p018/ p0181/ p0182/ p0183/ p0184/
+│   ├── p019/ p020/ p0201/ p021/ p0fix/
+│
+├── teach/                    ← 兼容入口（仅一张跳转说明，保留原工作区根路径）
+│
+└── archive/                  ← 历史与备份（不参与日常开发）
+    ├── backups/              ← 源码多版本备份（g1_voice_router_versions）
+    ├── source_snapshots/     ← 最早的源码原始快照
+    ├── release_templates/    ← V1.0 归档模板（安装说明 + 清单）
+    ├── notes/                ← 旧 README、早期交付报告
+    └── misc/                 ← 其他零散配置
 ```
 
-这个链路把语音识别、对话推理和语音播报分成独立节点。这样每一段都能单独检查，不需要把所有逻辑塞进一个程序里。
+---
 
-## 2. 工程目录与关键文件
+## 3. 快速开始
 
-G1 工作区的项目根目录：
+### 3.1 只想看交付内容
 
-``` text
-~/unitree_ros2/example/
-├── config/
-│   ├── tts_config.json
-│   ├── tts_test_config.json
-│   └── 其他 TTS 配置备份/测试版本
-├── g1_asr_bridge/
-│   ├── CMakeLists.txt
-│   ├── package.xml
-│   └── src/asr_json_bridge.cpp
-├── g1_voice_router/
-│   ├── CMakeLists.txt
-│   ├── package.xml
-│   └── src/voice_router.cpp
-└── src/
-    ├── CMakeLists.txt
-    ├── package.xml
-    ├── include/g1/g1_audio_client.hpp
-    ├── include/common/base_client.hpp
-    └── src/g1/audio_client/
-        ├── g1_tts_node.cpp
-        ├── g1_tts_node.before_pause.cpp
-        ├── g1_tts_node.working.cpp
-        ├── g1_audio_client_example.cpp
-        └── g1_tts_test.cpp
+```bash
+cd releases/G1-EDU-Smart-Reception-V1.0
+less README.md
 ```
 
-`build/`、`install/` 和 `log/`
-是构建过程相关目录，源码备份通常不需要包含它们。
+### 3.2 想编译/部署到 G1
 
-### 2.1 ASR 桥接节点
+见 [`releases/G1-EDU-Smart-Reception-V1.0/docs/deployment/`](releases/G1-EDU-Smart-Reception-V1.0/docs/deployment/)：
 
--   ROS 2 包目录：`g1_asr_bridge/`
--   源码：`g1_asr_bridge/src/asr_json_bridge.cpp`
--   构建配置：`g1_asr_bridge/CMakeLists.txt`
--   包依赖声明：`g1_asr_bridge/package.xml`
--   作用：将机器人侧语音识别结果桥接为 ROS 2 消息。当前链路中，下游使用
-    `/g1/asr_text`。
--   实际订阅的数据源、消息类型、可执行程序名称应以源码和
-    `ros2 pkg executables g1_asr_bridge` 的输出为准。
+1. `01_environment_preparation.md` — 环境与依赖
+2. `02_build_and_deploy.md` — 两个工作区分别构建、单服务重启
+3. `03_operations_and_rollback.md` — 日志、回滚、故障处置
 
-### 2.2 大模型语音路由节点
+### 3.3 想了解设计
 
--   ROS 2 包目录：`g1_voice_router/`
--   源码：`g1_voice_router/src/voice_router.cpp`
--   历史备份：`g1_voice_router/src/voice_router.cpp.bak`
--   构建配置：`g1_voice_router/CMakeLists.txt`
--   包依赖声明：`g1_voice_router/package.xml`
--   作用：订阅 `/g1/asr_text`，把识别文本发送给
-    Ollama，再把模型回复发布到 `/g1/tts`。
--   当前对话记录中使用过的 Ollama 地址为
-    `http://192.168.123.99:11434/api/chat`，模型名为
-    `qwen3-vl:4b-instruct`。如果源代码已更改，应以 `voice_router.cpp`
-    中实际值为准。
--   Windows 主机必须运行 Ollama，并允许 G1
-    访问对应服务端口；网络可达不等于模型请求一定成功。
+- 架构与数据通路：`releases/.../docs/architecture/`
+- 模块职责与接口：`releases/G1-EDU-Smart-Reception-V1.0/software_copyright/02_软件设计说明书.md`、`04_模块功能说明.md`
+- 话题接口与动作白名单：`releases/.../README.md` 第 7、8 节
 
-### 2.3 TTS 节点
+### 3.4 想继续开发
 
--   ROS 2 包：`unitree_ros2_example`，其工程目录为 `src/`
--   主源码：`src/src/g1/audio_client/g1_tts_node.cpp`
--   相关接口头文件：`src/include/g1/g1_audio_client.hpp`
--   基础客户端头文件：`src/include/common/base_client.hpp`
--   构建配置：`src/CMakeLists.txt`
--   包依赖声明：`src/package.xml`
--   作用：订阅 `/g1/tts`，将文本分句并调用 Unitree `AudioClient` 的
-    `TtsMaker()` 接口进行语音合成与播报。
--   `g1_tts_node.before_pause.cpp` 和 `g1_tts_node.working.cpp`
-    是保留的历史版本/工作版本，通常不要把它们当作独立节点同时启动。
--   TTS
-    请求返回成功不一定代表扬声器已经播完整段音频；接口响应与实际播放完成是不同的状态。
+- 编码与架构红线（不得绕过 FactRiskGuard / InteractionManager、不得新增未验证动作 ID）：`releases/.../CONTRIBUTING.md`
+- 开发副本：`workspace/g1_voice_router/`
+- 测试基线：453 项，改完必须全绿
 
-## 3. 配置文件说明
+---
 
-### 3.1 `config/tts_config.json`
+## 4. 测试基线（V1.0）
 
-默认配置文件路径：
+| 套件 | 用例数 |
+|---|---:|
+| asr_text_normalizer_test | 22 |
+| action_command_mapper_test | 39 |
+| interaction_manager_test | 76 |
+| intent_recognizer_test | 96 |
+| fact_risk_guard_test | 119 |
+| knowledge_base_test | 57 |
+| robot_state_evaluator_test | 44 |
+| **合计** | **453** |
 
-``` text
-/home/unitree/unitree_ros2/example/config/tts_config.json
-```
-
-TTS 节点默认读取这个文件，除非启动环境通过 `G1_TTS_CONFIG`
-指定其他路径。
-
-注意事项：
-
-1.  先阅读当前 JSON 内容，确认 `text` 等字段的实际含义。
-
-2.  如果启动时播报固定的旧演示文本，检查该文件中的 `text`
-    字段；它可能是启动/测试文本，不要误认为一定来自 `/g1/tts`。
-
-3.  修改前先备份：
-
-    ``` bash
-    cp -a ~/unitree_ros2/example/config/tts_config.json \
-      ~/unitree_ros2/example/config/tts_config.json.backup_$(date +%Y%m%d_%H%M%S)
-    ```
-
-4.  修改 JSON 后应确认语法正确。不要直接复制其他机器的配置覆盖当前文件。
-
-### 3.2 `config/tts_test_config.json`
-
-测试用途的 TTS
-配置文件。是否会被使用取决于启动参数、环境变量或源码；文件存在并不意味着节点自动读取它。
-
-### 3.3 `g1_voice_router` 的 Ollama 配置
-
-在 `g1_voice_router/src/voice_router.cpp` 中检查： - Ollama HTTP 地址 -
-模型名称 - 超时设置 - 请求 JSON 构造 - 错误处理和失败时的回复 -
-发布话题名称
-
-当前已知配置记录： - URL：`http://192.168.123.99:11434/api/chat` -
-模型：`qwen3-vl:4b-instruct`
-
-这两个值可能会随网络环境或模型调整变化，启动前以源文件为准。
-
-### 3.4 ROS 2 与 CycloneDDS 环境
-
-当前项目使用的环境设置如下。每个新终端运行 ROS 2
-节点前，都要加载对应环境：
-
-``` bash
+```bash
+# G1 上执行
 cd ~/unitree_ros2/example
-
-source /opt/ros/humble/setup.bash
-source ~/unitree_ros2/cyclonedds_ws/install/setup.bash
-source ~/unitree_ros2/example/install/setup.bash
-
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-export ROS_DOMAIN_ID=0
-export ROS_LOCALHOST_ONLY=0
-export CYCLONEDDS_URI='<CycloneDDS><Domain Id="any"><General><Interfaces><NetworkInterface name="eth0" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'
+colcon test --packages-select g1_voice_router && colcon test-result --verbose
 ```
 
-注意： - 以上命令基于当前项目记录的 ROS 2 Humble 环境。 - `eth0`
-必须是实际连接机器人网络的接口。如果网络接口名称不同，应先用
-`ip -br addr` 核实，再调整配置。 - `ROS_DOMAIN_ID`、RMW 实现和 DDS
-网卡配置必须与需要互通的节点相匹配。 - 不要在同一终端重复 source 不同
-ROS 发行版的环境。
+---
 
-## 4. 构建命令
+## 5. 关于历史路径
 
-在 G1 的 Ubuntu 终端执行：
+本次目录重整前，开发资料集中在 `teach/` 下。**历史报告中的 `/home/mick/Mick_Grey/g1_dev/teach/...` 路径是当时的真实记录**，为了不篡改交付证据，报告内容保持原样未改。
 
-``` bash
-cd ~/unitree_ros2/example
+新旧路径对照见 [`docs/MIGRATION_MAP.md`](docs/MIGRATION_MAP.md)。
 
-source /opt/ros/humble/setup.bash
-source ~/unitree_ros2/cyclonedds_ws/install/setup.bash
+---
 
-colcon build \
-  --packages-select g1_asr_bridge g1_voice_router unitree_ros2_example \
-  --symlink-install
+## 6. 仓库与发布
+
+- 本仓库有远端 `origin`（GitHub），但**本次重整未执行任何 `git commit` / `git push`**。
+- 要让 Git 记录本次目录移动，可自行执行：
+
+```bash
+cd /home/mick/Mick_Grey/g1_dev
+git add -A
+git status          # 检查后自行决定是否提交
 ```
 
-说明： - `--packages-select` 只选择列出的包。 - `--symlink-install`
-便于开发时让安装空间引用工作区文件，具体行为取决于包的安装规则。 -
-构建前需要确保这些包名真实存在且依赖已经安装。 -
-如果其中一个包构建失败，先看报错包和首个编译错误，不要反复盲目重编译。
+- 提交前请先看 `releases/G1-EDU-Smart-Reception-V1.0/docs/GITHUB_PREPARE_CHECKLIST.md`：
+  `evidence/`（仓库根，127 个文件）与 `private_archive/` 不应进入公开仓库；`research/conclusion/` 的 `node_modules/` 已删除。
+- **项目未指定开源许可证**，未添加任何 LICENSE 文件，请勿默认视为可再分发。
 
-构建结束后，新开终端时加载工作区：
+---
 
-``` bash
-source ~/unitree_ros2/example/install/setup.bash
-```
+## 7. 安全与隐私提醒
 
-## 5. 启动命令与建议顺序
-
-每个启动终端都先执行第 3.4 节中的环境加载命令。建议先启动下游
-TTS，再启动路由和 ASR，这样在识别消息到达时，下游通常已经就绪。
-
-### 终端 A：TTS
-
-``` bash
-ros2 run unitree_ros2_example g1_tts_node
-```
-
-### 终端 B：大模型路由
-
-``` bash
-ros2 run g1_voice_router voice_router
-```
-
-### 终端 C：ASR 桥接
-
-先查询实际可执行程序：
-
-``` bash
-ros2 pkg executables g1_asr_bridge
-```
-
-然后将查询到的可执行程序名称用于：
-
-``` bash
-ros2 run g1_asr_bridge <实际可执行程序名称>
-```
-
-尖括号内容是占位说明，执行前必须替换。不要凭包名猜可执行程序名。
-
-### 查看路由节点可执行程序
-
-``` bash
-ros2 pkg executables g1_voice_router
-```
-
-当前记录的启动命令是：
-
-``` bash
-ros2 run g1_voice_router voice_router
-```
-
-### 查看 TTS 所在包的可执行程序
-
-``` bash
-ros2 pkg executables unitree_ros2_example
-```
-
-当前记录的 TTS 启动命令是：
-
-``` bash
-ros2 run unitree_ros2_example g1_tts_node
-```
-
-## 6. 运行检查与故障定位
-
-### 6.1 检查话题
-
-``` bash
-ros2 topic list | grep -E '/g1/asr_text|/g1/tts'
-```
-
-查看 ASR 识别结果：
-
-``` bash
-ros2 topic echo /g1/asr_text
-```
-
-查看路由发给 TTS 的文本：
-
-``` bash
-ros2 topic echo /g1/tts
-```
-
-查看话题发布/订阅信息：
-
-``` bash
-ros2 topic info /g1/asr_text
-ros2 topic info /g1/tts
-```
-
-查看 ROS 节点：
-
-``` bash
-ros2 node list
-```
-
-### 6.2 常见现象与排查方向
-
-  ----------------------------------------------------------------------------------------
-  现象                                优先检查
-  ----------------------------------- ----------------------------------------------------
-  `/g1/asr_text` 没有消息             ASR
-                                      桥接进程是否运行、输入识别源是否有数据、话题名称及
-                                      DDS 网络
-
-  有 ASR 文本，但 `/g1/tts` 没消息    路由节点日志、Ollama 地址/模型、Windows 防火墙、HTTP
-                                      超时
-
-  `/g1/tts` 有文本但没声音            TTS 节点是否运行、TTS 配置、Unitree AudioClient
-                                      响应、机器人音频服务
-
-  启动 TTS 后先播固定旧文本           检查 `tts_config.json` 的 `text`
-                                      字段及源码中的启动播报逻辑
-
-  ROS 2 看不到其他节点/话题           检查 ROS_DOMAIN_ID、RMW_IMPLEMENTATION、CycloneDDS
-                                      网卡名和网络连接
-
-  `ros2 run` 提示找不到包/可执行程序  重新 source 工作区、检查 `colcon build` 结果，并用
-                                      `ros2 pkg executables <包名>` 查询真实名称
-  ----------------------------------------------------------------------------------------
-
-## 7. Windows Ollama 服务检查
-
-当前记录的 Ollama 地址为：
-
-``` text
-http://192.168.123.99:11434/api/chat
-```
-
-在运行 Ollama 的 Windows 主机上确认服务已经启动，并确认 G1
-可以访问该主机地址和端口。不要只因为本机 `127.0.0.1:11434`
-能访问，就认为 G1 一定能访问。
-
-如果模型或 IP 改动，请同步检查 `voice_router.cpp` 中的配置。
-
-## 8. 备份范围与安全提醒
-
-建议备份以下内容： - `g1_asr_bridge/` - `g1_voice_router/` -
-`src/src/g1/audio_client/` 中与 TTS 相关的源码 -
-`src/CMakeLists.txt`、`src/package.xml` -
-`src/include/g1/g1_audio_client.hpp` -
-`src/include/common/base_client.hpp` - `config/tts_config*` 与
-`config/tts_test_config.json` -
-`SYSTEM_INFO.txt`、`FILE_MANIFEST.txt`、`SHA256SUMS.txt`（若已生成）
-
-一般不需要将 `build/`、`install/`、`log/`
-放进源码备份。完整迁移到另一台机器时，仍可能需要 Unitree SDK
-库、其余依赖、正确的 ROS 发行版和 DDS 网络配置。
-
-配置文件可能包含
-IP、设备信息或其他本地参数；向他人分享压缩包前应检查并遮蔽不宜公开的内容。
+| 内容 | 说明 |
+|---|---|
+| `evidence/**` | 含内网 IP（`192.168.x.x`）、主机名、`/home/unitree` 路径 |
+| `docs/milestones/**` | 同上，为历史报告原样保留 |
+| `releases/.../private_archive/**` | 生产二进制与真实配置，**禁止上传** |
+| `research/conclusion/` | 仅保留构建产物 `dist/`；原 54MB `node_modules/` 已删除（可重建） |
+| 源码中的 `ollama_url` 默认值 | 仍是内网地址（为与冻结二进制保持一致，未改动） |

@@ -1,0 +1,17 @@
+[Unit]
+Description=G1 TTS node (/g1/tts -> speaker)
+PartOf=g1-voice-stack.target
+After=g1-robot-state-provider.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/home/unitree
+ExecStart=/home/unitree/g1_systemd/scripts/start_tts.sh
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=15
+StandardOutput=append:/home/unitree/g1_logs_systemd/tts.log
+StandardError=inherit

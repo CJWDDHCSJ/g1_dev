@@ -1,0 +1,7 @@
+[Unit]
+Description=G1 disk and log capacity check (read-only)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/unitree
+ExecStart=/home/unitree/g1_systemd/monitor/check_disk.sh

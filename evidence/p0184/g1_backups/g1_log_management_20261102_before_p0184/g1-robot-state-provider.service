@@ -1,0 +1,16 @@
+[Unit]
+Description=G1 RobotStateProvider (aggregated robot state, no control output)
+PartOf=g1-voice-stack.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/home/unitree
+ExecStart=/home/unitree/g1_systemd/scripts/start_robot_state_provider.sh
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=15
+StandardOutput=append:/home/unitree/g1_logs_systemd/robot_state_provider.log
+StandardError=inherit

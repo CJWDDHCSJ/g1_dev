@@ -1,0 +1,10 @@
+[Unit]
+Description=Hourly G1 production log rotation check
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=1h
+Unit=g1-log-rotate.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,5 @@
+1379 0 active running g1-robot-state-provider
+1380 0 active running g1-tts
+1381 0 active running g1-voice-router
+1382 0 active running g1-asr-bridge
+1383 0 active running g1-action-executor

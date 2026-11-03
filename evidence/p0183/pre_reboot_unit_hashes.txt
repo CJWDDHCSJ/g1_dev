@@ -1,0 +1,11 @@
+29bd514804c14e50957a77e399c687d2cf2b0b610a88c28556564f495a1d7c55  /home/unitree/.config/systemd/user/g1-action-executor.service
+ff34faeba0cb63176113d0a2362fccb982b063e826f4a85b1043a41661821cfc  /home/unitree/.config/systemd/user/g1-asr-bridge.service
+043cee041f9159ff99467de019f8d691e1c889473d42a3d713cf147a3c65eb3c  /home/unitree/.config/systemd/user/g1-robot-state-provider.service
+7d21124dc3a024b1387c99e978a20ba4abdcc1ab9a2896f2212ad084f67ebd5e  /home/unitree/.config/systemd/user/g1-tts.service
+d7a64e311e57bef70d856a7ad542345b583f08aebace4809670bed47def9d499  /home/unitree/.config/systemd/user/g1-voice-router.service
+7574356a50db0f33d776e19a74403c0fad9ea8575542960abaa52e82fc5b72e3  /home/unitree/.config/systemd/user/g1-voice-stack.target
+421b180f6aaa314b884d34ad3531afffdea14d1e9d0928634ce55784ca652240  /home/unitree/g1_systemd/scripts/start_action_executor.sh
+ac5853921e74b862a2c2600194fd52450e4e01d7ebfabee5302772867228993a  /home/unitree/g1_systemd/scripts/start_asr_bridge.sh
+f010d0ce81da8a4b8d60e06ad2dc91879159af2f129db9b840982b11b50287a0  /home/unitree/g1_systemd/scripts/start_robot_state_provider.sh
+3c6b17279d4b043039cfdb10ebd3917b72998e94eca48a6371e25b0694772e43  /home/unitree/g1_systemd/scripts/start_tts.sh
+aad4b779eb1db9097ba2948e62f878924d55153dcce951bb9b8b7c56d28c7d2f  /home/unitree/g1_systemd/scripts/start_voice_router.sh

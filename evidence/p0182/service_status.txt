@@ -1,0 +1,25 @@
+=== systemctl --user list-units g1-* ===
+  UNIT                            LOAD   ACTIVE SUB     DESCRIPTION
+  g1-action-executor.service      loaded active running G1 arm action executor (whitelist actions, no auto trigger)
+  g1-asr-bridge.service           loaded active running G1 ASR bridge (/audio_msg -> /g1/asr_text)
+  g1-robot-state-provider.service loaded active running G1 RobotStateProvider (aggregated robot state, no control output)
+  g1-tts.service                  loaded active running G1 TTS node (/g1/tts -> speaker)
+  g1-voice-router.service         loaded active running G1 Voice Router (intent + fact guard + local answers)
+  g1-voice-stack.target           loaded active active  G1 campus reception voice stack (5 nodes, no motion on start)
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+6 loaded units listed.
+To show all installed unit files use 'systemctl list-unit-files'.
+
+=== is-enabled / linger ===
+enabled
+Linger=yes
+
+=== MainPID ===
+g1-robot-state-provider 16583
+g1-tts 16584
+g1-voice-router 16585
+g1-asr-bridge 16589
+g1-action-executor 16592

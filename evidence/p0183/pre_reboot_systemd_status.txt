@@ -1,0 +1,12 @@
+=== target ===
+enabled
+active
+=== linger ===
+State=active
+Linger=yes
+=== services ===
+g1-robot-state-provider active running MainPID=16583 NRestarts=0
+g1-tts active running MainPID=16584 NRestarts=0
+g1-voice-router active running MainPID=16585 NRestarts=0
+g1-asr-bridge active running MainPID=16589 NRestarts=0
+g1-action-executor active running MainPID=16592 NRestarts=0

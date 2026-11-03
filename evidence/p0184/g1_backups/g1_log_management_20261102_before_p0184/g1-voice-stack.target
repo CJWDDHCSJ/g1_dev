@@ -1,0 +1,7 @@
+[Unit]
+Description=G1 campus reception voice stack (5 nodes, no motion on start)
+Wants=g1-robot-state-provider.service g1-tts.service g1-voice-router.service g1-asr-bridge.service g1-action-executor.service
+After=g1-robot-state-provider.service g1-tts.service g1-voice-router.service g1-asr-bridge.service g1-action-executor.service
+
+[Install]
+WantedBy=default.target

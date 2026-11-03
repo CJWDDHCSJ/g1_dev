@@ -1,0 +1,17 @@
+[Unit]
+Description=G1 Voice Router (intent + fact guard + local answers)
+PartOf=g1-voice-stack.target
+After=g1-robot-state-provider.service g1-tts.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=/home/unitree
+ExecStart=/home/unitree/g1_systemd/scripts/start_voice_router.sh
+Restart=always
+RestartSec=3
+KillSignal=SIGINT
+TimeoutStopSec=15
+StandardOutput=append:/home/unitree/g1_logs_systemd/voice_router.log
+StandardError=inherit
