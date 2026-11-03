@@ -17,7 +17,6 @@
 |---|---|
 | [`handover/G1_AGENT_HANDOVER_20261101.md`](handover/G1_AGENT_HANDOVER_20261101.md) | 项目交接文档（环境、模块、备份、排错经验） |
 | [`design/G1_EDU_ROS2_Node_File_Index.md`](design/G1_EDU_ROS2_Node_File_Index.md) | 节点与文件索引 |
-| [`MIGRATION_MAP.md`](MIGRATION_MAP.md) | 目录重整：旧路径 → 新路径 |
 | [`../releases/.../software_copyright/`](../releases/G1-EDU-Smart-Reception-V1.0/software_copyright/) | 软著材料（唯一副本） |
 
 ## 阶段报告（按时间顺序）

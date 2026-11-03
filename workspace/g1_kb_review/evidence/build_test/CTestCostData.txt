@@ -1,3 +1,0 @@
-knowledge_base_test 4 0.00473469
-intent_recognizer_test 4 0.00112583
----

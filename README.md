@@ -30,53 +30,40 @@
 
 ```text
 g1_dev/
-├── README.md                 ← 本文件：仓库总览与导航
+├── README.md                 ← 仓库总览与导航（本文件）
 ├── .gitignore                ← 忽略构建产物、node_modules、私有快照
 │
-├── releases/                 ← 【交付物】冻结版本，自包含
+├── releases/                 ← 【交付物】V1.0 冻结版本，自包含
 │   └── G1-EDU-Smart-Reception-V1.0/
-│       ├── README.md         ← GitHub 首页级说明（架构图/编译/接口/限制）
+│       ├── README.md         ← 交付版首页（架构图/编译/接口/限制）
 │       ├── ros2_ws/          ← g1_voice_router、g1_asr_bridge 源码
 │       ├── action_ws/        ← g1_action_executor 源码
 │       ├── integrations/     ← TTS 节点源码与配置
-│       ├── deployment/       ← systemd（7 service + 2 timer + target）/ logrotate / 启动脚本 / 脱敏模板
+│       ├── deployment/       ← 7 service + 2 timer + target、启动脚本、脱敏模板
 │       ├── docs/             ← 架构、部署、测试、里程碑报告
-│       ├── software_copyright/  ← 软著材料 01–10 + Mermaid 图（唯一副本）
+│       ├── software_copyright/  ← 软著材料 01–10 + Mermaid 图
 │       ├── manifests/        ← 文件台账、SHA256 清单、依赖说明
 │       └── private_archive/  ← 生产二进制与真实配置（禁止上传）
 │
 ├── docs/                     ← 开发期文档
-│   ├── handover/             ← 项目交接文档（给新 Agent/新成员）
+│   ├── handover/             ← 项目交接文档
 │   ├── milestones/           ← 16 份阶段报告 + V1.0 版本说明（共 17 份）
 │   ├── design/               ← 节点与文件索引
-│   ├── INDEX.md              ← 文档导航
-│   └── MIGRATION_MAP.md      ← 本次目录重整的"旧路径 → 新路径"对照表
+│   └── INDEX.md              ← 文档导航
 │
 ├── workspace/                ← 开发工作区（非交付物）
 │   ├── g1_voice_router/      ← 本地开发副本（含测试与知识库配置）
-│   ├── lab_research/         ← 实验室资料调研原始笔记
-│   ├── g1_kb_review/         ← 知识库评审材料（快照、diff、附录）
-│   ├── local_include/        ← 本地编译用的头文件（nlohmann/json 等）
-│   └── legacy_source/        ← 早期源码快照（G1_voice_Project）
+│   ├── lab_research/         ← 知识库事实来源的调研资料
+│   └── local_include/        ← 本地编译用头文件（nlohmann/json）
 │
-├── research/                 ← 设备与 SDK 调研
-│   ├── robot-inventory/      ← 机器人系统/ROS2/SDK/接口清单
-│   ├── unitree_sdk_explainer/← SDK 讲解材料
-│   └── conclusion/           ← 调研汇总站点（已构建产物 dist/，依赖 node_modules 已移除）
+├── research/                 ← 设备与 SDK 参考
+│   ├── robot-inventory/      ← 机器人系统 / ROS 2 / SDK / 接口清单
+│   └── unitree_sdk_explainer/← SDK 讲解材料
 │
-├── evidence/                 ← 运行证据（按阶段，唯一副本；release 内不再重复）
-│   ├── p015/ p016/ p017/ p0171/ p0172/
-│   ├── p018/ p0181/ p0182/ p0183/ p0184/
-│   ├── p019/ p020/ p0201/ p021/ p0fix/
-│
-├── teach/                    ← 兼容入口（仅一张跳转说明，保留原工作区根路径）
-│
-└── archive/                  ← 历史与备份（不参与日常开发）
-    ├── backups/              ← 源码多版本备份（g1_voice_router_versions）
-    ├── source_snapshots/     ← 最早的源码原始快照
-    ├── release_templates/    ← V1.0 归档模板（安装说明 + 清单）
-    ├── notes/                ← 旧 README、早期交付报告
-    └── misc/                 ← 其他零散配置
+└── evidence/                 ← 运行证据（按阶段，唯一副本）
+    ├── p015/ p016/ p017/ p0171/ p0172/
+    ├── p018/ p0181/ p0182/ p0183/ p0184/
+    └── p019/ p020/ p0201/ p021/ p0fix/
 ```
 
 ---
@@ -135,9 +122,9 @@ colcon test --packages-select g1_voice_router && colcon test-result --verbose
 
 ## 5. 关于历史路径
 
-本次目录重整前，开发资料集中在 `teach/` 下。**历史报告中的 `/home/mick/Mick_Grey/g1_dev/teach/...` 路径是当时的真实记录**，为了不篡改交付证据，报告内容保持原样未改。
+仓库在 2026-11-03 做过一次结构重整，并删除了不再需要的临时目录（`teach/`、`archive/`、旧源码快照、过期调研站点等）。
 
-新旧路径对照见 [`docs/MIGRATION_MAP.md`](docs/MIGRATION_MAP.md)。
+因此**历史报告里出现的旧路径（如 `g1_dev/teach/...`）已不存在**——那是当时的真实记录，为保证交付证据可信，报告正文未做改写。当前有效结构以上面的目录树为准。
 
 ---
 
@@ -153,7 +140,7 @@ git status          # 检查后自行决定是否提交
 ```
 
 - 提交前请先看 `releases/G1-EDU-Smart-Reception-V1.0/docs/GITHUB_PREPARE_CHECKLIST.md`：
-  `evidence/`（仓库根，127 个文件）与 `private_archive/` 不应进入公开仓库；`research/conclusion/` 的 `node_modules/` 已删除。
+  `evidence/`（127 个文件）与 `private_archive/` 不应进入公开仓库。
 - **项目未指定开源许可证**，未添加任何 LICENSE 文件，请勿默认视为可再分发。
 
 ---
@@ -165,5 +152,4 @@ git status          # 检查后自行决定是否提交
 | `evidence/**` | 含内网 IP（`192.168.x.x`）、主机名、`/home/unitree` 路径 |
 | `docs/milestones/**` | 同上，为历史报告原样保留 |
 | `releases/.../private_archive/**` | 生产二进制与真实配置，**禁止上传** |
-| `research/conclusion/` | 仅保留构建产物 `dist/`；原 54MB `node_modules/` 已删除（可重建） |
 | 源码中的 `ollama_url` 默认值 | 仍是内网地址（为与冻结二进制保持一致，未改动） |
