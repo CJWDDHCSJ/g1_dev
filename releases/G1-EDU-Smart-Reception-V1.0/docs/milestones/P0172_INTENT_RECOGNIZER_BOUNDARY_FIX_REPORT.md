@@ -3,7 +3,7 @@
 - 日期：2026-11-01
 - 项目：《基于 ROS 2 的 G1-EDU 校园实验室智能接待与讲解系统 V1.0》
 - 范围：IntentRecognizer 三种语义边界修复（G1 实时状态 / 技术原理 / 实验室情况）。Guard、KnowledgeBase、Voice Router、ASR/TTS/Action Executor 均未修改。
-- 证据目录：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0172/`
+- 证据目录：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0172/`
 
 ## A. 修改前问题（源码定位）
 
@@ -136,7 +136,7 @@ Mock：G1 本机 127.0.0.1:11436，记录每次 /api/chat 的用户消息；测�
 ## 备份与证据
 
 - G1 备份：`/home/unitree/g1_backups/g1_voice_router_20261101_080457_before_p0172/`
-- 本地备份：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261101_before_p0172_local/`
+- 本地备份：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261101_before_p0172_local/`
 - 证据：`evidence_p0172/p0172_router.log`（11 条输入的意图/Guard/路由日志）、`evidence_p0172/p0172_mock.log`（5 条 Mock 请求全文）
 
 ## 变更检查

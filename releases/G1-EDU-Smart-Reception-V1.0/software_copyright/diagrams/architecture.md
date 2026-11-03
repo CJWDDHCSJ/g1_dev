@@ -50,7 +50,6 @@ flowchart LR
     LS[/lowstate/] --> P[g1_robot_state_provider]
     SM[/sportmodestate/] --> P
     AS[/arm/action/state/] --> P
-    OD[/dog_odom/] --> P
     BM[/lf/bmsstate/] --> P
     P --> AGG[/g1/robot_state<br/>schema_version=1/]
     AGG --> E[RobotStateEvaluator]
@@ -87,7 +86,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TB
-    subgraph G1[G1-EDU 192.168.123.164]
+    subgraph G1[G1-EDU <G1_HOST>]
         direction TB
         N1[g1-asr-bridge]
         N2[g1-robot-state-provider]
@@ -100,7 +99,7 @@ flowchart TB
         N3 --> N5
         N5 --> N3
     end
-    subgraph NB[Ubuntu 笔记本 192.168.123.99]
+    subgraph NB[Ubuntu 笔记本 <LLM_HOST>]
         OL[Ollama qwen3-vl:4b-instruct]
     end
     N3 <-->|HTTP /api/chat| OL

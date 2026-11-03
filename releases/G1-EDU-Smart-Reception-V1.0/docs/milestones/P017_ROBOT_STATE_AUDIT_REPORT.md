@@ -2,9 +2,9 @@
 
 - 日期：2026-11-01
 - 性质：**只读审计**，无任何代码/配置修改，无节点重启，无动作触发。
-- 证据目录：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p017/`
-- 报告位置：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/P017_ROBOT_STATE_AUDIT_REPORT.md`
-- 实测路径核实：本地工作根目录确为 `/home/mick/Mick_Grey/g1_dev/teach/`，`g1_kb_work/` 与 `evidence_p016/` 均存在。
+- 证据目录：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p017/`
+- 报告位置：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/P017_ROBOT_STATE_AUDIT_REPORT.md`
+- 实测路径核实：本地工作根目录确为 `/home/<user>/Mick_Grey/g1_dev/teach/`，`g1_kb_work/` 与 `evidence_p016/` 均存在。
 
 证据分级标注：
 - 【接口确认】= 已由 `ros2 interface show` 确认
@@ -286,7 +286,7 @@ Intent recognized: ROBOT_STATUS
 
 ## G. 证据
 
-命令与输出已存档：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p017/audit_evidence.md`
+命令与输出已存档：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p017/audit_evidence.md`
 （含 topic list -t、info -v、interface show、echo 采样、hz 实测、意图/Guard 探针输出；P0-15/P0-16 证据未触碰。）
 探针程序使用 /tmp 独立编译，运行后已删除；G1 端临时采样文件已删除。
 

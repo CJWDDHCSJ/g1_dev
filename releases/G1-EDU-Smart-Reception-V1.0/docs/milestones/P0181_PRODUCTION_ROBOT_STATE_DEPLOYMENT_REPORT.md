@@ -2,7 +2,7 @@
 
 - 日期：2026-11-02
 - 结论：**RobotStateProvider 已接入 G1 生产域（DOMAIN_ID 0）并持续输出真实状态；Voice Router 依据真实 BMS/IMU/动作数据回答；七项真实麦克风测试全部通过。**
-- 证据目录：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0181/`
+- 证据目录：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0181/`
 
 ## A. 部署前状态
 
@@ -10,7 +10,7 @@
 - 接待节点：**全部不存在**（重启后未启动），无残留测试进程，无 Domain 77 残留。
 - Unitree 原生数据源：`/lf/bmsstate`、`/lowstate`、`/sportmodestate`、`/arm/action/state` 全部 `DATA_OK`；`/audio_msg` pub=1/sub=2（原生 ASR 活跃）；`/ros_bridge` 正常。
 - 部署前实测 SOC=50（机器人已充电），动作状态 `{"holding":false,"id":0,"name":""}`。
-- Ollama：`http://192.168.123.99:11434` 可达，`qwen3-vl:4b-instruct` 在位。
+- Ollama：`http://<LLM_HOST>:11434` 可达，`qwen3-vl:4b-instruct` 在位。
 
 ## B. 部署版本
 

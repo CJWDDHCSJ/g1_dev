@@ -143,7 +143,7 @@ DOMAIN_ID 0 是否启动新 Provider：否
 | 新增头文件 ×3、provider 源文件 ×2、evaluator 测试 ×1 | 见 G1 目录 |
 
 - G1 备份：`/home/unitree/g1_backups/g1_voice_router_20261101_before_p018/`
-- 本地备份：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261101_before_p018_local/`
+- 本地备份：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261101_before_p018_local/`
 - 证据：`evidence_p018/`（README.md、state_*.json、router/provider/mock 日志、test_result.txt、mock 脚本）
 - G1 持久化：`~/g1_logs_p018/`
 

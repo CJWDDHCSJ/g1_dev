@@ -68,6 +68,6 @@ nohup ros2 run g1_action_executor g1_action_executor_node > ~/g1_logs_p016/execu
 
 **达到完整闭环验收标准**：真实麦克风 → Unitree 原生 ASR → /audio_msg → asr_json_bridge → /g1/asr_text → IntentRecognizer + FactRiskGuard → 本地 KB / Ollama → /g1/tts → g1_tts_node → G1 扬声器真实发声，以及 GREETING → /g1/action_request → g1_action_executor → 真实挥手 → /g1/action_result，全链路真机验证通过。
 
-证据文件（本地）：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p016/`（asr.log、router.log、tts.log、executor.log）。
+证据文件（本地）：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p016/`（asr.log、router.log、tts.log、executor.log）。
 
 遗留事项（下一阶段）：交互任务管理（噪声/连续提问队列）、ROBOT_STATUS 真实数据接入、DEMO_ACTION 语音触发扩展、软著材料。

@@ -3,7 +3,7 @@
 - 日期：2026-11-01
 - 项目：《基于 ROS 2 的 G1-EDU 校园实验室智能接待与讲解系统 V1.0》
 - 范围：修复状态问法漏放 + ROBOT_STATUS 本地兜底分支。不开发 RobotStateProvider，不读取新硬件话题。
-- 证据目录：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0171/`
+- 证据目录：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0171/`
 
 ## A. 修改前问题分析（基于 P0-17 审计实测）
 
@@ -117,9 +117,9 @@ Mock：G1 本机 127.0.0.1:11435，每收到一次 `/api/chat` 请求计数 +1 �
 ## G. 备份与证据
 
 - G1 备份：`/home/unitree/g1_backups/g1_voice_router_20261101_074728_before_p0171/`（完整包副本）
-- 本地备份：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261101_before_p0171_local/`
+- 本地备份：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261101_before_p0171_local/`
 - 运行证据：`evidence_p0171/p0171_router.log`（9 条输入的意图/Guard/路由日志）、`evidence_p0171/p0171_mock.log`（Mock 请求全文，仅 2 条知识请求）
-- 本地工作副本：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/g1_voice_router/`（与 G1 同步）
+- 本地工作副本：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/g1_voice_router/`（与 G1 同步）
 
 ## H. 遗留事项
 

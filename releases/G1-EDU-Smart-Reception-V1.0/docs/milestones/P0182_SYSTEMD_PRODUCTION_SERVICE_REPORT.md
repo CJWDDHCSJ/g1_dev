@@ -2,7 +2,7 @@
 
 - 日期：2026-11-02
 - 结论：**五个接待节点已全部迁移到 systemd 管理（用户级 + linger），统一 target 启停、单节点 restart、异常退出自动恢复、业务回归全部通过；开机自启已配置但未经真实重启验证。**
-- 证据目录：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0182/`
+- 证据目录：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0182/`
 
 ## A. 原启动架构（迁移前实测）
 
@@ -127,7 +127,7 @@ systemctl --user disable g1-voice-stack.target
 ```
 
 - 备份：`/home/unitree/g1_backups/g1_systemd_20261102_before_p0182/`（进程树、cmdline、环境白名单、二进制 SHA256、P0-18.1 运行日志）
-- 本地备份：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_robot_state_production_20261102_before_p0181_local/`（P0-18.1 源码）；本轮未改源码，无新增源码备份需求
+- 本地备份：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_robot_state_production_20261102_before_p0181_local/`（P0-18.1 源码）；本轮未改源码，无新增源码备份需求
 - 证据：`evidence_p0182/`（unit 文件、启动脚本、服务状态快照、五节点日志）
 
 ## 验收对照（任务书十五）

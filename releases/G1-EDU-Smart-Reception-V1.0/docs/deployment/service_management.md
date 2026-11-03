@@ -1,81 +1,110 @@
-# 服务与日志管理
+# 服务管理与日志运维
 
-## 1. 服务清单
+> 依据：`deployment/systemd/*`、`deployment/logrotate/*`、`deployment/monitoring/check_disk.sh`，以及 P0-18.2（服务化）、P0-18.3（重启恢复）、P0-18.4（日志轮转）验收报告。
 
-| 服务 | 作用 | 启动脚本 |
+## 1. 单元清单
+
+| 单元 | 类型 | 作用 |
 |---|---|---|
-| `g1-asr-bridge.service` | ASR JSON → 文本 | `start_asr_bridge.sh` |
-| `g1-robot-state-provider.service` | 状态聚合 | `start_robot_state_provider.sh` |
-| `g1-voice-router.service` | 意图/风控/调度/回复 | `start_voice_router.sh` |
-| `g1-tts.service` | 文本播报 | `start_tts.sh` |
-| `g1-action-executor.service` | 白名单动作执行 | `start_action_executor.sh` |
-| `g1-log-rotate.timer` | 每小时检查日志轮转 | — |
-| `g1-disk-check.timer` | 每 6 小时磁盘检查 | `check_disk.sh` |
+| `g1-voice-stack.target` | target | 聚合五个业务服务，`WantedBy=default.target` |
+| `g1-robot-state-provider.service` | simple | 状态聚合 |
+| `g1-tts.service` | simple | 语音合成 |
+| `g1-voice-router.service` | simple | 业务主节点 |
+| `g1-asr-bridge.service` | simple | ASR 桥 |
+| `g1-action-executor.service` | simple | 动作执行 |
+| `g1-log-rotate.service` | oneshot | 调用 `/usr/sbin/logrotate` 执行一次轮转 |
+| `g1-log-rotate.timer` | timer | 每小时触发一次轮转检查 |
+| `g1-disk-check.service` | oneshot | 运行 `check_disk.sh` |
+| `g1-disk-check.timer` | timer | 每 6 小时检查磁盘 |
 
-由 `g1-voice-stack.target` 组合（`Wants` + `After`）。
-
-## 2. 关键 unit 属性
-
-```ini
-Restart=always
-RestartSec=3
-KillSignal=SIGINT
-TimeoutStopSec=15
-StandardOutput=append:/home/unitree/g1_logs_systemd/<name>.log
-```
-
-实测停机：空闲 0.29s、HTTP 请求中 0.79s、动作等待中 0.29s，均远小于 15s。
-
-## 3. 常用操作
+## 2. 常用操作
 
 ```bash
-# 只更新 Router（生产变更唯一允许的单节点操作）
+# 整体
+systemctl --user start|stop|restart g1-voice-stack.target
+systemctl --user is-active g1-voice-stack.target
+systemctl --user list-units 'g1-*'
+
+# 单节点
 systemctl --user restart g1-voice-router.service
+systemctl --user status g1-tts.service
 
-# 查看最近日志
+# 定时任务
+systemctl --user list-timers | grep g1-
+systemctl --user start g1-log-rotate.service      # 手动轮转一次
+systemctl --user list-dependencies g1-voice-stack.target
+```
+
+## 3. 关键配置与含义
+
+| 配置 | 值 | 为什么 |
+|---|---|---|
+| `PartOf=g1-voice-stack.target` | 五个业务服务 | `stop target` 一次停全部，避免残留 |
+| `Restart=always` | 五个业务服务 | 崩溃自愈 |
+| `RestartSec=3` | 3 s | 给端口/话题/DDS 端点一点时间释放 |
+| `StartLimitIntervalSec=60` / `StartLimitBurst=5` | 60 s / 5 次 | 崩溃循环时停机等人，避免打满 CPU |
+| `KillSignal=SIGINT` | SIGINT | 触发 Router 的优雅停机路径 |
+| `TimeoutStopSec=15` | 15 s | 远大于实测停机 0.29–0.79 s，留足余量 |
+| `StandardOutput=append:~/g1_logs_systemd/<node>.log` | 五个日志 | 与 logrotate 的 `copytruncate` 配套 |
+| `After=` 顺序 | Provider → TTS/Router → ASR → Executor | 保证依赖先起，但不产生动作 |
+
+## 4. 状态检查与故障判定
+
+```bash
+systemctl --user show -p NRestarts --value g1-voice-router.service   # 期望 0 或很小
+systemctl --user show -p ActiveState,SubState,MainPID -p --value g1-voice-router.service
 journalctl --user -u g1-voice-router.service -n 100 --no-pager
-
-# 查看重启次数（异常恢复是否发生）
-systemctl --user show -p NRestarts --value g1-voice-router.service
-
-# 定时器
-systemctl --user list-timers --all | grep g1-
 ```
 
-## 4. 日志
+| 现象 | 判定 | 处置 |
+|---|---|---|
+| `NRestarts` 持续增长 | 崩溃循环 | 看 journal 首个错误，修根因；必要时 `systemctl --user stop` 止损 |
+| `Result=start-limit-hit` | 触及 5 次/60 s 限制 | 修好后 `systemctl --user reset-failed <unit>` 再启动 |
+| `MainPID=0` 但 `ActiveState=active` | oneshot 已结束（正常） | 仅适用于 log-rotate / disk-check |
+| 服务 active 但无数据 | 环境/DDS 问题 | 查 `ROS_DOMAIN_ID`、`CYCLONEDDS_URI` |
 
-| 日志 | 路径 |
+## 5. 日志体系
+
+| 项 | 值 |
 |---|---|
-| Router | `~/g1_logs_systemd/voice_router.log` |
-| ASR | `~/g1_logs_systemd/asr_bridge.log` |
-| TTS | `~/g1_logs_systemd/tts.log` |
-| Executor | `~/g1_logs_systemd/action_executor.log` |
+| 目录 | `~/g1_logs_systemd/` |
+| 文件 | `voice_router.log`、`tts.log`、`asr_bridge.log`、`action_executor.log`、`robot_state_provider.log`、`disk_check.log` |
+| 轮转触发 | `daily` 或 `maxsize 20M`（先到先触发） |
+| 保留 | `rotate 7`、`maxage 14` |
+| 压缩 | `compress` + `delaycompress`（活跃文件不压缩） |
+| 活跃文件处理 | `copytruncate`（复制后截断） |
+| 命名 | `dateext`、`dateformat -%Y%m%d` |
+| 频率 | 每小时 timer 检查一次 |
 
-轮转策略（`deployment/logrotate/g1-voice-stack.conf`）：`daily` + `maxsize 20M` + `rotate 7` + `maxage 14` + `compress` + `delaycompress` + `copytruncate` + `dateext`。
+### 5.1 为什么必须用 `copytruncate`
 
-跨日排查需同时查看 `*.log-YYYYMMDD`。
+五个服务用 `StandardOutput=append:` 持有同一路径的 fd，且没有 reopen 机制。若用默认的 rename 轮转，进程会继续写已改名的旧 inode，新文件不再增长——看起来“日志停了”。`copytruncate` 复制后截断同一文件，进程无感。
 
-## 5. 日志字段速查
+代价：复制与截断之间有毫秒级窗口，可能丢失该瞬间的极少量日志。这是“不重启节点”前提下的务实取舍。
 
-```text
-request_id=1 event=QUEUED queue_depth=1 text_len=24
-request_id=1 event=ASR_NORMALIZED rule=ASR001_... raw_len=21 raw_digest=08deee1c normalized=脑机接口是什么
-request_id=1 event=PROCESSING intent=GENERAL_QA text_len=24
-request_id=1 event=WAITING_OLLAMA
-request_id=1 event=ACTION_SENT action=wave id=26
-request_id=1 event=ACTION_FINISHED outcome=SUCCESS action=wave
-request_id=1 event=COMPLETED total_ms=5902
+### 5.2 手动验证轮转
+
+```bash
+systemctl --user start g1-log-rotate.service
+systemctl --user show -p Result -p ExecMainStatus --value g1-log-rotate.service
+ls -lh ~/g1_logs_systemd/
 ```
 
-日志不打印完整用户语音，只保留长度、意图、归一化结果与摘要。
+预期：出现 `voice_router.log-YYYYMMDD`（或 `.gz`），活跃日志体积回落到接近 0 并继续增长。
 
 ## 6. 磁盘监测
 
-`g1-disk-check.service` 调用 `deployment/monitoring/check_disk.sh`，由 timer 每 6 小时触发；用于长期运行场景下的空间预警。
+`check_disk.sh` 只读、不删任何文件，每次输出一行并追加到 `disk_check.log`：
 
-## 7. 运维红线
+```text
+2026-11-02T13:07:14Z state=OK root_used=2% used=22G avail=1.8T logs=74K backups=... largest_log=42K /home/unitree/g1_logs_systemd/tts.log
+```
 
-- 生产更新只允许重启**单个** `g1-voice-router.service`。
-- 禁止 `systemctl --user restart g1-voice-stack.target`（会同时打断 ASR/TTS/Executor）。
-- 禁止改 `Restart` 策略来"避免重启"——重启是保护机制。
-- 日志文件不要手工删除，交给 logrotate。
+阈值：`<80%` → `OK`；`≥80%` → `WARNING`；`≥90%` → `CRITICAL`。脚本不自动清理，处置由人决定（避免自动化误删）。
+
+## 7. 已知边界
+
+- 日志写入量取决于演示强度，`20M` 阈值是按“一天几百次对话”估的，长时间高负载需重新评估；
+- 轮转只覆盖 `~/g1_logs_systemd/*.log`，不动其他目录；
+- `journalctl` 里也有 systemd 自身记录（不含节点 stdout，因为已重定向到文件）；
+- 停 target 不会停 `g1-log-rotate.timer` / `g1-disk-check.timer`（它们不在 target 的 `Wants` 内），这是有意的：运维任务与业务解耦。

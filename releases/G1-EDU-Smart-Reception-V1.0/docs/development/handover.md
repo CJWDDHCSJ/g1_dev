@@ -5,13 +5,13 @@
 - 文档名：`G1_AGENT_HANDOVER_20261101.md`
 - 生成日期：2026-11-01
 - 生成方式：由新任 Agent 在**只读审计**后编写。本文档生成过程未修改 G1 上任何代码、配置、进程，未执行动作、未播放语音、未修改任何系统设置。
-- 实际保存路径：`/home/mick/Mick_Grey/g1_dev/teach/G1_AGENT_HANDOVER_20261101.md`
+- 实际保存路径：`/home/<user>/Mick_Grey/g1_dev/teach/G1_AGENT_HANDOVER_20261101.md`
 
-> **重要路径更正**：本任务书及部分历史文档（如 `g1_kb_review/INDEX.md`）中写的 `/home/mick/Mick_Grey/teach/` 目录**当前并不存在**（已实测确认）。项目全部本地资料实际位于：
+> **重要路径更正**：本任务书及部分历史文档（如 `g1_kb_review/INDEX.md`）中写的 `/home/<user>/Mick_Grey/teach/` 目录**当前并不存在**（已实测确认）。项目全部本地资料实际位于：
 >
-> **`/home/mick/Mick_Grey/g1_dev/teach/`**
+> **`/home/<user>/Mick_Grey/g1_dev/teach/`**
 >
-> 下文所有本地路径一律以 `g1_dev/teach` 为准。旧文档中的 `/home/mick/Mick_Grey/teach/` 应理解为同一项目迁移前的旧位置。
+> 下文所有本地路径一律以 `g1_dev/teach` 为准。旧文档中的 `/home/<user>/Mick_Grey/teach/` 应理解为同一项目迁移前的旧位置。
 
 ---
 
@@ -33,7 +33,7 @@
 
 | # | 审计项 | 结果 | 级别 |
 |---|---|---|---|
-| 1 | G1 SSH 连接 | `unitree@192.168.123.164` 可免密连接 | 【已验证】 |
+| 1 | G1 SSH 连接 | `unitree@<G1_HOST>` 可免密连接 | 【已验证】 |
 | 2 | G1 主机名/架构 | `ubuntu` / `aarch64` / Ubuntu 22.04.5 | 【已验证】 |
 | 3 | ROS 2 环境 | Humble，`source ~/unitree_ros2/setup.sh` 后 `ros2 node list` 正常 | 【已验证】 |
 | 4 | 当前运行进程 | **g1_voice_router、g1_asr_bridge、g1_tts_node、g1_action_executor 均未在运行**。仅有 Unitree 原生 `/ros_bridge` 节点及大量 Unitree 原生话题 | 【已验证】 |
@@ -42,7 +42,7 @@
 | 7 | install 目录 | `install/g1_voice_router/lib/g1_voice_router/voice_router` 为 symlink-install 软链接，指向 `build/g1_voice_router/voice_router`（编译于 2026-10-31 15:09，即 P0 修复后版本） | 【已验证】 |
 | 8 | 知识库 FAQ 数量 | **21 条**（G1 源码 JSON 与 install JSON 哈希一致；`labs=3, research_directions=3, projects=1, equipment=1, categories=5, sources=15`） | 【已验证】 |
 | 9 | 测试结果复跑 | 本次未复跑。57/57、44/44、隔离域 8/8 为【历史记录】 | 【未验证】 |
-| 10 | Ollama | `http://192.168.123.99:11434` 可达；模型 `qwen3-vl:4b-instruct`（Q4_K_M，3,337,225,651 字节，digest `84f7ed80…`） | 【已验证】 |
+| 10 | Ollama | `http://<LLM_HOST>:11434` 可达；模型 `qwen3-vl:4b-instruct`（Q4_K_M，3,337,225,651 字节，digest `84f7ed80…`） | 【已验证】 |
 | 11 | P0-15 是否已修改 | **未修改**。在 G1 源码 `src/`、`include/` 中 grep `risk/price/价格/fact_check/verify_fact` 等关键词无任何命中；代码中无高风险事实检查逻辑 | 【已验证】 |
 | 12 | TTS 配置 | `~/unitree_ros2/example/config/tts_config.json`：`speaker_id=0, volume=80, pause_ms=1500` | 【已验证】 |
 | 13 | G1 备份目录 | `~/g1_backups/` 下两个备份目录均存在 | 【已验证】 |
@@ -118,7 +118,7 @@
 | JetPack | 6.2.3 | 【历史记录】 |
 | CUDA / TensorRT | 12.6 / 10.3 | 【历史记录】 |
 | Kernel | 5.15.185-tegra | 【历史记录】 |
-| 机器人 IP | 192.168.123.164（SSH 用户 `unitree`） | 【已验证】 |
+| 机器人 IP | <G1_HOST>（SSH 用户 `unitree`） | 【已验证】 |
 | RMW | rmw_cyclonedds_cpp | 【已验证（setup.sh 实测内容）】 |
 | ROS_DOMAIN_ID | 0（隔离测试曾用 77/42/43） | 【历史记录】 |
 | DDS 网络接口 | eth0 | 【已验证（setup.sh 实测内容）】 |
@@ -153,16 +153,16 @@ export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces>
 - 已从 Windows 迁移到 Ubuntu 笔记本，**今后默认以笔记本为外部模型服务器，不再依赖 Windows，不要重新部署或迁移**。
 - 模型：`qwen3-vl:4b-instruct`，量化 Q4_K_M，文件约 3.34GB。
 - 【已验证 2026-11-01】`/api/tags` 返回：size=3,337,225,651，digest `84f7ed8042fa7cdbd902f7dcb7d0370e032095047cc3244179f263b77b5bc318`，context_length=262144，capabilities 含 vision/tools。历史已验证 RTX 4070 GPU 推理，显存占用约 4GB。
-- API 地址：`http://192.168.123.99:11434/api/chat`
-- 笔记本 Ethernet：`192.168.123.99`；G1：`192.168.123.164`；两者网络通信已验证成功。
+- API 地址：`http://<LLM_HOST>:11434/api/chat`
+- 笔记本 Ethernet：`<LLM_HOST>`；G1：`<G1_HOST>`；两者网络通信已验证成功。
 - Voice Router 可通过 ROS 参数覆盖 Ollama URL：
 
 ```bash
-ros2 run g1_voice_router voice_router --ros-args -p ollama_url:=http://192.168.123.99:11434/api/chat
+ros2 run g1_voice_router voice_router --ros-args -p ollama_url:=http://<LLM_HOST>:11434/api/chat
 ```
 
 - Voice Router 内置默认参数（【已验证】读自源码 `src/voice_router.cpp`）：
-  - `ollama_url` = `http://192.168.123.99:11434/api/chat`
+  - `ollama_url` = `http://<LLM_HOST>:11434/api/chat`
   - `model` = `qwen3-vl:4b-instruct`
   - `request_timeout_seconds` = 60（允许 5–300，越界回落 60）
   - `knowledge_file` = `<g1_voice_router share 目录>/config/lab_knowledge.json`（通过 `ament_index_cpp` 定位）
@@ -217,10 +217,10 @@ G1 机器人上：
 
 ### 5.3 本地（笔记本）资料目录
 
-实际根目录：`/home/mick/Mick_Grey/g1_dev/teach/`（**注意：`/home/mick/Mick_Grey/teach/` 不存在**）
+实际根目录：`/home/<user>/Mick_Grey/g1_dev/teach/`（**注意：`/home/<user>/Mick_Grey/teach/` 不存在**）
 
 ```text
-/home/mick/Mick_Grey/g1_dev/teach/
+/home/<user>/Mick_Grey/g1_dev/teach/
 ├── G1_AGENT_HANDOVER_20261101.md     # 本文档
 ├── lab_research/                     # 原始调研资料（8 份 md）
 │   ├── LAB_RESEARCH_REPORT.md  LAB_PROFILE.md  SOURCES.md  FACT_CHECK.md
@@ -281,7 +281,7 @@ flowchart TD
     X --> Y["G1 上肢动作 (G1ArmActionClient)"]
     X --> Z["/g1/action_result"]
 
-    subgraph EXT["Ubuntu 笔记本 192.168.123.99"]
+    subgraph EXT["Ubuntu 笔记本 <LLM_HOST>"]
       O["Ollama: qwen3-vl:4b-instruct<br/>Q4_K_M ≈3.34GB"]
     end
     J -.HTTP.-> O
@@ -419,10 +419,10 @@ flowchart TD
 ### 笔记本上
 
 ```text
-/home/mick/Mick_Grey/g1_dev/teach/lab_research/          # 调研资料
-/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/g1_voice_router/   # 与 G1 逐字节一致的工作副本
-/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/DELIVERY_REPORT.md # 交付报告（506 行）
-/home/mick/Mick_Grey/g1_dev/teach/g1_kb_review/          # 审查包
+/home/<user>/Mick_Grey/g1_dev/teach/lab_research/          # 调研资料
+/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/g1_voice_router/   # 与 G1 逐字节一致的工作副本
+/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/DELIVERY_REPORT.md # 交付报告（506 行）
+/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_review/          # 审查包
 ```
 
 ### 源码 SHA256（【已验证 2026-11-01】，G1 与本地副本一致）
@@ -446,7 +446,7 @@ dc242b16281ebc0164d56c539c82fc885eb484eaf70bebf791f2d925c9798c85  build/g1_voice
 ### 11.1 启动 Voice Router（G1 上）
 
 ```bash
-ssh unitree@192.168.123.164
+ssh unitree@<G1_HOST>
 source ~/unitree_ros2/setup.sh
 source ~/unitree_ros2/example/install/setup.bash
 ros2 run g1_voice_router voice_router
@@ -463,7 +463,7 @@ ros2 run g1_voice_router voice_router --ros-args \
 
 ```bash
 ros2 run g1_voice_router voice_router --ros-args \
-  -p ollama_url:=http://192.168.123.99:11434/api/chat
+  -p ollama_url:=http://<LLM_HOST>:11434/api/chat
 ```
 
 建议用 `tmux` 或 `nohup` 保持会话。
@@ -615,9 +615,9 @@ G1 深度相机存在硬件/驱动层异常，尚未恢复。当前项目不依�
 ### 笔记本上
 
 ```text
-/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/original/g1_voice_router/             # 改造前原始源码
-/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261031_224715_before_p0fix/
-/home/mick/Mick_Grey/g1_dev/teach/g1_kb_review/backup_snapshot/  remote_snapshot/  diffs/
+/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/original/g1_voice_router/             # 改造前原始源码
+/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/backups/g1_voice_router_20261031_224715_before_p0fix/
+/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_review/backup_snapshot/  remote_snapshot/  diffs/
 ```
 
 后续重要修改约定：在 G1 上新建 `~/g1_backups/g1_voice_router_<时间戳>_<说明>/`，同步在笔记本 `g1_kb_work/backups/` 留副本。
@@ -666,7 +666,7 @@ G1 深度相机存在硬件/驱动层异常，尚未恢复。当前项目不依�
 | 给我们表演一个动作 | DEMO_ACTION |
 | 展示一下具身智能开放平台 | LAB_INTRO |
 
-证据文件：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0fix/`（gtest 日志、TTS 话题捕获 `tts_1..8.txt` 等）及 `g1_kb_review/TEST_EVIDENCE_APPENDIX.md`。
+证据文件：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p0fix/`（gtest 日志、TTS 话题捕获 `tts_1..8.txt` 等）及 `g1_kb_review/TEST_EVIDENCE_APPENDIX.md`。
 
 ---
 
@@ -732,15 +732,15 @@ G1 深度相机存在硬件/驱动层异常，尚未恢复。当前项目不依�
 
 ```bash
 # 1) 连通性 + 进程
-ssh unitree@192.168.123.164 "ps aux | grep -E 'voice_router|asr_json_bridge|g1_tts|action_executor' | grep -v grep"
+ssh unitree@<G1_HOST> "ps aux | grep -E 'voice_router|asr_json_bridge|g1_tts|action_executor' | grep -v grep"
 # 2) 源码完整性（应与第 10 节哈希一致）
-ssh unitree@192.168.123.164 "sha256sum ~/unitree_ros2/example/g1_voice_router/src/*.cpp \
+ssh unitree@<G1_HOST> "sha256sum ~/unitree_ros2/example/g1_voice_router/src/*.cpp \
   ~/unitree_ros2/example/g1_voice_router/include/g1_voice_router/*.hpp \
   ~/unitree_ros2/example/g1_voice_router/config/lab_knowledge.json"
 # 3) 二进制时间戳（应为 2026-10-31 15:09 之后的编译产物）
-ssh unitree@192.168.123.164 "readlink -f ~/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router; stat -c '%y %n' \$(readlink -f ~/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router)"
+ssh unitree@<G1_HOST> "readlink -f ~/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router; stat -c '%y %n' \$(readlink -f ~/unitree_ros2/example/install/g1_voice_router/lib/g1_voice_router/voice_router)"
 # 4) Ollama 可达性（笔记本上执行）
-curl -s -m 5 http://192.168.123.99:11434/api/tags | head -c 300
+curl -s -m 5 http://<LLM_HOST>:11434/api/tags | head -c 300
 ```
 
 3. 阅读本地资料（按顺序）：`g1_kb_work/DELIVERY_REPORT.md` → `g1_kb_review/INDEX.md` 与 `G1_KB_REVIEW_BUNDLE.md`（重点第 10/12 节）→ `lab_research/`。
@@ -752,5 +752,5 @@ curl -s -m 5 http://192.168.123.99:11434/api/tags | head -c 300
 
 ## 附：本文档自身信息
 
-- 路径：`/home/mick/Mick_Grey/g1_dev/teach/G1_AGENT_HANDOVER_20261101.md`
+- 路径：`/home/<user>/Mick_Grey/g1_dev/teach/G1_AGENT_HANDOVER_20261101.md`
 - 行数与 SHA256 以交付时汇报为准（文档内自记录哈希无法自洽，略）。

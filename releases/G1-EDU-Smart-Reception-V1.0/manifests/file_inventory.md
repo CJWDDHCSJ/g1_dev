@@ -1,11 +1,13 @@
 # 文件台账（V1.0 归档）
 
-- 归档时间：2026-11-03
-- 归档根目录：`/home/mick/Mick_Grey/g1_dev/releases/G1-EDU-Smart-Reception-V1.0`
-- 交付版本目录文件数：**144**（含 `private_archive/` 12 个）；不含私有快照 **132**
+- 归档时间：2026-11-03（文档二轮重构后重新统计）
+- 归档根目录：`/home/<user>/Mick_Grey/g1_dev/releases/G1-EDU-Smart-Reception-V1.0`
+- 交付版本目录文件数：**150**（含 `private_archive/` 12 个）；不含私有快照 **138**
 - 运行证据：**127 个文件（约 832KB）**，统一保存在**仓库根 `evidence/`**，不重复存放于本目录
-- 总目录数：**67**（不含 `private_archive/` 子目录）
+- 目录数：**36**（不含 `private_archive/` 子树；统计口径为 `find -type d`）
 - 交付版本目录体积：**29 MB**（其中 `private_archive/` 生产二进制约 28 MB）
+
+> 与上一版台账（144 / 132 / 48 份 markdown）的差异来自文档重构：新增 `docs/milestones/P016.md` ~ `P021.md` 6 个导航页，重写 architecture/development/deployment/testing 共 18 篇文档。**源码、部署资产、二进制均未改动**，冻结哈希仍有效。
 
 ## 1. 分类统计
 
@@ -14,8 +16,8 @@
 | C++ 源文件 `*.cpp` | 23 | `ros2_ws/`、`action_ws/`、`integrations/` |
 | C++ 头文件 `*.hpp` | 11 | `ros2_ws/src/g1_voice_router/include/`、`action_ws/` |
 | 测试源文件 `*_test.cpp` | 8 | `ros2_ws/src/g1_voice_router/test/`（含 1 个历史遗留副本） |
-| Markdown 文档 | 48 | `README`、`docs/`、`software_copyright/`、`manifests/` |
-| 历史交付报告 | 16 | `docs/milestones/` |
+| Markdown 文档 | **65** | `README`、`docs/`、`software_copyright/`、`manifests/` |
+| 历史交付报告 | 16 | `docs/milestones/`（另有 6 个导航页与 1 个索引） |
 | 软著材料 | 11 | `software_copyright/`（10 份 md + 1 架构图） |
 | 证据文件（仓库根） | 127 | `../../evidence/p015 … p021` |
 | 部署脚本 `*.sh` | 7 | `deployment/scripts/`、`monitoring/`、`config_examples/` |

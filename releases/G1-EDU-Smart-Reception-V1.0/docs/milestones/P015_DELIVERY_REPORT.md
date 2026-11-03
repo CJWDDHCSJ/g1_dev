@@ -26,12 +26,12 @@
 | `package.xml` | 未修改（无新依赖） | — |
 | `intent_recognizer.*`、`knowledge_base.*`、`lab_knowledge.json` | 未修改（哈希与交接文档一致） | — |
 
-本地同步副本：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/g1_voice_router/`（与 G1 逐字节一致）。
+本地同步副本：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/g1_voice_router/`（与 G1 逐字节一致）。
 
 ## 2. 备份位置
 
 - G1：`/home/unitree/g1_backups/g1_voice_router_20261101_064239_before_p015/`（含 src、include、test、config、CMakeLists.txt、package.xml；未覆盖任何历史备份）。
-- 本地证据：`/home/mick/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p015/voice_router_p015_runtime.log`（隔离域运行日志全文）。
+- 本地证据：`/home/<user>/Mick_Grey/g1_dev/teach/g1_kb_work/evidence_p015/voice_router_p015_runtime.log`（隔离域运行日志全文）。
 
 ## 3. FactRiskGuard 设计说明
 
@@ -113,7 +113,7 @@ Summary: 3 tests, 0 errors, 0 failures, 0 skipped
 ## 11. 完整启动命令（生产，DOMAIN_ID 0）
 
 ```bash
-ssh unitree@192.168.123.164
+ssh unitree@<G1_HOST>
 source ~/unitree_ros2/setup.sh
 source ~/unitree_ros2/example/install/setup.bash
 ros2 run g1_voice_router voice_router

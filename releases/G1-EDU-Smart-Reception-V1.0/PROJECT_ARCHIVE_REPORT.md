@@ -1,16 +1,16 @@
 # G1-EDU V1.0 项目归档报告
 
 - 归档日期：2026-11-03
-- 执行方式：从 G1（192.168.123.164）主动拉取，全程**只读**；未修改 G1 任何文件、未重启服务、未触发动作、未编译
+- 执行方式：从 G1（<G1_HOST>）主动拉取，全程**只读**；未修改 G1 任何文件、未重启服务、未触发动作、未编译
 - 未执行：`git init` / `git commit` / `git remote add` / `git push`
 
 ## 1. 最终本地路径
 
 ```text
-/home/mick/Mick_Grey/g1_dev/releases/G1-EDU-Smart-Reception-V1.0/
+/home/<user>/Mick_Grey/g1_dev/releases/G1-EDU-Smart-Reception-V1.0/
 ```
 
-> 目标目录此前不存在，未覆盖任何既有内容；`/home/mick/Mick_Grey/g1_dev/teach/` 下的原有资料**全部保留未动**。
+> 目标目录此前不存在，未覆盖任何既有内容；`/home/<user>/Mick_Grey/g1_dev/teach/` 下的原有资料**全部保留未动**。
 
 ## 2. 归档规模
 
@@ -71,8 +71,8 @@ private_archive/
 
 | 检查项 | 结果 |
 |---|---|
-| 内网 IP `192.168.x.x` | 交付版内 **13** 个文件（含 `voice_router.cpp` 参数默认值、部分软著与部署文档）；仓库整体（含 `evidence/`）**58** 个文件 |
-| `/home/unitree`、`/home/mick` 路径 | 交付版内 **37** 个文件；仓库整体 **149** 个文件（文档、脚本、unit、日志） |
+| 内网 IP `192.168.x.x` | 归档时交付版 **13** 个文件（含 `voice_router.cpp` 参数默认值、部分软著与部署文档）；仓库整体（含 `evidence/`）**58** 个文件。**文档二轮重构已对 markdown 脱敏**：地址统一替换为 `<G1_HOST>` / `<LLM_HOST>`；仅源码默认值 1 处为保持与冻结二进制同源而保留 |
+| `/home/unitree`、`/home/<user>` 路径 | 交付版内 **37** 个文件；仓库整体 **149** 个文件（文档、脚本、unit、日志） |
 | 私钥 / Token / 密码 | 未发现真实凭证 |
 | 生产二进制混入公共目录 | 无 |
 | `build/install/log` 混入 | 无 |

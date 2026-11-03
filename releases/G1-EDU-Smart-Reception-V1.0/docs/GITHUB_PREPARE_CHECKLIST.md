@@ -30,7 +30,7 @@
 
 | 文件/目录 | 具体内容 | 建议 |
 |---|---|---|
-| `docs/milestones/*.md` | 报告含内网 IP（192.168.123.x）、主机名 `ubuntu`、用户名 `unitree`、`/home/unitree` 与 `/home/mick` 路径 | 公开仓库建议脱敏或改为私有仓库 |
+| `docs/milestones/*.md`、`docs/development/handover.md`、`PROJECT_ARCHIVE_REPORT.md` | 报告正文原含内网 IP、主机名、用户名与 `/home/<user>` 路径 | **本次重构已对 markdown 正文做地址脱敏**（IP → `<G1_HOST>` / `<LLM_HOST>`，开发者私有路径 → `/home/<user>`）；`/home/unitree` 属机器人账号路径，按部署必需保留 |
 | `deployment/systemd/*.service`、`scripts/*.sh` | 硬编码 `/home/unitree/...` 绝对路径 | 保留（部署必需）或改为变量 + 说明 |
 | `deployment/logrotate/g1-voice-stack.conf` | 日志路径含用户名 | 同上 |
 | `integrations/unitree_audio/config/tts_config.json` | 音量/语速等运行参数（非敏感） | 可提交 |
@@ -79,8 +79,8 @@ git status --porcelain | grep -E 'private_archive|build/|install/' || echo "no p
 
 | 检查项 | 结果 | 说明 |
 |---|---|---|
-| 含内网 IP `192.168.x.x` 的文件 | 交付版 **13 个** / 仓库整体 **58 个** | 交付版内主要是软著与部署文档、以及 **`voice_router.cpp` 的参数默认值**；仓库整体主要是 `evidence/*.log` |
-| 含 `/home/unitree` 或 `/home/mick` 路径 | 交付版 **37 个** / 仓库整体 **149 个** | 文档、部署脚本、systemd unit、证据日志 |
+| 含内网 IP `192.168.x.x` 的文件 | 交付版 markdown **0 个**（已脱敏）；`voice_router.cpp` 默认值 **1 处**；仓库整体仍有多处（`evidence/*.log`） | 源码默认值为与冻结二进制保持同源而保留，公开前由作者决定是否改为占位符并重编；`evidence/` 默认不上传 |
+| 含 `/home/unitree` 或 `/home/<user>` 路径 | 交付版 **37 个** / 仓库整体 **149 个** | 文档、部署脚本、systemd unit、证据日志 |
 | 私钥 / Token / 密码 | 0（仅本文件自身出现了关键字样） | 未发现真实凭证 |
 | `build/`、`install/`、`log/` 目录 | 0 | 已排除 |
 | 生产二进制 | 0（仅 `private_archive/`） | 已隔离 |
